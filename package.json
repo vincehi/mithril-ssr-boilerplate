@@ -1,0 +1,26 @@
+{
+  "name": "mithril-ssr",
+  "version": "1.0.0",
+  "description": "ssr",
+  "main": "index.js",
+  "repository": "RAS",
+  "scripts": {
+    "start": "webpack -d --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "install": "^0.12.2",
+    "mithril-node-render": "^2.3.2",
+    "npm": "^6.9.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "mithril": "^2.0.0-rc.4"
+  }
+}
