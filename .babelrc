@@ -1,8 +1,18 @@
 {
-  "presets": ["env"],
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": { "node": "6" },
+      }
+    ]
+  ],
   "plugins": [
-    ["transform-react-jsx", {
-      "pragma": "m"
-    }]
+    [
+      "transform-react-jsx",
+      {
+        "pragma": "m"
+      }
+    ]
   ]
 }
