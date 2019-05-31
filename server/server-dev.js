@@ -1,4 +1,7 @@
-import Koa from 'koa';
+const path = require('path');
+const Koa = require('koa');
+const server = require('koa-static');
+const router = require('koa-route');
 const app = new Koa();
 const PORT = process.env.PORT || 3000;
 
@@ -6,11 +9,18 @@ const PORT = process.env.PORT || 3000;
 require('mithril/test-utils/browserMock')(global);
 
 var m = require('mithril');
-var render = require('mithril-node-render');
+var toHTML = require('mithril-node-render');
 
-app.use(async (ctx) => {
-    ctx.body = await render(m('span', 'Voici un exemple de SSR'));
+const routes = require('../app/common/routes.js');
+
+// Build Express routes mapping Mithril routes
+Object.keys(routes).forEach((route) => {
+    app.use(router.get(route, async (ctx, params) => {
+        ctx.body = await toHTML(routes[route]);
+    }));
 });
+
+app.use(server(path.join(__dirname, "..", "build/assets")));
 
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
