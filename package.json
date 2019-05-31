@@ -26,6 +26,6 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "mithril": "^2.0.0-rc.4"
+    "mithril": "^2.0.0-rc.5"
   }
 }

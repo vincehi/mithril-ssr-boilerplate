@@ -1,4 +1,3 @@
-//import 'regenerator-runtime/runtime'; //https://github.com/babel/babel-loader/issues/484
 import Koa from 'koa';
 const app = new Koa();
 const PORT = process.env.PORT || 3000;
@@ -7,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 require('mithril/test-utils/browserMock')(global);
 
 var m = require('mithril');
-var render = require('mithril-node-render')
+var render = require('mithril-node-render');
 
 app.use(async (ctx) => {
     ctx.body = await render(m('span', 'Voici un exemple de SSR'));
