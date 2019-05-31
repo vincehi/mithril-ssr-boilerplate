@@ -1,4 +1,5 @@
 const m = require('mithril');
+const Header = require('./Header');
 
 const setHead = (vnode) => {
     const head = {};
@@ -37,12 +38,14 @@ const LayoutServer = {
                 m('link', {rel: 'shortcut icon', href: '/assets/img/favicon.ico'})
             ]),
             m('body', [
+                m(Header),
                 vnode.children,
                 // m('script', `window.__preloadedState = ${vnode.attrs.stateman._getString()}`),
                 m('script', {src: `/js/app.js`})
             ])
         ])
     ]
+
 };
 
 module.exports = process.browser ? LayoutClient : LayoutServer;
