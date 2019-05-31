@@ -77,68 +77,23 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./server/server-dev.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./server/server-dev.js":
-/*!******************************!*\
-  !*** ./server/server-dev.js ***!
-  \******************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var koa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! koa */ \"koa\");\n/* harmony import */ var koa__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(koa__WEBPACK_IMPORTED_MODULE_0__);\n//import 'regenerator-runtime/runtime'; //https://github.com/babel/babel-loader/issues/484\n\nconst app = new koa__WEBPACK_IMPORTED_MODULE_0___default.a();\nconst PORT = process.env.PORT || 3000; // use a mock DOM so we can run mithril on the server\n\n__webpack_require__(/*! mithril/test-utils/browserMock */ \"mithril/test-utils/browserMock\")(global);\n\nvar m = __webpack_require__(/*! mithril */ \"mithril\");\n\nvar render = __webpack_require__(/*! mithril-node-render */ \"mithril-node-render\");\n\napp.use(async ctx => {\n  ctx.body = await render(m('span', 'Voici un exemple de SSR'));\n});\napp.listen(PORT, () => {\n  console.log(`http://localhost:${PORT}`);\n  console.log('Press Ctrl+C to quit.');\n});\n\n//# sourceURL=webpack:///./server/server-dev.js?");
-
-/***/ }),
-
-/***/ "koa":
+/***/ "./src/index.js":
 /*!**********************!*\
-  !*** external "koa" ***!
+  !*** ./src/index.js ***!
   \**********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = require(\"koa\");\n\n//# sourceURL=webpack:///external_%22koa%22?");
-
-/***/ }),
-
-/***/ "mithril":
-/*!**************************!*\
-  !*** external "mithril" ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"mithril\");\n\n//# sourceURL=webpack:///external_%22mithril%22?");
-
-/***/ }),
-
-/***/ "mithril-node-render":
-/*!**************************************!*\
-  !*** external "mithril-node-render" ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"mithril-node-render\");\n\n//# sourceURL=webpack:///external_%22mithril-node-render%22?");
-
-/***/ }),
-
-/***/ "mithril/test-utils/browserMock":
-/*!*************************************************!*\
-  !*** external "mithril/test-utils/browserMock" ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"mithril/test-utils/browserMock\");\n\n//# sourceURL=webpack:///external_%22mithril/test-utils/browserMock%22?");
+eval("throw new Error(\"Module parse failed: Unexpected token (8:12)\\nYou may need an appropriate loader to handle this file type.\\n|     view: function() {\\n|         return (\\n>             <nav>\\n|                 <a href=\\\"/\\\" oncreate={m.route.link}>Home</a>\\n|                 <a href=\\\"/contact\\\" oncreate={m.route.link}>Contact</a>\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbXSwibWFwcGluZ3MiOiIiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/index.js\n");
 
 /***/ })
 

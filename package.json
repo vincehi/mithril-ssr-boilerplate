@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "RAS",
   "scripts": {
-    "buildDev": "webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.config.js",
+    "buildDev": "webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.client.config.js",
     "server": "node build/server.js",
     "start": "webpack -d --watch"
   },
