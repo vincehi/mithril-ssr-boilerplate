@@ -14,6 +14,10 @@ module.exports = {
         return (
             <header>
                 <div>uperr header</div>
+                <nav>
+                    <a href="/contact">Contact</a>
+                    <a href="/">Home</a>
+                </nav>
             </header>
         )
     }
