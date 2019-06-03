@@ -9,47 +9,15 @@ const PORT = process.env.PORT || 3000;
 // use a mock DOM so we can run mithril on the server
 require('mithril/test-utils/browserMock')(global);
 
-var m = require('mithril');
 var toHTML = require('mithril-node-render');
-const Layout = require('../app/components/Layout');
 
 const routes = require('../app/common/routes.js');
 
-// Build Express routes mapping Mithril routes
-// Object.keys(routes).forEach((route) => {
-//     app.use(router.get(route, async (ctx, params) => {
-//         ctx.body = await toHTML(routes[route]);
-//     }));
-// });
-
-
-const laRoute = {}
 Object.keys(routes).forEach((route) => {
     app.use(router.get(route, async (ctx, params) => {
 
-        // const module = await routes[route];
-        // const onmatch = await (module.onmatch || (() => module));
-        // const render = await (module.render || (a => a));
-        //
-        // const attrs = Object.assign({}, ctx.request.query);
-        //
-        // ctx.body = await toHTML(m(onmatch(attrs, ctx.request.url) || 'div', attrs))
+        ctx.body = await toHTML(routes[route])
 
-        // Promise.resolve()
-        //     .then(() => {
-        //         return m(onmatch(attrs, ctx.request.url) || 'div', attrs)
-        //     })
-        //     .then(render)
-        //     .then(toHTML)
-        //     .then((html) => {
-        //         console.log(html)
-        //         ctx.body = html;
-        //     })
-
-        ctx.body = await toHTML(Layout, m(routes[route]))
-
-
-        // ctx.body = await toHTML(routes[route]);
     }));
 });
 
