@@ -1,5 +1,7 @@
 const m = require('mithril');
 const routes = require('./common/routes');
+const Layout = require('./components/Layout');
+
 
 const clientRoutes = {};
 
@@ -10,7 +12,7 @@ Object.keys(routes).forEach((route) => {
             return routes[route].onmatch ? routes[route].onmatch(attrs, requestedPath) : routes[route]
         },
         render: vnode => {
-            return vnode
+            return m(Layout, vnode)
         }
     };
 });

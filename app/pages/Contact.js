@@ -7,11 +7,9 @@ module.exports = {
 
     view: vnode => {
         return (
-            <Layout>
                 <main>
                     Contenu de la page Contact !
                 </main>
-            </Layout>
         )
     }
 };

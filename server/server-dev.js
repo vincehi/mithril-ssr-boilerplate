@@ -11,6 +11,7 @@ require('mithril/test-utils/browserMock')(global);
 
 var m = require('mithril');
 var toHTML = require('mithril-node-render');
+const Layout = require('../app/components/Layout');
 
 const routes = require('../app/common/routes.js');
 
@@ -21,6 +22,8 @@ const routes = require('../app/common/routes.js');
 //     }));
 // });
 
+
+const laRoute = {}
 Object.keys(routes).forEach((route) => {
     app.use(router.get(route, async (ctx, params) => {
 
@@ -43,7 +46,10 @@ Object.keys(routes).forEach((route) => {
         //         ctx.body = html;
         //     })
 
-        ctx.body = await toHTML(routes[route]);
+        ctx.body = await toHTML(Layout, m(routes[route]))
+
+
+        // ctx.body = await toHTML(routes[route]);
     }));
 });
 
