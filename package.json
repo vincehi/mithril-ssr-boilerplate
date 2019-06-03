@@ -5,29 +5,41 @@
   "main": "index.js",
   "repository": "RAS",
   "scripts": {
-    "buildDev": "webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.client.config.js",
-    "server": "node build/server.js",
-    "start": "webpack -d --watch"
+    "build": "webpack --mode development --config webpack.config.js",
+    "watch": "webpack --watch --mode development --config webpack.config.js",
+    "server": "nodemon build/server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.5",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "install": "^0.12.2",
     "koa": "^2.7.0",
     "mithril-node-render": "^2.3.2",
-    "npm": "^6.9.0",
+    "nodemon": "^1.19.1",
     "path": "^0.12.7",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
     "koa-route": "^3.2.0",
     "koa-static": "^5.0.0",
-    "mithril": "^2.0.0-rc.6"
+    "mithril": "^2.0.0-rc.6",
+    "mithril-hobbit-navigator": "^0.3.2"
+  },
+  "nodemonConfig": {
+    "inspect": true,
+    "watch": [
+      "build"
+    ],
+    "ignore": [
+      "build/assets/*"
+    ],
+    "delay": "0"
   }
 }

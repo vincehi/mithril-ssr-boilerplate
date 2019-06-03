@@ -12,13 +12,25 @@ const setHead = (vnode) => {
 };
 
 const LayoutClient = {
-//     oncreate: (vnode) => {
+    oninit: (vnode) => {
+        console.log('je suis initialisé')
+    },
+
+    oncreate: (vnode) => {
+        console.log('je suis créer')
 //         const head = setHead(vnode);
 //         document.title = head.title;
 //         $('meta[name=description]').replaceWith( '' );
-//     },
+    },
 //
-    view: vnode => vnode.children
+    view: vnode => {
+        console.log(vnode)
+        return [
+            <Header />,
+                vnode.children,
+            <Footer />
+        ]
+    }
 };
 
 const LayoutServer = {

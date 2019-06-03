@@ -1,5 +1,5 @@
 const m = require('mithril');
-const Layout = require('../components/Layout')
+const Layout = require('../components/Layout');
 
 module.exports = {
     oninit: vnode => {

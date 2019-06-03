@@ -15,8 +15,8 @@ module.exports = {
             <header>
                 <div>uperr header</div>
                 <nav>
-                    <a href="/contact">Contact</a>
-                    <a href="/">Home</a>
+                    <a href="/contact" oncreate={m.route.link}>Contact</a>
+                    <a href="/" oncreate={m.route.link}>Home</a>
                 </nav>
             </header>
         )
