@@ -2,27 +2,16 @@ const m = require('mithril');
 const Header = require('./Header');
 const Footer = require('./Footer');
 
-const setHead = (vnode) => {
-    const head = {};
-    head.title = (vnode.attrs.title || '[MISSING TITLE]') + ' · ';
-    if (vnode.attrs.slug === 'index') head.title = '';
-    head.title += 'header.title';
-    head.description = vnode.attrs.description;
-    return head;
-};
-
+/**
+ * Le Layout est initialisé qu'une seul fois au 1 er chargement.
+ * @type {m}
+ */
 const LayoutClient = {
-    oninit: (vnode) => {
-        console.log('je suis initialisé')
+
+    onupdate: vnode => {
+        document.title = vnode.attrs.title
     },
 
-    oncreate: (vnode) => {
-        console.log('je suis créer')
-//         const head = setHead(vnode);
-//         document.title = head.title;
-//         $('meta[name=description]').replaceWith( '' );
-    },
-//
     view: vnode => {
         console.log(vnode)
         return [
@@ -35,7 +24,8 @@ const LayoutClient = {
 
 const LayoutServer = {
     oninit: vnode => {
-        // vnode.state.head = setHead(vnode);
+    },
+    oncreate: vnode => {
     },
     view: vnode => {
         return [
@@ -46,12 +36,14 @@ const LayoutServer = {
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />,
                     <meta http-equiv="x-ua-compatible" content="ie=edge" />,
                     <meta name="description" content="description ici" />,
-                    <title>Salut</title>,
+                    <title>{vnode.attrs.title}</title>,
                 ]),
                 m('body', [
-                    <Header />,
-                    <main id="mainContent">{vnode.children}</main>,
-                    <Footer />,
+                    <div id="mainContent">
+                        <Header />
+                        {vnode.children}
+                        <Footer />
+                    </div>,
                     <script src="/js/app.js" />
                 ])
             ])

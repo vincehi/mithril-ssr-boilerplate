@@ -11,7 +11,7 @@ require('mithril/test-utils/browserMock')(global);
 
 var toHTML = require('mithril-node-render');
 
-const routes = require('../app/common/routes.js');
+const routes = require('../app/common/routes');
 
 Object.keys(routes).forEach((route) => {
     app.use(router.get(route, async (ctx, params) => {

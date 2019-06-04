@@ -1,18 +1,21 @@
 const m = require('mithril');
 const Layout = require('../components/Layout');
 
-module.exports = m(
-    Layout, m({
+
+module.exports = <Layout title={'Accueil'}>{
+    m({
         oninit: vnode => {
-            console.log('la')
+            // vnode.attrs.title = 'Accueil';
+        },
+        oncreate: vnode => {
         },
 
         view: vnode => {
             return (
-                <main>
+                <div>
                     Contenu de la page Home !
-                </main>
+                </div>
             )
         }
     })
-);
+}</Layout>;
