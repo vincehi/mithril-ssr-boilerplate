@@ -4,7 +4,7 @@ const Layout = require('../components/Layout');
 module.exports = <Layout title={'Contact'}>{
     m({
         oninit: vnode => {
-            console.log('la')
+
         },
 
         view: vnode => {

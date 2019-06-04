@@ -5,7 +5,7 @@ const Layout = require('../components/Layout');
 module.exports = <Layout title={'Accueil'}>{
     m({
         oninit: vnode => {
-            // vnode.attrs.title = 'Accueil';
+
         },
         oncreate: vnode => {
         },
