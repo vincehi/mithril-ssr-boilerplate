@@ -1,6 +1,6 @@
 const m = require('mithril');
 
-module.exports = {
+export default {
     oninit: vnode => {
 
     },

@@ -10,7 +10,6 @@ Object.keys(routes).forEach((route) => {
             return routes[route].component().then(resp => {
                 return resp;
             });
-
         },
         render: vnode => {
             return m(Layout, vnode)
