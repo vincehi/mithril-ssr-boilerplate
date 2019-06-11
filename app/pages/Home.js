@@ -1,10 +1,8 @@
 const m = require('mithril');
-// const Layout = require('../components/Layout');
 
 export default {
     oninit: vnode => {
         console.log('home')
-
     },
     oncreate: vnode => {
     },

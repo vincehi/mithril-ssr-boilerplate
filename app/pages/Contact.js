@@ -2,7 +2,7 @@ const m = require('mithril');
 
 export default {
     oninit: vnode => {
-
+        console.log('contact')
     },
 
     view: vnode => {
