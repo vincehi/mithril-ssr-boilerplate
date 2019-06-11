@@ -9,7 +9,15 @@ module.exports = {
     '/': {
         name: 'Accueil',
         // component: process.browser ? new Promise ((resolve) => require(['../pages/Home.js'], resolve)) : require('../pages/Home.js')
-        component: import('../pages/Home.js').then(({default: resp}) => {
+        component: () =>  import('../pages/Home.js').then(({default: resp}) => {
+            // console.log(resp)
+            return resp
+        })
+    },
+    '/contact': {
+        name: 'Contact',
+        // component: process.browser ? new Promise ((resolve) => require(['../pages/Home.js'], resolve)) : require('../pages/Home.js')
+        component: () => import('../pages/contact.js').then(({default: resp}) => {
             // console.log(resp)
             return resp
         })

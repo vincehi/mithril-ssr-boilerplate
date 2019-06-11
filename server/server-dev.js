@@ -31,7 +31,7 @@ Object.keys(routes).forEach((route) => {
         //         console.log(err);
         //     });
         // end : test
-        var page = await routes[route].component.then(resp => {
+        var page = await routes[route].component().then(resp => {
             return resp;
         });
         //
