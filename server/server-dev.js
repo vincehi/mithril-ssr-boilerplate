@@ -13,7 +13,9 @@ global.window.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
 var toHTML = require('mithril-node-render');
 const m = require('mithril');
 
-const routes = require('../app/common/routes');
+const routes = require('app/common/routes');
+const Layout = require('app/components/Layout');
+
 
 Object.keys(routes).forEach((route) => {
     app.use(router.get(route, async (ctx, params) => {
@@ -29,8 +31,11 @@ Object.keys(routes).forEach((route) => {
         //         console.log(err);
         //     });
         // end : test
-
-        ctx.body = await toHTML(routes[route])
+        var page = await routes[route].component.then(resp => {
+            return resp;
+        });
+        //
+        ctx.body = await toHTML(Layout, m(page));
 
     }));
 });

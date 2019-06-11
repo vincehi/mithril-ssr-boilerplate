@@ -8,10 +8,6 @@ const Footer = require('./Footer');
  */
 const LayoutClient = {
 
-    onupdate: vnode => {
-        document.title = vnode.attrs.title
-    },
-
     view: vnode => {
         console.log(vnode)
         return [
@@ -23,8 +19,6 @@ const LayoutClient = {
 };
 
 const LayoutServer = {
-    oninit: vnode => {
-    },
     oncreate: vnode => {
     },
     view: vnode => {
