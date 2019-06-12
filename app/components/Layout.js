@@ -8,8 +8,16 @@ const Footer = require('./Footer');
  */
 const LayoutClient = {
 
+    oncreate: vnode => {
+        console.log('layout : je suis créer')
+    },
+
+    oninit: vnode => {
+        console.log('layout : je suis initialisé')
+    },
+
     view: vnode => {
-        console.log(vnode)
+        console.log(vnode);
         return [
             <Header />,
                 vnode.children,
