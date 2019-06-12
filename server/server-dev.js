@@ -21,15 +21,15 @@ Object.keys(routes).forEach((route) => {
     app.use(router.get(route, async (ctx, params) => {
 
         // @todo : start test
-        m.request({
-            method: "GET",
-            url: "https://randomuser.me/api/",
-            background: true // Permet de ne pas redessiner le composant apres réponse
-        })
-            .then(resp => console.log(resp.results))
-            .catch((err) => {
-                console.log(err);
-            });
+        // m.request({
+        //     method: "GET",
+        //     url: "https://randomuser.me/api/",
+        //     background: true // Permet de ne pas redessiner le composant apres réponse
+        // })
+        //     .then(resp => console.log(resp.results))
+        //     .catch((err) => {
+        //         console.log(err);
+        //     });
         // end : test
         var page = await routes[route].component().then(resp => {
             return resp;

@@ -1,6 +1,6 @@
 const m = require('mithril');
 
-export default {
+module.exports = {
     oninit: vnode => {
         console.log('contact')
     },

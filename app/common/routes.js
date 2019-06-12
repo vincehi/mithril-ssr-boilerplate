@@ -3,14 +3,11 @@ const m = require('mithril');
 module.exports = {
     '/': {
         name: 'Accueil',
-        component: () => import(/* webpackChunkName: "home" */ '../pages/Home.js').then(({default: resp}) => {
-            return resp
-        })
+        component: () => new Promise(function(resolve) {require.ensure([], () => resolve(require('../pages/Home.js')), /* chunkFilename */ 'home')})
+        // component: () => new Promise(function(resolve) {require(['../pages/Home.js'], resolve)}) // comme avant
     },
     '/contact': {
         name: 'Contact',
-        component: () => import(/* webpackChunkName: "contact" */ '../pages/contact.js').then(({default: resp}) => {
-            return resp
-        })
+        component: () => new Promise(function(resolve) {require.ensure([], () => resolve(require('../pages/Contact.js')), /* chunkFilename */ 'contact')})
     }
 };

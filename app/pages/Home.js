@@ -16,7 +16,19 @@ const m = require('mithril');
 //     }
 // };
 
-var Home = {
+// @todo : start test
+// m.request({
+//     method: "GET",
+//     url: "https://randomuser.me/api/",
+//     background: true // Permet de ne pas redessiner le composant apres réponse
+// })
+//     .then(resp => console.log(resp))
+//     .catch((err) => {
+//         console.log(err);
+//     });
+// end : test
+
+module.exports = {
     oninit: vnode => {
         // vnode.state.list = Data.todos.fetch
     },
@@ -30,18 +42,5 @@ var Home = {
             </div>
         )
     }
-}
-// @todo : start test
-// m.request({
-//     method: "GET",
-//     url: "https://randomuser.me/api/",
-//     background: true // Permet de ne pas redessiner le composant apres réponse
-// })
-//     .then(resp => console.log(resp))
-//     .catch((err) => {
-//         console.log(err);
-//     });
-// end : test
-
-export default Home;
+};
 
