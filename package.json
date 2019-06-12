@@ -5,9 +5,9 @@
   "main": "index.js",
   "repository": "RAS",
   "scripts": {
-    "buildProd": "webpack --mode production --config webpack.config.js",
-    "buildDev": "webpack --mode developement --config webpack.config.js",
-    "watch": "webpack --watch --mode development --config webpack.config.js",
+    "buildProd": "rm -rf build && webpack --mode production --config webpack.config.js",
+    "buildDev": "rm -rf build && webpack --mode developement --config webpack.config.js",
+    "watch": "rm -rf build && webpack --watch --mode development --config webpack.config.js",
     "server": "nodemon build/server.js"
   },
   "author": "",
