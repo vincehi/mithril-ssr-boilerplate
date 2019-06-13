@@ -17,8 +17,9 @@ I do not want to load a superfluous library and maximize the library power I hav
 
 # To be continued
 - Later, I would develop a way to query on an external API.
-- For resource management, I integrate Strapi which is a Headless CMS
-## Resources
+- For resource management, I integrate Strapi which is a Headless CMS.
+
+# Resources
 - [creating a node express webpack app with dev and prod builds](https://medium.com/@binyamin/creating-a-node-express-webpack-app-with-dev-and-prod-builds-a4962ce51334)
 - [speed up nodejs server side developpement with webpack 4](https://oramind.com/speed-up-nodejs-server-side-development-with-webpack-4-hmr/)
 - [React + koaj (ssr)](https://github.com/tokenfoundry/koa-react-ssr-example)
