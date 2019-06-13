@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "ssr",
   "main": "index.js",
-  "repository": "RAS",
+  "repository": "https://github.com/souricevincent/mithril-ssr-boilerplate.git",
   "scripts": {
     "buildProd": "rm -rf build && webpack --mode production --config webpack.config.js",
     "buildDev": "rm -rf build && webpack --mode developement --config webpack.config.js",
