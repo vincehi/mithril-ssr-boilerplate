@@ -4,6 +4,7 @@ const statics = require('koa-static');
 const router = require('koa-route');
 require('mithril/test-utils/browserMock')(global); // use a mock DOM so we can run mithril on the server
 global.window.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
+global.requestAnimationFrame = () => {}; // https://github.com/MithrilJS/mithril-node-render/issues/89
 var toHTML = require('mithril-node-render');
 const m = require('mithril');
 const routes = require('app/common/routes');

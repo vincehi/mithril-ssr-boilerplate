@@ -27,3 +27,4 @@ I do not want to load a superfluous library and maximize the library power I hav
 - [Mithril node render](https://github.com/MithrilJS/mithril-node-render)
 - [Mithril ssr exemple](https://gist.github.com/StephanHoyer/bddccd9e159828867d2a)
 - [ssr dependency mocking is the answer](https://hackernoon.com/ssr-dependency-mocking-is-the-answer-d8d8c371aa94)
+- [Readme for mithril request server](https://github.com/MithrilJS/mithril-node-render/issues/89)
