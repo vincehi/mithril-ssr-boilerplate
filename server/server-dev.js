@@ -14,14 +14,16 @@ const app = new Koa();
 const PORT = process.env.PORT || 3000;
 
 
+
 Object.keys(routes).forEach((route) => {
     app.use(router.get(route, async (ctx, params) => {
 
-        var page = await routes[route].component().then(resp => {
-            return resp;
-        });
+        var module = await routes[route].component().then(resp => resp);
 
-        ctx.body = await toHTML(Layout, m(page));
+        const onmatch = module.onmatch || (() => module);
+        const render = module.render || (a => a);
+
+        ctx.body = await toHTML(Layout, render(m((await onmatch(params, ctx.url)) || 'div', params)));
 
     }));
 });
