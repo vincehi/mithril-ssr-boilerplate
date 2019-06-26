@@ -11,8 +11,7 @@ var Data = {
                     method: "GET",
                     responseType: 'json',
                     url: 'https://randomuser.me/api/',
-                    // background: !!process.browser,
-                    // async: false
+                    background: !process.browser, // not redraw on server
                 })
                 .then(function(items) {
                     resolve(Data.todos.list = items.results[0])
