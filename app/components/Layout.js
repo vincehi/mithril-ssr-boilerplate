@@ -2,6 +2,13 @@ const m = require('mithril');
 const Header = require('./Header');
 const Footer = require('./Footer');
 
+function getTitle(vnode) {
+    if (vnode.state.getTitle) {
+        return vnode.state.getTitle()
+    }
+    return 'isomorphic mithril application'
+}
+
 /**
  * Le Layout est initialisé qu'une seul fois au 1 er chargement.
  * @type {m}
@@ -15,9 +22,12 @@ const LayoutClient = {
     oninit: vnode => {
         console.log('layout : je suis initialisé')
     },
+    onbeforeupdate: vnode => {
+        document.title = getTitle(vnode.children)
+        console.log(vnode.children);
+    },
 
     view: vnode => {
-        console.log(vnode);
         return [
             <Header />,
                 vnode.children,
@@ -38,7 +48,7 @@ const LayoutServer = {
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />,
                     <meta http-equiv="x-ua-compatible" content="ie=edge" />,
                     <meta name="description" content="description ici" />,
-                    <title>{vnode.attrs.title}</title>,
+                    <title>{getTitle(vnode)}</title>,
                 ]),
                 m('body', [
                     <div id="mainContent">

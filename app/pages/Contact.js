@@ -24,6 +24,8 @@ var Data = {
 
 module.exports = {
     oninit: vnode => new Promise((resolve) => {
+        console.log(vnode)
+        vnode.state.getTitle = () => 'Contact';
         resolve(Data.todos.fetch());
     }),
     view: vnode => {

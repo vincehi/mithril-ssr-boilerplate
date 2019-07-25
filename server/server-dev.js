@@ -18,11 +18,12 @@ Object.keys(routes).forEach((route) => {
     app.use(router.get(route, async (ctx, params) => {
 
         var module = await routes[route].component().then(resp => resp);
-
         const onmatch = module.onmatch || (() => module);
         const render = module.render || (a => a);
 
-        ctx.body = await toHTML(Layout, render(m((await onmatch(params, ctx.url)) || 'div', params)));
+        ctx.body = await toHTML(Layout, render(
+            m((await onmatch(params, ctx.url)) || 'div', params)
+        ));
 
     }));
 });
