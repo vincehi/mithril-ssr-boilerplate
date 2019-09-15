@@ -30,7 +30,7 @@
     "koa": "^2.7.0",
     "koa-route": "^3.2.0",
     "koa-static": "^5.0.0",
-    "mithril": "^2.0.1",
+    "mithril": "^2.0.4",
     "mithril-node-render": "^2.3.2",
     "w3c-xmlhttprequest": "^2.1.3"
   },

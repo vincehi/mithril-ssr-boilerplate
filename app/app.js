@@ -1,6 +1,7 @@
 const m = require('mithril');
 const Layout = require('./components/Layout');
 import routes from './common/routes';
+// import Home from 'pages/Home'
 
 async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
@@ -26,5 +27,5 @@ Object.keys(routes).forEach((route) => {
 
 
 
-m.route.prefix('');
+m.route.prefix = '';
 m.route(document.getElementById('mainContent'), '/', clientRoutes);
