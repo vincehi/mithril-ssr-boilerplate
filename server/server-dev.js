@@ -6,13 +6,9 @@ require('mithril/test-utils/browserMock')(global); // use a mock DOM so we can r
 global.window.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
 global.requestAnimationFrame = () => {};
 var toHTML = require('mithril-node-render');
+// const m = require('../app/common/m');
 const m = require('mithril/hyperscript');
-// if (process.browser) {
-//     module.exports = require('mithril')
-// } else {
-//     module.exports = require('mithril/hyperscript');
-//     module.exports.redraw = () => {}
-// }
+
 const routes = require('app/common/routes');
 const Layout = require('app/components/Layout');
 

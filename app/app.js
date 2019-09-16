@@ -1,4 +1,5 @@
 const m = require('mithril');
+// const m = require('./common/m');
 const Layout = require('./components/Layout');
 import routes from './common/routes';
 

@@ -1,4 +1,5 @@
 const m = require('mithril');
+// const m = require('../common/m');
 const Header = require('./Header');
 const Footer = require('./Footer');
 
