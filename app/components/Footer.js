@@ -4,7 +4,7 @@ module.exports = {
     view: vnode => {
         return (
             <footer>
-                <div>footer</div>
+                <div>The Footer</div>
             </footer>
         )
     }

@@ -12,12 +12,10 @@ module.exports = {
     view: vnode => {
         return (
             <header>
-                <div>uperr header</div>
+                <div>The Header</div>
                 <nav>
-                    {m(m.route.Link, {href: "/contact"}, 'Contact')}
-                    {m(m.route.Link, {href: "/"}, 'Home')}
-                    {/*<a href="/contact" oncreate={m.route.Link}>Contact</a>*/}
-                    {/*<a href="/" oncreate={m.route.Link}>Home</a>*/}
+                    <m.route.Link href="/contact" oncreate={m.route.Link}>Contact</m.route.Link>
+                    <m.route.Link href="/">Home</m.route.Link>
                 </nav>
             </header>
         )

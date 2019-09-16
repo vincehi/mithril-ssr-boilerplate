@@ -17,7 +17,7 @@ const routes = require('app/common/routes');
 const Layout = require('app/components/Layout');
 
 const app = new Koa();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 Object.keys(routes).forEach((route) => {
     app.use(router.get(route, async (ctx, params) => {

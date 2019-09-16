@@ -1,6 +1,4 @@
 const m = require('mithril');
-const Layout = require('../components/Layout');
-
 
 var Data = {
     todos: {
