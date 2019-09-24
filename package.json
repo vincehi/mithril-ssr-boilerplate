@@ -22,6 +22,7 @@
     "circular-dependency-plugin": "^5.0.2",
     "nodemon": "^1.19.1",
     "path": "^0.12.7",
+    "release-it": "^12.4.1",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",
     "webpack-node-externals": "^1.7.2",
