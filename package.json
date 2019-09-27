@@ -42,6 +42,11 @@
     "mithril-node-render": "^2.3.2",
     "w3c-xmlhttprequest": "^2.1.3"
   },
+  "release-it": {
+    "github": {
+      "release": true
+    }
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
