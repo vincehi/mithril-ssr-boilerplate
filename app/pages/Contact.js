@@ -1,4 +1,4 @@
-const m = require('mithril');
+const m = require('../common/m');
 // const m = require('../common/m');
 
 var Data = {

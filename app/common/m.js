@@ -3,8 +3,7 @@ if (process.browser) {
 } else {
     module.exports = require('mithril/hyperscript');
     module.exports.route = {
-        get: () => {},
-        param: () => {},
+        Link: "a" // Fix 'Link' of undefined
     };
-    module.exports.redraw = () => {}
+    module.exports.request = require('mithril/request/request')(window, require("mithril/promise/promise"), null).request;
 }

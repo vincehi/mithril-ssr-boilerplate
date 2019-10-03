@@ -1,5 +1,4 @@
-const m = require('mithril');
-// const m = require('../common/m');
+const m = require('../common/m');
 
 module.exports = {
     oninit: vnode => {
