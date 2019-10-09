@@ -23,14 +23,11 @@ var Data = {
 
 module.exports = {
     oninit: vnode => new Promise((resolve) => {
-        console.log(vnode)
         resolve(Data.todos.fetch());
     }),
     view: vnode => {
         return (
             <div>
-                {console.log('view')}
-                {console.log(Data.todos.list)}
                 {Data.todos.list.name ?
                     [
                         <div>
