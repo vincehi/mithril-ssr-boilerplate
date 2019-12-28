@@ -2,6 +2,16 @@ const m = require('../common/m');
 // const m = require('../common/m');
 const Header = require('./Header');
 const Footer = require('./Footer');
+const Script = {
+    oninit: vnode => {
+    },
+    view: vnode => {
+        // console.log(JSON.stringify(vnode))
+        return (
+            m('script', `window.__preloadedState = ${vnode.attrs.stateman._getString()}`)
+        )
+    }
+}
 
 
 /**
@@ -11,14 +21,11 @@ const Footer = require('./Footer');
 const LayoutClient = {
 
     oncreate: vnode => {
-        console.log('layout : je suis créer')
     },
 
     oninit: vnode => {
-        console.log('layout : je suis initialisé')
     },
     onbeforeupdate: vnode => {
-        console.log(vnode.children);
     },
 
     view: vnode => {
@@ -31,7 +38,10 @@ const LayoutClient = {
 };
 
 const LayoutServer = {
-    oncreate: vnode => {
+    oninit: vnode => {
+    },
+    oncreate: (vnode) => {
+        // window.__preloadedState = vnode.children[0].attrs.stateman._getString()
     },
     view: vnode => {
         return [
@@ -50,7 +60,8 @@ const LayoutServer = {
                         {vnode.children}
                         <Footer />
                     </div>,
-                    <script src="/js/app.js" />
+                    <Script stateman={vnode.children[0].attrs.stateman} />,
+                    <script src="/js/app.js" />,
                 ])
             ])
         ]
