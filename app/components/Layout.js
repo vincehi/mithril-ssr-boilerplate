@@ -6,7 +6,6 @@ const Script = {
     oninit: vnode => {
     },
     view: vnode => {
-        // console.log(JSON.stringify(vnode))
         return (
             m('script', `window.__preloadedState = ${vnode.attrs.stateman._getString()}`)
         )
@@ -20,12 +19,10 @@ const Script = {
  */
 const LayoutClient = {
 
-    oncreate: vnode => {
-    },
-
-    oninit: vnode => {
-    },
-    onbeforeupdate: vnode => {
+    oninit: (vnode) => {
+        vnode.children.state = 'prot'
+        vnode.state.handleState = () => {
+        }
     },
 
     view: vnode => {
@@ -39,9 +36,6 @@ const LayoutClient = {
 
 const LayoutServer = {
     oninit: vnode => {
-    },
-    oncreate: (vnode) => {
-        // window.__preloadedState = vnode.children[0].attrs.stateman._getString()
     },
     view: vnode => {
         return [
@@ -66,7 +60,6 @@ const LayoutServer = {
             ])
         ]
     }
-
 };
 
 module.exports = process.browser ? LayoutClient : LayoutServer;

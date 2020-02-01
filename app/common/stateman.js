@@ -1,8 +1,8 @@
 const safeGet = require('lodash/get');
 const safeSet = require('lodash/set');
 
-let state;
-const listeners = [];
+// let state;
+// const listeners = [];
 
 const stateman = {
     state: {},

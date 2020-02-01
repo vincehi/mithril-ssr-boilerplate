@@ -6,7 +6,6 @@ require('mithril/test-utils/browserMock')(global); // use a mock DOM so we can r
 global.window.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
 var toHTML = require('mithril-node-render');
 const m = require('../app/common/m');
-const chalk = require('chalk');
 
 
 const routes = require('app/common/routes');
@@ -19,10 +18,10 @@ const PORT = process.env.PORT || 5000;
 Object.keys(routes).forEach((route) => {
     app.use(router.get(route, async (ctx, params) => {
 
-        var module = await routes[route].component().then(resp => resp);
+        var module = await routes[route].component();
 
         // Instantiate a new state at every request
-        const stateman = Object.create(stateManager);
+        const stateman = stateManager;
         stateman.init({});
 
         const attrs = Object.assign({}, params, ctx.query, { stateman });
@@ -35,6 +34,6 @@ Object.keys(routes).forEach((route) => {
 app.use(statics(path.join(__dirname, "..", "build/assets")));
 
 app.listen(PORT, () => {
-    console.log(chalk.white.bold(`http://localhost:${PORT}`));
+    console.log(`http://localhost:${PORT}`);
     console.log('Press Ctrl + C to quit.')
 });

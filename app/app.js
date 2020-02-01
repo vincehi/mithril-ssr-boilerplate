@@ -10,6 +10,8 @@ let sharedState = window.__preloadedState || {};
 const stateman = Object.create(stateManager);
 stateman.init(sharedState);
 
+console.log('app', stateman)
+
 const clientRoutes = {};
 
 let attrs = { stateman };
@@ -17,9 +19,7 @@ Object.keys(routes).forEach((route) => {
     clientRoutes[route] = {
 
         onmatch: (args, requestedPath, route) => {
-            console.log('premier')
             return routes[route].component().then(resp => {
-                // resp.view().attrs = 'attrs'
                 return resp
             });
         },
