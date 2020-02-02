@@ -1,22 +1,9 @@
 const m = require('../common/m');
-// const m = require('../common/m');
 
 var Data = {
     todos: {
         list: [],
-        fetch: function() {
-            return new Promise(function(resolve) {
-                m.request({
-                    method: "GET",
-                    responseType: 'json',
-                    url: 'https://randomuser.me/api/',
-                    background: !process.browser, // not redraw on server
-                })
-                .then(function(items) {
-                    resolve(Data.todos.list = items.results[0])
-                })
-            })
-        }
+
 
     }
 };

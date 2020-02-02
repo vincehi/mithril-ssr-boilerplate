@@ -11,9 +11,6 @@ const m = require('../app/common/m');
 const routes = require('app/common/routes');
 const Layout = require('app/components/Layout');
 const stateManager = require('../app/common/stateman.js');
-if (!global.window) {
-    global.window = global.document = global.requestAnimationFrame = undefined
-}
 
 const app = new Koa();
 const PORT = process.env.PORT || 5000;
@@ -28,11 +25,6 @@ Object.keys(routes).forEach((route) => {
         stateman.init({});
 
         const attrs = Object.assign({}, params, ctx.query, { stateman });
-
-        // toHTML(Layout, m(module, attrs)).then((resp) => {
-        //     console.log(resp)
-        //     ctx.body = resp;
-        // });
 
         ctx.body = await toHTML(Layout, m(module, attrs));
 
