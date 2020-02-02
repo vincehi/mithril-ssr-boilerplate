@@ -5,3 +5,4 @@ if (process.browser) {
     module.exports.route = require('mithril/api/router')(window, null);
     module.exports.request = require('mithril/request/request')(window, require("mithril/promise/promise"), null).request;
 }
+module.exports.route.prefix = '';

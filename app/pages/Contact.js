@@ -22,7 +22,8 @@ var Data = {
 };
 
 module.exports = {
-    oninit: vnode => new Promise((resolve) => {
+    oninit: (vnode, waitFor = () => {}) => waitFor(new Promise((resolve) => {
+        console.log('1')
         const stateman = vnode.attrs.stateman;
 
         if (!stateman.get('contact.content')) {
@@ -33,6 +34,7 @@ module.exports = {
                 background: !process.browser, // not redraw on server
             })
                 .then((content) => {
+                    console.log('1.1')
                     vnode.state.content = content;
                     stateman.set('contact.content', content);
                     resolve(Data.todos.list = content.results[0]);
@@ -40,7 +42,7 @@ module.exports = {
         } else {
             resolve(Data.todos.list = stateman.get('contact.content').results[0])
         }
-    }),
+    })),
     view: vnode => {
         return (
             <div>

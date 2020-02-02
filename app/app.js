@@ -29,7 +29,4 @@ Object.keys(routes).forEach((route) => {
     };
 });
 
-
-
-m.route.prefix = '';
 m.route(document.getElementById('mainContent'), '/', clientRoutes);

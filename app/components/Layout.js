@@ -3,7 +3,8 @@ const m = require('../common/m');
 const Header = require('./Header');
 const Footer = require('./Footer');
 const Script = {
-    oninit: vnode => {
+    oninit: (vnode, waitFor) => {
+        console.log('3')
     },
     view: vnode => {
         return (
@@ -20,9 +21,6 @@ const Script = {
 const LayoutClient = {
 
     oninit: (vnode) => {
-        vnode.children.state = 'prot'
-        vnode.state.handleState = () => {
-        }
     },
 
     view: vnode => {
@@ -35,7 +33,7 @@ const LayoutClient = {
 };
 
 const LayoutServer = {
-    oninit: vnode => {
+    oninit: (vnode, waitFor) => {
     },
     view: vnode => {
         return [
@@ -54,7 +52,9 @@ const LayoutServer = {
                         {vnode.children}
                         <Footer />
                     </div>,
+                    // console.log('inLayout', vnode.children),
                     <Script stateman={vnode.children[0].attrs.stateman} />,
+                    // m('script', `window.__preloadedState = ${vnode.children[0].attrs.stateman._getString()}`),
                     <script src="/js/app.js" />,
                 ])
             ])
