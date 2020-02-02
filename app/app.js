@@ -10,8 +10,6 @@ let sharedState = window.__preloadedState || {};
 const stateman = Object.create(stateManager);
 stateman.init(sharedState);
 
-console.log('app', stateman)
-
 const clientRoutes = {};
 
 let attrs = { stateman };

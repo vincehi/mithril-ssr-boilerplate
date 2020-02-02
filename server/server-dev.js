@@ -21,7 +21,7 @@ Object.keys(routes).forEach((route) => {
         var module = await routes[route].component();
 
         // Instantiate a new state at every request
-        const stateman = stateManager;
+        const stateman = Object.create(stateManager);
         stateman.init({});
 
         const attrs = Object.assign({}, params, ctx.query, { stateman });
