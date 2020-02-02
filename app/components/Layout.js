@@ -25,7 +25,7 @@ const LayoutClient = {
     view: vnode => {
         return [
             <Header />,
-                vnode.children,
+            m(vnode.attrs.component.tag, {stateman: vnode.attrs.component.stateman}),
             <Footer />
         ]
     }
@@ -43,16 +43,16 @@ const LayoutServer = {
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />,
                     <meta http-equiv="x-ua-compatible" content="ie=edge" />,
                     <meta name="description" content="description ici" />,
-                    <title>titre</title>,
+                    <title>{vnode.attrs.component.tag.data.title}</title>,
                 ]),
                 m('body', [
                     <div id="mainContent">
                         <Header />
-                        {vnode.children}
+                        {m(vnode.attrs.component.tag, {stateman: vnode.attrs.component.stateman})}
                         <Footer />
                     </div>,
-                    <Script stateman={vnode.children[0].attrs.stateman} />,
-                    // m('script', `window.__preloadedState = ${vnode.children[0].attrs.stateman._getString()}`),
+                    <Script stateman={vnode.attrs.component.stateman} />,
+                    // m('script', `window.__preloadedState = ${vnode.attrs.component.stateman._getString()}`),
                     <script src="/js/app.js" />,
                 ])
             ])

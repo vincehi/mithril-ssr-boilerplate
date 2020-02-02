@@ -7,7 +7,12 @@ var Data = {
 };
 
 module.exports = {
+    data: {
+        title: 'contact',
+    },
     oninit: (vnode, waitFor = () => {}) => waitFor(new Promise((resolve) => {
+        vnode.state.title = 'contact';
+        console.log('contact', vnode)
         const stateman = vnode.attrs.stateman;
 
         if (!stateman.get('contact.content')) {

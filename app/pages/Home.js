@@ -2,6 +2,9 @@
 const m = require('../common/m');
 
 module.exports = {
+    data: {
+        title: 'Home',
+    },
     oninit: vnode => {
     },
     oncreate: vnode => {

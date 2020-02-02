@@ -24,9 +24,9 @@ Object.keys(routes).forEach((route) => {
         const stateman = Object.create(stateManager);
         stateman.init({});
 
-        const attrs = Object.assign({}, params, ctx.query, { stateman });
+        // const attrs = Object.assign({}, params, ctx.query, { stateman });
 
-        ctx.body = await toHTML(Layout, m(module, attrs));
+        ctx.body = await toHTML(Layout, {component: {tag: module, stateman: stateman}});
 
     }));
 });

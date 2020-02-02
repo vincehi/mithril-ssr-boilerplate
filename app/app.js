@@ -23,8 +23,10 @@ Object.keys(routes).forEach((route) => {
         },
 
         render: function(vnode) {
+            console.log(vnode);
             Object.assign(vnode.attrs, attrs);
-            return m(Layout, vnode)
+            document.getElementsByTagName('TITLE')[0].innerHTML = vnode.tag.data.title;
+            return m(Layout, {component: {tag: vnode.tag, stateman: vnode.attrs.stateman}})
         }
     };
 });
