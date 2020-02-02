@@ -1,9 +1,6 @@
 const safeGet = require('lodash/get');
 const safeSet = require('lodash/set');
 
-// let state;
-// const listeners = [];
-
 const stateman = {
     state: {},
     init: (initialState) => {
@@ -17,28 +14,11 @@ const stateman = {
     // Safe set the field with the value provided, even if the path does not exist
     // ie: try to set state.flags.list if state.flags doesn't exist
     set: (field, value) => {
-
-        safeSet(this.state, field, value);
-        // Filter listeners that doesn't belong to that field
-        // listeners.filter(elem => elem.field === field).forEach(elem => elem.cb(stateman.get(field)));
+        safeSet(this.state, field, value)
+        // return new Promise((resolve) => {
+        //     resolve(safeSet(this.state, field, value));
+        // });
     },
-
-    // addListener: (field, cb) => {
-    //     // Adds a listener to a field, return a function to usubscribe to the listener
-    //     const obj = {
-    //         field: field,
-    //         cb: cb
-    //     };
-    //     if (typeof cb !== 'function') {
-    //         throw new Error('callback should be a function');
-    //     }
-    //     listeners.push(obj);
-    //     return function unsubscribe() {
-    //         const index = listeners.indexOf(obj);
-    //         // Check if this listener hasn't been unsubscribed
-    //         if (index > -1) listeners.splice(index, 1);
-    //     };
-    // },
 
     // Only needed for server side rendering, do not use client side
     _getString: () => JSON.stringify(this.state)

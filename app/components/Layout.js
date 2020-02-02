@@ -3,14 +3,14 @@ const Header = require('./Header');
 const Footer = require('./Footer');
 const Script = {
     oninit: (vnode, waitFor) => {
-        console.log('3')
+
     },
     view: vnode => {
         return (
             m('script', `window.__preloadedState = ${vnode.attrs.stateman._getString()}`)
         )
     }
-}
+};
 
 
 /**
@@ -33,7 +33,6 @@ const LayoutClient = {
 
 const LayoutServer = {
     oninit: (vnode, waitFor) => {
-        console.log(vnode.children[0].attrs)
     },
     view: vnode => {
         return [
