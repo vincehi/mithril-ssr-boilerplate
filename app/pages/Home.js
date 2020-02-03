@@ -4,12 +4,7 @@ module.exports = {
     data: {
         title: 'Home',
     },
-    oninit: vnode => {
-    },
-    oncreate: vnode => {
-    },
-
-    view: vnode => {
+    view: () => {
         return (
             <div>
                 Contenu de la page Home !

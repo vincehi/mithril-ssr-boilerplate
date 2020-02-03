@@ -1,7 +1,7 @@
 const m = require('../common/m');
 
 module.exports = {
-    view: vnode => {
+    view: () => {
         return (
             <header>
                 <div>The Header</div>

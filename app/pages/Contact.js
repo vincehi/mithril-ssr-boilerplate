@@ -34,7 +34,7 @@ module.exports = {
             resolve(Data.todos.list = stateman.get('contact.content').results[0])
         }
     })),
-    view: vnode => {
+    view: () => {
         return (
             <div>
                 {Data.todos.list.name ?

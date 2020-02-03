@@ -1,0 +1,24 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "commonjs": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "pragma": "m"
+    }
+  },
+  "plugins": ["react"],
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "react/jsx-uses-react": ["error"],
+    "react/jsx-uses-vars": ["error"]
+  }
+}

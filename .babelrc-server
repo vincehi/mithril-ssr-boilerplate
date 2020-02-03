@@ -1,23 +1,16 @@
 {
   "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "targets": { "node": true }
-      }
-    ]
+    ["@babel/preset-env", {
+      "targets": { "node": true }
+    }]
   ],
   "plugins": [
-    [
-      "transform-react-jsx",
-      {
-        "pragma": "m"
-      }
-    ],
-    [
-      "module-resolver", {
-        "root": ["./"]
-      }
-    ]
+    ["@babel/plugin-transform-react-jsx", {
+      "pragma": "m",
+      "pragmaFrag": "'['"
+    }],
+    ["module-resolver", {
+      "root": ["./"]
+    }]
   ]
 }

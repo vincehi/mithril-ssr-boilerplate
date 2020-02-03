@@ -1,7 +1,7 @@
 const safeGet = require('lodash/get');
 const safeSet = require('lodash/set');
 
-const stateman = {
+module.exports = {
     state: {},
     init: (initialState) => {
         this.state = JSON.parse(JSON.stringify(initialState)) || {};
@@ -13,5 +13,3 @@ const stateman = {
 
     _getString: () => JSON.stringify(this.state)
 };
-
-module.exports = stateman;
