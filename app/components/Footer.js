@@ -1,5 +1,4 @@
 const m = require('../common/m');
-// const m = require('../common/m');
 
 module.exports = {
     view: vnode => {
@@ -10,4 +9,3 @@ module.exports = {
         )
     }
 };
-

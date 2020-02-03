@@ -25,7 +25,6 @@ module.exports = {
                     vnode.state.content = content;
                     stateman.set('contact.content', content);
 
-
                     global.stateman = stateman;
 
                     resolve(Data.todos.list = content.results[0]);

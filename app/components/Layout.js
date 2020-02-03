@@ -1,10 +1,8 @@
 const m = require('../common/m');
 const Header = require('./Header');
 const Footer = require('./Footer');
-const Script = {
-    oninit: (vnode, waitFor) => {
 
-    },
+const Script = {
     view: vnode => {
         return (
             m('script', `window.__preloadedState = ${vnode.attrs.stateman._getString()}`)
@@ -12,28 +10,17 @@ const Script = {
     }
 };
 
-
-/**
- * Le Layout est initialisé qu'une seul fois au 1 er chargement.
- * @type {m}
- */
 const LayoutClient = {
-
-    oninit: (vnode) => {
-    },
-
     view: vnode => {
         return [
             <Header />,
-            m(vnode.attrs.component.tag, {stateman: vnode.attrs.component.stateman}),
+            m(vnode.attrs.module.tag, {stateman: vnode.attrs.module.stateman}),
             <Footer />
         ]
     }
 };
 
 const LayoutServer = {
-    oninit: (vnode, waitFor) => {
-    },
     view: vnode => {
         return [
             m('!doctype[html]'),
@@ -43,16 +30,15 @@ const LayoutServer = {
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />,
                     <meta http-equiv="x-ua-compatible" content="ie=edge" />,
                     <meta name="description" content="description ici" />,
-                    <title>{vnode.attrs.component.tag.data.title}</title>,
+                    <title>{vnode.attrs.module.tag.data.title}</title>,
                 ]),
                 m('body', [
                     <div id="mainContent">
                         <Header />
-                        {m(vnode.attrs.component.tag, {stateman: vnode.attrs.component.stateman})}
+                        {m(vnode.attrs.module.tag, {stateman: vnode.attrs.module.stateman})}
                         <Footer />
                     </div>,
-                    <Script stateman={vnode.attrs.component.stateman} />,
-                    // m('script', `window.__preloadedState = ${vnode.attrs.component.stateman._getString()}`),
+                    <Script stateman={vnode.attrs.module.stateman} />,
                     <script src="/js/app.js" />,
                 ])
             ])

@@ -1,13 +1,6 @@
 const m = require('../common/m');
 
 module.exports = {
-    oninit: vnode => {
-    },
-
-    oncreate: () => {
-
-    },
-
     view: vnode => {
         return (
             <header>

@@ -4,9 +4,7 @@ const statics = require('koa-static');
 const router = require('koa-route');
 require('mithril/test-utils/browserMock')(global); // use a mock DOM so we can run mithril on the server
 global.window.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
-var toHTML = require('mithril-node-render');
-const m = require('../app/common/m');
-
+const toHTML = require('mithril-node-render');
 
 const routes = require('app/common/routes');
 const Layout = require('app/components/Layout');
@@ -16,17 +14,14 @@ const app = new Koa();
 const PORT = process.env.PORT || 5000;
 
 Object.keys(routes).forEach((route) => {
-    app.use(router.get(route, async (ctx, params) => {
+    app.use(router.get(route, async (ctx) => {
 
-        var module = await routes[route].component();
+        const module = await routes[route].module();
 
-        // Instantiate a new state at every request
         const stateman = Object.create(stateManager);
         stateman.init({});
 
-        // const attrs = Object.assign({}, params, ctx.query, { stateman });
-
-        ctx.body = await toHTML(Layout, {component: {tag: module, stateman: stateman}});
+        ctx.body = await toHTML(Layout,{module: {tag: module, stateman: stateman}});
 
     }));
 });
