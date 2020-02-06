@@ -1,6 +1,6 @@
 const m = require('mithril');
 const Layout = require('./components/Layout');
-import routes from './common/routes';
+const routes = require('./common/routes');
 const stateManager = require('./common/stateman.js');
 
 let sharedState = window.__preloadedState || {};
