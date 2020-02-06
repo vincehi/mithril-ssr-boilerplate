@@ -1,6 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-var WebpackShellPlugin = require('webpack-shell-plugin');
+const  WebpackShellPlugin = require('webpack-shell-plugin-alt');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 module.exports = (env, argv) => [
