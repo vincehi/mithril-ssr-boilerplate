@@ -21,7 +21,7 @@ Object.keys(routes).forEach((route) => {
 
         render: function(vnode) {
             Object.assign(vnode.attrs, attrs);
-            document.getElementsByTagName('TITLE')[0].innerHTML = vnode.tag.data.title;
+            document.title = vnode.tag.data.title;
             return m(Layout, {module: {tag: vnode.tag, stateman: vnode.attrs.stateman}})
         }
     };
