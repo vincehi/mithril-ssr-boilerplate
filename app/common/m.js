@@ -25,6 +25,6 @@ if (process.browser) {
     module.exports = m
 } else {
     module.exports = hyperscript;
-    module.exports.route = require('mithril/api/router')(window, null);
+    module.exports.route = require('mithril/api/router')(undefined, undefined);
     module.exports.route.prefix = '';
 }
