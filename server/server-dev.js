@@ -3,9 +3,6 @@ const Koa = require('koa');
 const statics = require('koa-static');
 const router = require('koa-route');
 
-if (!global.window) {
-    global.window = global.document = global.requestAnimationFrame = undefined
-}
 const toHTML = require('mithril-node-render');
 
 const routes = require('app/common/routes');

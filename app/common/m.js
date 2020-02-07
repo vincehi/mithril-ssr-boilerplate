@@ -2,10 +2,9 @@
 Mithril remove m.jsonp and m.request
  */
 
-
+const hyperscript = require("mithril/hyperscript")
 
 if (process.browser) {
-    const hyperscript = require("mithril/hyperscript")
     const mountRedraw = require("mithril/mount-redraw")
 
     const m = function m() { return hyperscript.apply(this, arguments) }
@@ -25,7 +24,7 @@ if (process.browser) {
     m.route.prefix = '';
     module.exports = m
 } else {
-    module.exports = require('mithril/hyperscript');
+    module.exports = hyperscript;
     module.exports.route = require('mithril/api/router')(window, null);
     module.exports.route.prefix = '';
 }
