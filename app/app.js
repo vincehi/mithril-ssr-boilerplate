@@ -1,4 +1,4 @@
-const m = require('mithril');
+const m = require('./common/m');
 const Layout = require('./components/Layout');
 const routes = require('./common/routes');
 const stateManager = require('./common/stateman.js');

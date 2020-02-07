@@ -1,4 +1,5 @@
 const m = require('../common/m');
+const axios = require('axios');
 
 var Data = {
     todos: {
@@ -15,20 +16,21 @@ module.exports = {
         const stateman = vnode.attrs.stateman;
 
         if (!stateman.get('contact.content')) {
-            m.request({
-                method: "GET",
-                responseType: 'json',
-                url: 'https://randomuser.me/api/',
-                background: !process.browser, // not redraw on server
-            })
+
+            axios.get('https://randomuser.me/api/')
                 .then((content) => {
-                    vnode.state.content = content;
-                    stateman.set('contact.content', content);
+                    vnode.state.content = content.data;
+                    stateman.set('contact.content', content.data);
 
-                    global.stateman = stateman;
-
-                    resolve(Data.todos.list = content.results[0]);
+                    resolve(Data.todos.list = content.data.results[0]);
+                    process.browser && m.redraw()
                 })
+                .catch(function (error) {
+                    console.log(error);
+                })
+                .then(function () {
+                    // always executed
+                });
 
         } else {
             resolve(Data.todos.list = stateman.get('contact.content').results[0])

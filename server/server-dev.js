@@ -2,8 +2,10 @@ const path = require('path');
 const Koa = require('koa');
 const statics = require('koa-static');
 const router = require('koa-route');
-require('mithril/test-utils/browserMock')(global); // use a mock DOM so we can run mithril on the server
-global.window.XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
+
+if (!global.window) {
+    global.window = global.document = global.requestAnimationFrame = undefined
+}
 const toHTML = require('mithril-node-render');
 
 const routes = require('app/common/routes');
@@ -25,6 +27,7 @@ Object.keys(routes).forEach((route) => {
 
     }));
 });
+
 
 app.use(statics(path.join(__dirname, "..", "build/assets")));
 

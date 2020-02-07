@@ -1,8 +1,31 @@
+/*
+Mithril remove m.jsonp and m.request
+ */
+
+
+
 if (process.browser) {
-    module.exports = require('mithril');
+    const hyperscript = require("mithril/hyperscript")
+    const mountRedraw = require("mithril/mount-redraw")
+
+    const m = function m() { return hyperscript.apply(this, arguments) }
+    m.m = hyperscript
+    m.trust = hyperscript.trust
+    m.fragment = hyperscript.fragment
+    m.mount = mountRedraw.mount
+    m.route = require("mithril/route")
+    m.render = require("mithril/render")
+    m.redraw = mountRedraw.redraw
+    m.parseQueryString = require("mithril/querystring/parse")
+    m.buildQueryString = require("mithril/querystring/build")
+    m.parsePathname = require("mithril/pathname/parse")
+    m.buildPathname = require("mithril/pathname/build")
+    m.vnode = require("mithril/render/vnode")
+    m.PromisePolyfill = require("mithril/promise/polyfill")
+    m.route.prefix = '';
+    module.exports = m
 } else {
     module.exports = require('mithril/hyperscript');
     module.exports.route = require('mithril/api/router')(window, null);
-    module.exports.request = require('mithril/request/request')(window, require("mithril/promise/promise"), null).request;
+    module.exports.route.prefix = '';
 }
-module.exports.route.prefix = '';
