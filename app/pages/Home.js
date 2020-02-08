@@ -7,7 +7,7 @@ const Home = {
   view: () => {
     return (
       <div>
-        Contenu de la page Home !
+        Contenu de la page Homepage !
       </div>
     );
   }

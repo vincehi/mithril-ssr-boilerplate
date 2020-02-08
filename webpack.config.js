@@ -2,14 +2,13 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin-alt');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const webpack = require('webpack');
 
 module.exports = (env, argv) => [
   {
     // Server Config
     // name: 'server',
     entry: {
-      server: (argv.mode === 'production') ? './server/server-prod.js' : './server/server-dev.js',
+      server: (argv.mode === 'production') ? './server/server-prod.js' : './server/server-dev.js'
     },
     output: {
       path: path.join(__dirname, 'build'),
@@ -21,8 +20,8 @@ module.exports = (env, argv) => [
     target: 'node',
     node: {
       // Need this when working with express, otherwise the build fails
-      __dirname: false,   // if you don't put this is, __dirname
-      __filename: false,  // and __filename return blank or /
+      __dirname: false, // if you don't put this is, __dirname
+      __filename: false // and __filename return blank or /
     },
     externals: [
       nodeExternals()
@@ -31,9 +30,9 @@ module.exports = (env, argv) => [
       rules: [
         {
           test: /\.js$/,
-          exclude: path.resolve(__dirname, "node_modules"),
+          exclude: path.resolve(__dirname, 'node_modules'),
           use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
               configFile: './.babelrc-server'
             }
@@ -55,8 +54,7 @@ module.exports = (env, argv) => [
         allowAsyncCycles: false,
         // set the current working directory for displaying module paths
         cwd: process.cwd()
-      }),
-      new webpack.HotModuleReplacementPlugin()
+      })
     ]
   },
   {
