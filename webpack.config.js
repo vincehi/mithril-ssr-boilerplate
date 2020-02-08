@@ -75,6 +75,9 @@ module.exports = (env, argv) => [
                     configFile: './.babelrc-client'
                 }
             }]
-        }
+        },
+        optimization: {
+           usedExports: true,
+        },
     }
 ];
