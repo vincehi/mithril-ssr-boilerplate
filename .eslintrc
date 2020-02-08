@@ -22,6 +22,17 @@
   "parser": "babel-eslint",
   "rules": {
     "react/jsx-uses-react": ["error"],
-    "react/jsx-uses-vars": ["error"]
-  }
+    "react/jsx-uses-vars": ["error"],
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["vnode"] }],
+    "arrow-parens": ["error"]
+  },
+  "overrides": [
+    {
+      "files": ["server/**"],
+      "rules": {
+        "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["ctx"] }],
+        "no-console": [0]
+      }
+    }
+  ]
 }

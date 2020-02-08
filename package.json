@@ -9,7 +9,8 @@
     "buildDev": "rm -rf build && webpack --mode developement --config webpack.config.js",
     "watch": "rm -rf build && webpack --watch --mode development --config webpack.config.js",
     "start": "nodemon build/server.js",
-    "lint": "eslint app/**/*.js"
+    "lint": "eslint app/** server/**",
+    "lint:fix": "eslint app/** server/** --fix"
   },
   "author": "",
   "license": "ISC",
