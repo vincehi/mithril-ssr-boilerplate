@@ -1,15 +1,18 @@
-const safeGet = require('lodash/get');
-const safeSet = require('lodash/set');
+import safeGet from 'lodash/get';
+import safeSet from 'lodash/set';
 
-module.exports = {
+const stateman = {
     state: {},
     init: (initialState) => {
-        this.state = JSON.parse(JSON.stringify(initialState)) || {};
+        console.log(stateman)
+        stateman.state = JSON.parse(JSON.stringify(initialState)) || {};
     },
 
-    get: field => safeGet(this.state, field, null),
+    get: field => safeGet(stateman.state, field, null),
 
-    set: (field, value) => safeSet(this.state, field, value),
+    set: (field, value) => safeSet(stateman.state, field, value),
 
-    _getString: () => JSON.stringify(this.state)
+    _getString: () => JSON.stringify(stateman.state)
 };
+
+export default stateman;

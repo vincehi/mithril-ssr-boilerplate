@@ -1,6 +1,6 @@
-const m = require('../common/m');
-const Header = require('./Header');
-const Footer = require('./Footer');
+import m from '../common/m';
+import Header from './Header';
+import Footer from './Footer';
 
 const Script = {
     view: vnode => {
@@ -21,6 +21,9 @@ const LayoutClient = {
 };
 
 const LayoutServer = {
+    oninit: vnode => {
+        console.log(vnode.attrs.module.tag);
+    },
     view: vnode => {
         return [
             m('!doctype[html]'),
@@ -46,4 +49,4 @@ const LayoutServer = {
     }
 };
 
-module.exports = process.browser ? LayoutClient : LayoutServer;
+export default process.browser ? LayoutClient : LayoutServer;

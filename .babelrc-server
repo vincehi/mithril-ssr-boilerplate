@@ -11,6 +11,7 @@
     }],
     ["module-resolver", {
       "root": ["./"]
-    }]
+    }],
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }

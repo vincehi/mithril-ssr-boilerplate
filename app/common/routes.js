@@ -1,14 +1,25 @@
-module.exports = {
+// import Home from '../pages/Home.js';
+// import Contact from '../pages/Contact.js';
+
+const routes = {
     '/': {
         name: 'Accueil',
         module: () => new Promise(function(resolve) {
-            require.ensure([], () => resolve(require('../pages/Home.js')), /* chunkFilename */ 'home')
+            import(/* webpackChunkName: "Home" */ '../pages/Home.js').then(({default: resp}) => {
+                resolve(resp);
+            })
+            // resolve(Home);
         })
     },
     '/contact': {
         name: 'Contact',
         module: () => new Promise(function(resolve) {
-            require.ensure([], () => resolve(require('../pages/Contact.js')), /* chunkFilename */ 'contact')
+            import(/* webpackChunkName: "Contact" */ '../pages/Contact.js').then(({default: resp}) => {
+                resolve(resp);
+            })
+            // resolve(Contact);
         })
     }
 };
+
+export default routes

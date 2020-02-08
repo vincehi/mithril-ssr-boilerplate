@@ -1,13 +1,13 @@
-const path = require('path');
-const Koa = require('koa');
-const statics = require('koa-static');
-const router = require('koa-route');
+import path from 'path';
+import Koa from 'koa';
+import statics from 'koa-static';
+import router from 'koa-route';
 
-const toHTML = require('mithril-node-render');
+import toHTML from 'mithril-node-render';
 
-const routes = require('app/common/routes');
-const Layout = require('app/components/Layout');
-const stateManager = require('../app/common/stateman.js');
+import routes from 'app/common/routes';
+import Layout from 'app/components/Layout';
+import stateManager from '../app/common/stateman.js';
 
 const app = new Koa();
 const PORT = process.env.PORT || 5000;

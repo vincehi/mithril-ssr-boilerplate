@@ -1,6 +1,6 @@
-const m = require('../common/m');
+import m from '../common/m';
 
-module.exports = {
+const Home = {
     data: {
         title: 'Home',
     },
@@ -12,4 +12,6 @@ module.exports = {
         )
     }
 };
+
+export default Home;
 

@@ -1,7 +1,7 @@
-const m = require('./common/m');
-const Layout = require('./components/Layout');
-const routes = require('./common/routes');
-const stateManager = require('./common/stateman.js');
+import m from './common/m';
+import Layout from './components/Layout';
+import routes from './common/routes';
+import stateManager from './common/stateman.js';
 
 let sharedState = window.__preloadedState || {};
 const stateman = Object.create(stateManager);
@@ -9,12 +9,16 @@ stateman.init(sharedState);
 
 const clientRoutes = {};
 
+console.log(m);
+
 let attrs = { stateman };
 Object.keys(routes).forEach((route) => {
+    console.log(routes);
     clientRoutes[route] = {
 
         onmatch: (args, requestedPath, route) => {
             return routes[route].module().then(resp => {
+                console.log(resp)
                 return resp
             });
         },

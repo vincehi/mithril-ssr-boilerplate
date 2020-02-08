@@ -1,6 +1,6 @@
-const m = require('../common/m');
+import m from '../common/m';
 
-module.exports = {
+export default {
     view: () => {
         return (
             <footer>

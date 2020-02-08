@@ -6,6 +6,7 @@
     ["@babel/plugin-transform-react-jsx", {
       "pragma": "m",
       "pragmaFrag": "'['"
-    }]
+    }],
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }

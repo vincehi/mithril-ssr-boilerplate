@@ -1,5 +1,5 @@
-const m = require('../common/m');
-const axios = require('axios');
+import m from '../common/m';
+import axios from 'axios';
 
 var Data = {
     todos: {
@@ -7,7 +7,7 @@ var Data = {
     }
 };
 
-module.exports = {
+export default {
     data: {
         title: 'contact',
     },
