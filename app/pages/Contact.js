@@ -11,7 +11,7 @@ export default {
     data: {
         title: 'contact',
     },
-    oninit: (vnode, waitFor = () => {}) => waitFor(new Promise((resolve) => {
+    oninit: (vnode, waitFor = () => null) => waitFor(new Promise((resolve) => {
         vnode.state.title = 'contact';
         const stateman = vnode.attrs.stateman;
 

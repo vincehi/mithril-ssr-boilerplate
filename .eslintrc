@@ -3,9 +3,11 @@
     "es6": true,
     "browser": true,
     "node": true,
-    "commonjs": true
+    "commonjs": false
   },
   "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
@@ -16,7 +18,8 @@
     }
   },
   "plugins": ["react"],
-  "extends": ["eslint:recommended"],
+  "extends": ["airbnb-base/legacy"],
+  "parser": "babel-eslint",
   "rules": {
     "react/jsx-uses-react": ["error"],
     "react/jsx-uses-vars": ["error"]

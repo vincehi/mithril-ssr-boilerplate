@@ -42,7 +42,7 @@ module.exports = (env, argv) => [
         },
         plugins: [
             new WebpackShellPlugin({
-                onBuildEnd: ['npm run server']
+                onBuildEnd: ['npm run start']
             }),
             new CircularDependencyPlugin({
                 // exclude detection of files based on a RegExp
