@@ -41,5 +41,4 @@ if (process.browser) {
   mithril.route.prefix = '';
 }
 
-
 export default mithril;
