@@ -37,7 +37,7 @@ if (process.browser) {
   mithril.route.prefix = '';
 } else {
   mithril = hyperscript;
-  mithril.route = router(undefined, undefined);
+  mithril.route = router('undefineddd', 'undefineddd');
   mithril.route.prefix = '';
 }
 

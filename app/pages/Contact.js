@@ -1,48 +1,23 @@
 import m from '../common/m';
-import axios from 'axios';
-
-var Data = {
-  todos: {
-    list: []
-  }
-};
+import contentManager from '../common/contentManager';
 
 export default {
   data: {
     title: 'contact'
   },
   oninit: (vnode, waitFor = () => null) => waitFor(new Promise((resolve) => {
-    vnode.state.title = 'contact';
-    const stateman = vnode.attrs.stateman;
+    const { attrs: { stateman } } = vnode;
 
-    if (!stateman.get('contact.content')) {
-      axios.get('https://randomuser.me/api/')
-        .then((content) => {
-          vnode.state.content = content.data;
-          stateman.set('contact.content', content.data);
-
-          resolve(Data.todos.list = content.data.results[0]);
-          if (process.browser) {
-            m.redraw();
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .then(() => {
-          // always executed
-        });
-    } else {
-      resolve(Data.todos.list = stateman.get('contact.content').results[0]);
-    }
+    // Result in vnode.state.content
+    contentManager.bind(vnode.state)('https://randomuser.me/api/', stateman, resolve);
   })),
-  view: () => {
+  view: (vnode) => {
     return (
       <div>
-        {Data.todos.list.name
+        {vnode.state.content
           ? [
             <div>
-              {Data.todos.list.name.first}
+              {vnode.state.content.name.first}
             </div>
           ] : 'loading'
         }

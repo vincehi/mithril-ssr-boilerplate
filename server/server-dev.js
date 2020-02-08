@@ -13,7 +13,7 @@ const app = new Koa();
 const PORT = process.env.PORT || 5000;
 
 Object.keys(routes).forEach((route) => {
-  app.use(router.get(route, async (ctx) => {
+  app.use(router.get(route, async function forThat(ctx) {
     const module = await routes[route].module();
 
     const stateman = Object.create(stateManager);
