@@ -9,16 +9,12 @@ stateman.init(sharedState);
 
 const clientRoutes = {};
 
-console.log(m);
-
 let attrs = { stateman };
 Object.keys(routes).forEach((route) => {
-    console.log(routes);
     clientRoutes[route] = {
 
         onmatch: (args, requestedPath, route) => {
             return routes[route].module().then(resp => {
-                console.log(resp)
                 return resp
             });
         },

@@ -2,36 +2,45 @@
 Mithril remove m.jsonp and m.request
  */
 
-const hyperscript = require("mithril/hyperscript");
+import hyperscript from "mithril/hyperscript";
+import mountRedraw from "mithril/api/mount-redraw";
+import router from 'mithril/api/router';
+import render from "mithril/render/render";
+import querystringParse from "mithril/querystring/parse";
+import queryStringBuild from "mithril/querystring/build";
+import pathnameParse from "mithril/pathname/parse";
+import pathnameBuild from "mithril/pathname/build";
+import renderVnode from "mithril/render/vnode";
+import promisePolyfill from "mithril/promise/polyfill";
 
-let m_client = "";
-let m_server = "";
+let m = {};
 
 if (process.browser) {
-    const mountRedraw = require("mithril/mount-redraw")
-
-    m_client = function m_client() {
-        console.log(this)
-        return hyperscript.apply(this, arguments)
-    }
-    m_client.m_client = hyperscript
-    m_client.trust = hyperscript.trust
-    m_client.fragment = hyperscript.fragment
-    m_client.mount = mountRedraw.mount
-    m_client.route = require("mithril/route")
-    m_client.render = require("mithril/render")
-    m_client.redraw = mountRedraw.redraw
-    m_client.parseQueryString = require("mithril/querystring/parse")
-    m_client.buildQueryString = require("mithril/querystring/build")
-    m_client.parsePathname = require("mithril/pathname/parse")
-    m_client.buildPathname = require("mithril/pathname/build")
-    m_client.vnode = require("mithril/render/vnode")
-    m_client.PromisePolyfill = require("mithril/promise/polyfill")
-    m_client.route.prefix = '';
+    const renderBrowser = render(window);
+    const mountRedrawBrowser = mountRedraw(renderBrowser, requestAnimationFrame, console);
+    m = function m() {
+        console.log(this);
+        return hyperscript.apply(this, arguments);
+    };
+    m.m = hyperscript;
+    m.trust = hyperscript.trust;
+    m.fragment = hyperscript.fragment;
+    m.mount = mountRedrawBrowser.mount;
+    m.route = router(window, mountRedrawBrowser);
+    m.render = renderBrowser;
+    m.redraw = mountRedrawBrowser.redraw;
+    m.parseQueryString = querystringParse;
+    m.buildQueryString = queryStringBuild;
+    m.parsePathname = pathnameParse;
+    m.buildPathname = pathnameBuild;
+    m.vnode = renderVnode;
+    m.PromisePolyfill = promisePolyfill;
+    m.route.prefix = '';
 } else {
-    m_server = hyperscript;
-    m_server.route = require('mithril/api/router')(undefined, undefined);
-    m_server.route.prefix = '';
+    m = hyperscript;
+    m.route = router(undefined, undefined);
+    m.route.prefix = '';
 }
 
-export default process.browser ? m_client : m_server;
+
+export default m;

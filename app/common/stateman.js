@@ -4,7 +4,6 @@ import safeSet from 'lodash/set';
 const stateman = {
     state: {},
     init: (initialState) => {
-        console.log(stateman)
         stateman.state = JSON.parse(JSON.stringify(initialState)) || {};
     },
 

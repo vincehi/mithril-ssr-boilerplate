@@ -21,9 +21,6 @@ const LayoutClient = {
 };
 
 const LayoutServer = {
-    oninit: vnode => {
-        console.log(vnode.attrs.module.tag);
-    },
     view: vnode => {
         return [
             m('!doctype[html]'),
