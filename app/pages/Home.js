@@ -4,7 +4,7 @@ const Home = {
   data: {
     title: 'Home'
   },
-  view: () => {
+  view: (vnode) => {
     return (
       <div>
         Contenu de la page Homepage !
