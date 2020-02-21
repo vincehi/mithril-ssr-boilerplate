@@ -2,13 +2,14 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin-alt');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const webpack = require('webpack');
 
 module.exports = (env, argv) => [
   {
     // Server Config
     // name: 'server',
     entry: {
-      server: (argv.mode === 'production') ? './server/server-prod.js' : './server/server-dev.js'
+      server: './server/server-dev.js'
     },
     output: {
       path: path.join(__dirname, 'build'),
@@ -54,8 +55,11 @@ module.exports = (env, argv) => [
         allowAsyncCycles: false,
         // set the current working directory for displaying module paths
         cwd: process.cwd()
+      }),
+      new webpack.EnvironmentPlugin({
+        BROWSER_ENV: false
       })
-    ]
+    ],
   },
   {
     // Client Config
@@ -76,8 +80,10 @@ module.exports = (env, argv) => [
         }
       }]
     },
-    optimization: {
-      usedExports: true
-    }
+    plugins: [
+      new webpack.EnvironmentPlugin({
+        BROWSER_ENV: true
+      })
+    ]
   }
 ];

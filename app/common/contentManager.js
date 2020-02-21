@@ -13,7 +13,7 @@ export default function (url, stateman, resolve) {
       .then((resp) => {
         stateman.set('contact.content', resp.data);
         resolve(this.content = resp.data.results[0]);
-        if (process.browser) {
+        if (process.env.BROWSER_ENV) {
           m.redraw();
         }
       })

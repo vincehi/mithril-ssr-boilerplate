@@ -5,8 +5,8 @@
   "main": "index.js",
   "repository": "https://github.com/souricevincent/mithril-ssr-boilerplate.git",
   "scripts": {
-    "buildProd": "rm -rf build && webpack --mode production --config webpack.config.js",
-    "buildDev": "rm -rf build && webpack --mode developement --config webpack.config.js",
+    "build:prod": "rm -rf build && webpack --mode production --config webpack.config.js",
+    "build:dev": "rm -rf build && webpack --mode development --config webpack.config.js",
     "watch": "rm -rf build && webpack --watch --mode development --config webpack.config.js",
     "start": "nodemon build/server.js",
     "lint": "eslint app/** server/**",
@@ -67,5 +67,6 @@
       "build/assets/*"
     ],
     "delay": "0"
-  }
+  },
+  "sideEffects": false
 }

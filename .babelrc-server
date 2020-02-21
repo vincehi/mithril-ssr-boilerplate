@@ -1,18 +1,31 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "targets": { "node": true },
-      "modules": false
-    }]
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": true
+        },
+        "modules": false
+      }
+    ]
   ],
   "plugins": [
-    ["@babel/plugin-transform-react-jsx", {
-      "pragma": "m",
-      "pragmaFrag": "'['"
-    }],
-    ["module-resolver", {
-      "root": ["./"]
-    }],
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "pragma": "m",
+        "pragmaFrag": "'['"
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ]
+      }
+    ],
     "@babel/plugin-syntax-dynamic-import"
   ]
 }

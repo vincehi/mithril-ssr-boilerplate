@@ -48,4 +48,4 @@ const LayoutServer = {
   }
 };
 
-export default process.browser ? LayoutClient : LayoutServer;
+export default process.env.BROWSER_ENV ? LayoutClient : LayoutServer;

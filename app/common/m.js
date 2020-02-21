@@ -15,7 +15,7 @@ import promisePolyfill from 'mithril/promise/polyfill';
 
 let mithril = {};
 
-if (process.browser) {
+if (process.env.BROWSER_ENV) {
   const renderBrowser = render(window);
   const mountRedrawBrowser = mountRedraw(renderBrowser, requestAnimationFrame, console);
   mithril = function m() {
@@ -35,10 +35,12 @@ if (process.browser) {
   mithril.vnode = renderVnode;
   mithril.PromisePolyfill = promisePolyfill;
   mithril.route.prefix = '';
+  console.log('Laoui broswer yes')
 } else {
   mithril = hyperscript;
   mithril.route = router(undefined, undefined);
   mithril.route.prefix = '';
+  console.log('Laoui broswer no')
 }
 
 export default mithril;
