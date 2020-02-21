@@ -35,12 +35,10 @@ if (process.env.BROWSER_ENV) {
   mithril.vnode = renderVnode;
   mithril.PromisePolyfill = promisePolyfill;
   mithril.route.prefix = '';
-  console.log('Laoui broswer yes')
 } else {
   mithril = hyperscript;
   mithril.route = router(undefined, undefined);
   mithril.route.prefix = '';
-  console.log('Laoui broswer no')
 }
 
 export default mithril;
