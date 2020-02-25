@@ -1,23 +1,14 @@
 /*
 Mithril remove m.jsonp and m.request
  */
-
 import hyperscript from 'mithril/hyperscript';
-import mountRedraw from 'mithril/api/mount-redraw';
 import router from 'mithril/api/router';
-import render from 'mithril/render/render';
-import querystringParse from 'mithril/querystring/parse';
-import queryStringBuild from 'mithril/querystring/build';
-import pathnameParse from 'mithril/pathname/parse';
-import pathnameBuild from 'mithril/pathname/build';
-import renderVnode from 'mithril/render/vnode';
-import promisePolyfill from 'mithril/promise/polyfill';
 
 let mithril = {};
 
 if (process.env.BROWSER_ENV) {
-  const renderBrowser = render(window);
-  const mountRedrawBrowser = mountRedraw(renderBrowser, requestAnimationFrame, console);
+  const renderBrowser = import('mithril/render/render').then(({ default: resp }) => resp(window));
+  const mountRedrawBrowser = import('mithril/api/mount-redraw').then(({ default: resp }) => resp(renderBrowser, requestAnimationFrame, console));
   mithril = function m() {
     return hyperscript.apply(this, arguments);
   };
@@ -28,17 +19,17 @@ if (process.env.BROWSER_ENV) {
   mithril.route = router(window, mountRedrawBrowser);
   mithril.render = renderBrowser;
   mithril.redraw = mountRedrawBrowser.redraw;
-  mithril.parseQueryString = querystringParse;
-  mithril.buildQueryString = queryStringBuild;
-  mithril.parsePathname = pathnameParse;
-  mithril.buildPathname = pathnameBuild;
-  mithril.vnode = renderVnode;
-  mithril.PromisePolyfill = promisePolyfill;
-  mithril.route.prefix = '';
+  mithril.parseQueryString = import('mithril/querystring/parse').then(({ default: resp }) => resp);
+  mithril.buildQueryString = import('mithril/querystring/build').then(({ default: resp }) => resp);
+  mithril.parsePathname = import('mithril/pathname/parse').then(({ default: resp }) => resp);
+  mithril.buildPathname = import('mithril/pathname/build').then(({ default: resp }) => resp);
+  mithril.vnode = import('mithril/render/vnode').then(({ default: resp }) => resp);
+  mithril.PromisePolyfill = import('mithril/promise/polyfill').then(({ default: resp }) => resp);
 } else {
   mithril = hyperscript;
   mithril.route = router(undefined, undefined);
-  mithril.route.prefix = '';
 }
+
+mithril.route.prefix = '';
 
 export default mithril;

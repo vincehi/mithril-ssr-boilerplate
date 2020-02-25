@@ -10,7 +10,7 @@ import Layout from 'app/components/Layout';
 import stateManager from '../app/common/stateman.js';
 
 const app = new Koa();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5020;
 
 Object.keys(routes).forEach((route) => {
   app.use(router.get(route, async function forThat(ctx) {
