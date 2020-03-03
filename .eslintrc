@@ -33,6 +33,12 @@
         "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["ctx"] }],
         "no-console": [0]
       }
+    },
+    {
+      "files": ["app/common/m.js"],
+      "rules": {
+        "global-require": [0]
+      }
     }
   ]
 }
