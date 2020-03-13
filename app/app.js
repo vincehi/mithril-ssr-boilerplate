@@ -1,4 +1,4 @@
-import m from './common/m';
+import m from '../lib/m';
 import Layout from './components/Layout';
 import routes from './common/routes';
 import stateManager from './common/stateman.js';

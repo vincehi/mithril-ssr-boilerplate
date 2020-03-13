@@ -1,4 +1,4 @@
-import m from '../common/m';
+import m from '../../lib/m';
 import contentManager from '../common/contentManager';
 
 export default {

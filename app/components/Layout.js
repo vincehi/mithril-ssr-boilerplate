@@ -1,4 +1,4 @@
-import m from '../common/m';
+import m from '../../lib/m';
 import Header from './Header';
 import Footer from './Footer';
 
