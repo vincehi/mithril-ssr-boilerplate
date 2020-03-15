@@ -25,13 +25,11 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^4.0.0",
     "circular-dependency-plugin": "^5.2.0",
-    "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.18.3",
-    "husky": "^3.0.5",
     "nodemon": "^2.0.2",
     "path": "^0.12.7",
     "webpack": "^4.42.0",
@@ -46,17 +44,6 @@
     "koa-static": "^5.0.0",
     "mithril": "^2.0.4",
     "mithril-node-render": "^3.0.0"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "_commentaire": "Alternative for @commitlint/prompt (vulnerability and not use prompt commitizen)",
-      "path": "cz-conventional-changelog"
-    }
   },
   "nodemonConfig": {
     "inspect": true,
