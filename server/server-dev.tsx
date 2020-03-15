@@ -5,9 +5,9 @@ import router from 'koa-route';
 
 import toHTML from 'mithril-node-render';
 
-import routes from 'app/common/routes';
-import Layout from 'app/components/Layout';
-import stateManager from '../app/common/stateman.js';
+import routes from '../app/common/routes';
+import Layout from '../app/components/Layout';
+import stateManager from '../app/common/stateman';
 
 const app = new Koa();
 const PORT = process.env.PORT || 5030;

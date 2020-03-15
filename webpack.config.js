@@ -9,7 +9,7 @@ module.exports = (env, argv) => [
     // Server Config
     // name: 'server',
     entry: {
-      server: './server/server-dev.js'
+      server: './server/server-dev.tsx'
     },
     output: {
       path: path.join(__dirname, 'build'),
@@ -30,16 +30,17 @@ module.exports = (env, argv) => [
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
           exclude: path.resolve(__dirname, 'node_modules'),
-          use: {
-            loader: 'babel-loader',
-            options: {
-              configFile: './.babelrc-server'
-            }
+          options: {
+            configFile: 'tsconfig-server.json'
           }
         }
       ]
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js']
     },
     plugins: [
       new WebpackShellPlugin({
@@ -59,26 +60,31 @@ module.exports = (env, argv) => [
       new webpack.EnvironmentPlugin({
         BROWSER_ENV: false
       })
-    ],
+    ]
   },
   {
     // Client Config
     // name: 'client',
-    entry: './app/app.js',
+    entry: './app/app.tsx',
     output: {
       path: path.resolve(__dirname, './build/assets'),
-      filename: 'js/app.js',
+      filename: 'js/app.tsx',
       chunkFilename: 'js/[name]-bundle.js'
     },
     module: {
-      rules: [{
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          configFile: './.babelrc-client'
+      rules: [
+        {
+          test: /\.tsx?$/,
+          loader: 'ts-loader',
+          exclude: path.resolve(__dirname, 'node_modules'),
+          options: {
+            configFile: 'tsconfig-client.json'
+          }
         }
-      }]
+      ]
+    },
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js']
     },
     plugins: [
       new webpack.EnvironmentPlugin({

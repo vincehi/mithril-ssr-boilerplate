@@ -1,7 +1,7 @@
 import m from '../lib/m';
 import Layout from './components/Layout';
 import routes from './common/routes';
-import stateManager from './common/stateman.js';
+import stateManager from './common/stateman';
 
 let sharedState = window.preloadedState || {};
 const stateman = Object.create(stateManager);
