@@ -3,6 +3,12 @@ import Layout from './components/Layout';
 import routes from './common/routes';
 import stateManager from './common/stateman';
 
+declare global {
+  interface Window {
+    preloadedState: object
+  }
+}
+
 let sharedState = window.preloadedState || {};
 const stateman = Object.create(stateManager);
 stateman.init(sharedState);
@@ -10,7 +16,7 @@ stateman.init(sharedState);
 const clientRoutes = {};
 
 let attrs = { stateman };
-Object.keys(routes).forEach((route) => {
+Object.keys(routes).forEach((route:string) => {
   clientRoutes[route] = {
 
     onmatch: () => {

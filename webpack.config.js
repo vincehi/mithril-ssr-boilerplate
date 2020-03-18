@@ -31,10 +31,10 @@ module.exports = (env, argv) => [
       rules: [
         {
           test: /\.tsx?$/,
-          loader: 'ts-loader',
           exclude: path.resolve(__dirname, 'node_modules'),
+          loader: 'babel-loader',
           options: {
-            configFile: 'tsconfig-server.json'
+            configFile: './.babelrc-server'
           }
         }
       ]
@@ -68,17 +68,17 @@ module.exports = (env, argv) => [
     entry: './app/app.tsx',
     output: {
       path: path.resolve(__dirname, './build/assets'),
-      filename: 'js/app.tsx',
+      filename: 'js/app.js',
       chunkFilename: 'js/[name]-bundle.js'
     },
     module: {
       rules: [
         {
-          test: /\.tsx?$/,
-          loader: 'ts-loader',
+          test: /\.tsx$/,
           exclude: path.resolve(__dirname, 'node_modules'),
+          loader: 'babel-loader',
           options: {
-            configFile: 'tsconfig-client.json'
+            configFile: './.babelrc-client'
           }
         }
       ]

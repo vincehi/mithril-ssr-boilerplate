@@ -1,6 +1,12 @@
 {
   "presets": [
     [
+      "@babel/preset-typescript",
+      {
+        "jsxPragma": "m",
+      }
+    ],
+    [
       "@babel/preset-env",
       {
         "targets": {
