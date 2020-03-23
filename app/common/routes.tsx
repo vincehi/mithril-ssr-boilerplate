@@ -1,14 +1,22 @@
 // import Home from '../pages/Home.tsx';
 // import Contact from '../pages/Contact.tsx';
 
-const routes = {
+type PromiseResolve<T> = (value?: T | PromiseLike<T>) => void;
+
+interface Routes {
+  [route: string]: {
+    name: string;
+    module: () => any;
+  }
+}
+
+const routes:Routes = {
   '/': {
     name: 'Accueil',
-    module: () => new Promise((resolve) => {
+    module: () => new Promise((resolve: PromiseResolve<object>) => {
       import(/* webpackChunkName: "Home" */ '../pages/Home').then(({ default: resp }) => {
         resolve(resp);
       });
-      // resolve(Home);
     })
   },
   '/contact': {
@@ -17,7 +25,6 @@ const routes = {
       import(/* webpackChunkName: "Contact" */ '../pages/Contact').then(({ default: resp }) => {
         resolve(resp);
       });
-      // resolve(Contact);
     })
   }
 };
