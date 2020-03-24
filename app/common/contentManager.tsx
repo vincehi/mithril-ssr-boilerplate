@@ -1,5 +1,5 @@
 import { get } from 'axios';
-import m from '../../lib/m';
+import m from 'mithril';
 
 // const port = process.env.PORT || 5000;
 // const localUrl = 'http://' + (process.browser ? window.location.host : '127.0.0.1:' + port);

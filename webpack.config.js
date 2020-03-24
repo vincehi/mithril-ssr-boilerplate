@@ -25,7 +25,9 @@ module.exports = (env, argv) => [
       __filename: false // and __filename return blank or /
     },
     externals: [
-      nodeExternals()
+      nodeExternals({
+        whitelist: ['mithril']
+      })
     ], // Need this to avoid error when working with Express
     module: {
       rules: [
@@ -40,7 +42,10 @@ module.exports = (env, argv) => [
       ]
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js']
+      extensions: ['.tsx', '.ts', '.js'],
+      alias: {
+        mithril$: path.resolve(__dirname, 'lib/m.js')
+      }
     },
     plugins: [
       new WebpackShellPlugin({
@@ -84,7 +89,10 @@ module.exports = (env, argv) => [
       ]
     },
     resolve: {
-      extensions: ['.tsx', '.ts', '.js']
+      extensions: ['.tsx', '.ts', '.js'],
+      alias: {
+        mithril$: path.resolve(__dirname, 'lib/m.js')
+      }
     },
     plugins: [
       new webpack.EnvironmentPlugin({

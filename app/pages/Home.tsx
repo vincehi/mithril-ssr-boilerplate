@@ -1,10 +1,10 @@
-import m from '../../lib/m';
+import m from 'mithril';
 
-const Home = {
+const Home: m.Component = {
   data: {
-    title: 'Home'
+    title: 'Home',
   },
-  view: () => {
+  view: (vnode) => {
     return (
       <div>
         Contenu de la page Homepage !

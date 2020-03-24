@@ -1,4 +1,4 @@
-import m from '../../lib/m';
+import m from 'mithril';
 import Header from './Header';
 import Footer from './Footer';
 

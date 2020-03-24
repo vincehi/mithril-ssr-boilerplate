@@ -1,4 +1,4 @@
-import m from '../../lib/m';
+import m from 'mithril';
 import contentManager from '../common/contentManager';
 
 export default {
