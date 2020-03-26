@@ -23,7 +23,10 @@ const mainContent = (vnode) => (
 class LayoutClient implements m.ClassComponent {
   view(vnode) {
     console.log('Layout')
-    mainContent(vnode)
+    return (
+      mainContent(vnode)
+    )
+
   }
 };
 

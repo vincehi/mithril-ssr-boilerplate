@@ -1,4 +1,4 @@
-import m from '../node_modules/mithril';
+import m from 'mithril';
 import Layout from './components/Layout';
 import routes from './common/routes';
 import stateManager from './common/stateman';
@@ -31,14 +31,14 @@ Object.keys(routes).forEach((route:string) => {
 
     onmatch: () => {
       return routes[route].module().then((resp: m.Component) => {
-        console.log(resp())
-        return resp();
+        console.log('onmatch in app.tsx', resp)
+        return resp;
       });
     },
 
     render: (vnode:m.Vnode<Attrs>) => {
       Object.assign(vnode.attrs, attrs);
-      console.log('attrs', vnode)
+      console.log('render app.tsx', vnode)
       // document.title = (vnode.tag as m.Comp<object, State>).data.title;
       return m(Layout, { module: { tag: vnode.tag, stateman: vnode.attrs.stateman } });
     }
