@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 class Script implements m.ClassComponent {
-  view(vnode) {
+  view(vnode: m.CVnode) {
     return (
       m('script', `window.preloadedState = ${vnode.attrs.stateman.getString()}`)
     );
@@ -22,7 +22,6 @@ const mainContent = (vnode) => (
 
 class LayoutClient implements m.ClassComponent {
   view(vnode) {
-    console.log('Layout')
     return (
       mainContent(vnode)
     )
@@ -41,7 +40,7 @@ class LayoutServer implements m.ClassComponent {
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
             <meta http-equiv="x-ua-compatible" content="ie=edge"/>
             <meta name="description" content="description ici"/>
-            {/*<title>{vnode.attrs.module.tag.data.title}</title>*/}
+            <title>{vnode.attrs.module.tag.title}</title>
           </head>
           <body>
             <div id="mainContent">

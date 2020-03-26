@@ -1,6 +1,3 @@
-// import Home from '../pages/Home.tsx';
-// import Contact from '../pages/Contact.tsx';
-
 type PromiseResolve<T> = (value?: T | PromiseLike<T>) => void;
 
 interface Routes {
@@ -15,7 +12,6 @@ const routes:Routes = {
     name: 'Accueil',
     module: () => new Promise((resolve: PromiseResolve<object>) => {
       import(/* webpackChunkName: "Home" */ '../pages/Home').then(({ default: resp }) => {
-        console.log('in routes: home ', resp)
         resolve(resp);
       });
     })

@@ -31,15 +31,13 @@ Object.keys(routes).forEach((route:string) => {
 
     onmatch: () => {
       return routes[route].module().then((resp: m.Component) => {
-        console.log('onmatch in app.tsx', resp)
         return resp;
       });
     },
 
     render: (vnode:m.Vnode<Attrs>) => {
       Object.assign(vnode.attrs, attrs);
-      console.log('render app.tsx', vnode)
-      // document.title = (vnode.tag as m.Comp<object, State>).data.title;
+      document.title = (vnode.tag as m.Comp<object, State>).title;
       return m(Layout, { module: { tag: vnode.tag, stateman: vnode.attrs.stateman } });
     }
   };
