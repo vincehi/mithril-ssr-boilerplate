@@ -1,4 +1,4 @@
-import m from 'mithril';
+import m from '../node_modules/mithril';
 import Layout from './components/Layout';
 import routes from './common/routes';
 import stateManager from './common/stateman';
@@ -7,6 +7,10 @@ declare global {
   interface Window {
     preloadedState: () => void
   }
+}
+
+interface Attrs {
+  stateman: object;
 }
 
 interface State {
@@ -27,15 +31,15 @@ Object.keys(routes).forEach((route:string) => {
 
     onmatch: () => {
       return routes[route].module().then((resp: m.Component) => {
-        console.log(resp)
-        return resp;
+        console.log(resp())
+        return resp();
       });
     },
 
-    render: (vnode) => {
+    render: (vnode:m.Vnode<Attrs>) => {
       Object.assign(vnode.attrs, attrs);
-      document.title = (vnode.tag as m.Comp<object, State>).data.title;
-      console.log('vnode.tag', vnode.tag)
+      console.log('attrs', vnode)
+      // document.title = (vnode.tag as m.Comp<object, State>).data.title;
       return m(Layout, { module: { tag: vnode.tag, stateman: vnode.attrs.stateman } });
     }
   };

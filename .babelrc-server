@@ -3,6 +3,8 @@
     [
       "@babel/preset-typescript",
       {
+        "isTSX": true,
+        "allExtensions": true,
         "jsxPragma": "m",
       }
     ],
@@ -17,6 +19,9 @@
     ]
   ],
   "plugins": [
+    [
+      "@babel/plugin-proposal-class-properties"
+    ],
     [
       "@babel/plugin-transform-react-jsx",
       {

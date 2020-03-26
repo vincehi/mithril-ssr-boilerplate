@@ -1,7 +1,7 @@
 import m from 'mithril';
 
-export default {
-  view: () => {
+export default class Header implements m.ClassComponent {
+  view() {
     return (
       <header>
         <div>The Header</div>
@@ -12,4 +12,4 @@ export default {
       </header>
     );
   }
-};
+}

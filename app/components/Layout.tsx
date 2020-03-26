@@ -2,28 +2,33 @@ import m from 'mithril';
 import Header from './Header';
 import Footer from './Footer';
 
-const Script = {
-  view: (vnode) => {
+class Script implements m.ClassComponent {
+  view(vnode) {
     return (
       m('script', `window.preloadedState = ${vnode.attrs.stateman.getString()}`)
     );
   }
 };
 
+
+
 const mainContent = (vnode) => (
-  <>
+  <div>
     <Header/>
     <vnode.attrs.module.tag stateman={vnode.attrs.module.stateman} />
     <Footer/>
-  </>
+  </div>
 );
 
-const LayoutClient = {
-  view: (vnode) => mainContent(vnode)
+class LayoutClient implements m.ClassComponent {
+  view(vnode) {
+    console.log('Layout')
+    mainContent(vnode)
+  }
 };
 
-const LayoutServer = {
-  view: (vnode) => {
+class LayoutServer implements m.ClassComponent {
+  view(vnode) {
     return (
       <>
         {m('!doctype[html]')}
@@ -33,7 +38,7 @@ const LayoutServer = {
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
             <meta http-equiv="x-ua-compatible" content="ie=edge"/>
             <meta name="description" content="description ici"/>
-            <title>{vnode.attrs.module.tag.data.title}</title>
+            {/*<title>{vnode.attrs.module.tag.data.title}</title>*/}
           </head>
           <body>
             <div id="mainContent">

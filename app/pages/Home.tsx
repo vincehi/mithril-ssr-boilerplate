@@ -1,10 +1,9 @@
 import m from 'mithril';
 
-const Home: m.Component = {
-  data: {
-    title: 'Home',
-  },
-  view: (vnode) => {
+export default class Home {
+  view() {
+
+    console.log('Home')
     return (
       <div>
         Contenu de la page Homepage !
@@ -12,5 +11,3 @@ const Home: m.Component = {
     );
   }
 };
-
-export default Home;
