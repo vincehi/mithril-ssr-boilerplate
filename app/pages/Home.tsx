@@ -1,7 +1,8 @@
 import m from 'mithril';
 
-export default class Home {
-  static title = "home title";
+export default class Home implements m.ClassComponent {
+  static title = 'home title';
+
   view() {
     return (
       <div>
@@ -9,4 +10,4 @@ export default class Home {
       </div>
     );
   }
-};
+}

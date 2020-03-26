@@ -8,15 +8,14 @@ class Script implements m.ClassComponent {
       m('script', `window.preloadedState = ${vnode.attrs.stateman.getString()}`)
     );
   }
-};
-
+}
 
 
 const mainContent = (vnode) => (
   <div>
-    <Header/>
+    <Header />
     <vnode.attrs.module.tag stateman={vnode.attrs.module.stateman} />
-    <Footer/>
+    <Footer />
   </div>
 );
 
@@ -24,10 +23,9 @@ class LayoutClient implements m.ClassComponent {
   view(vnode) {
     return (
       mainContent(vnode)
-    )
-
+    );
   }
-};
+}
 
 class LayoutServer implements m.ClassComponent {
   view(vnode) {
@@ -36,23 +34,23 @@ class LayoutServer implements m.ClassComponent {
         {m('!doctype[html]')}
         <html lang="fr">
           <head>
-            <meta charSet="utf-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-            <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-            <meta name="description" content="description ici"/>
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+            <meta name="description" content="description ici" />
             <title>{vnode.attrs.module.tag.title}</title>
           </head>
           <body>
             <div id="mainContent">
               {mainContent(vnode)}
             </div>
-            <Script stateman={vnode.attrs.module.stateman}/>
-            <script src="/js/app.js"/>
+            <Script stateman={vnode.attrs.module.stateman} />
+            <script src="/js/app.js" />
           </body>
         </html>
       </>
     );
   }
-};
+}
 
 export default process.env.BROWSER_ENV ? LayoutClient : LayoutServer;

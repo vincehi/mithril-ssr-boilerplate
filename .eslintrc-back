@@ -1,0 +1,44 @@
+{
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "commonjs": false
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "pragma": "m"
+    }
+  },
+  "plugins": ["react"],
+  "extends": ["airbnb-base/legacy"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-uses-react": ["error"],
+    "react/jsx-uses-vars": ["error"],
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["vnode"] }],
+    "arrow-parens": ["error"]
+  },
+  "overrides": [
+    {
+      "files": ["server/**"],
+      "rules": {
+        "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["ctx"] }],
+        "no-console": [0]
+      }
+    },
+    {
+      "files": ["lib/m.js"],
+      "rules": {
+        "global-require": [0]
+      }
+    }
+  ]
+}

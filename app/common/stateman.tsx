@@ -11,7 +11,7 @@ const stateman = {
 
   set: (field, value) => safeSet(stateman.state, field, value),
 
-  getString: () => JSON.stringify(stateman.state)
+  getString: () => JSON.stringify(stateman.state),
 };
 
 export default stateman;

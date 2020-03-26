@@ -1,4 +1,5 @@
 {
+  "parser": "@typescript-eslint/parser",
   "env": {
     "es6": true,
     "browser": true,
@@ -10,34 +11,91 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "project": "./tsconfig.json"
   },
   "settings": {
     "react": {
       "pragma": "m"
-    }
+    },
+    "linkComponents": [
+      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+      "Hyperlink",
+      {
+        "name": "m.route.Link",
+        "linkAttribute": "href"
+      }
+    ]
   },
-  "plugins": ["react"],
-  "extends": ["airbnb-base/legacy"],
-  "parser": "babel-eslint",
+  "extends": [
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "unicorn"
+  ],
   "rules": {
-    "react/jsx-uses-react": ["error"],
-    "react/jsx-uses-vars": ["error"],
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["vnode"] }],
-    "arrow-parens": ["error"]
+    "react/jsx-uses-react": [
+      "error"
+    ],
+    "react/jsx-uses-vars": [
+      "error"
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "vnode"
+        ]
+      }
+    ],
+    "arrow-parens": [
+      "error"
+    ],
+    "unicorn/filename-case": [
+      "error",
+      {
+        "case": "kebabCase"
+      }
+    ]
   },
   "overrides": [
     {
-      "files": ["server/**"],
+      "files": [
+        "server/**"
+      ],
       "rules": {
-        "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["ctx"] }],
-        "no-console": [0]
+        "no-param-reassign": [
+          "error",
+          {
+            "props": true,
+            "ignorePropertyModificationsFor": [
+              "ctx"
+            ]
+          }
+        ],
+        "no-console": [
+          0
+        ]
       }
     },
     {
-      "files": ["lib/m.js"],
+      "files": [
+        "app/components/**",
+        "app/pages/**"
+      ],
       "rules": {
-        "global-require": [0]
+        "unicorn/filename-case": [
+          "error",
+          {
+            "case": "pascalCase"
+          }
+        ]
       }
     }
   ]
