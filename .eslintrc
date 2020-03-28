@@ -1,3 +1,5 @@
+// https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md
+// https://github.com/iamturns/create-exposed-app/blob/master/.eslintrc.js
 {
   "parser": "@typescript-eslint/parser",
   "env": {
@@ -31,12 +33,15 @@
     "airbnb-typescript",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:unicorn/recommended",
+    "plugin:promise/recommended"
   ],
   "plugins": [
     "react",
     "@typescript-eslint",
-    "unicorn"
+    "unicorn",
+    "promise"
   ],
   "rules": {
     "react/jsx-uses-react": [
@@ -61,6 +66,22 @@
       "error",
       {
         "case": "kebabCase"
+      }
+    ],
+    // Common abbreviations are known and readable
+    "unicorn/prevent-abbreviations": "off",
+    "class-methods-use-this": [
+      "error",
+      {
+        "exceptMethods": [
+          "oninit",
+          "oncreate",
+          "onbeforeremove",
+          "onremove",
+          "onbeforeupdate",
+          "onupdate",
+          "view"
+        ]
       }
     ]
   },

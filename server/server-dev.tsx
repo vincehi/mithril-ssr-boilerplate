@@ -12,14 +12,22 @@ import stateManager from '../app/common/stateman';
 const app = new Koa();
 const PORT = process.env.PORT || 5030;
 
+interface Options {
+  module: {
+    tag: object;
+    stateman: object;
+  };
+}
+
 Object.keys(routes).forEach((route) => {
   app.use(router.get(route, async (ctx) => {
     const module = await routes[route].module();
 
     const stateman = Object.create(stateManager);
     stateman.init({});
+    console.log({ tag: module, stateman })
 
-    ctx.body = await toHTML(Layout, { module: { tag: module, stateman } });
+    ctx.body = await toHTML<Options>(Layout, { module: { tag: module, stateman } });
   }));
 });
 

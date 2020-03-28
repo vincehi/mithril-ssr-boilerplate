@@ -1,10 +1,22 @@
 import m from 'mithril';
 import contentManager from '../common/contentManager';
 
-export default class Contact implements m.ClassComponent {
+interface Attrs {
+  stateman: object;
+}
+
+interface State {
+  content: {
+    name: {
+      first: string;
+    };
+  };
+}
+
+export default class Contact implements m.ClassComponent<Attrs> {
   static title = 'contact title';
 
-  oninit(vnode: m.CVnode, waitFor = () => null) {
+  oninit(vnode: m.CVnode<Attrs>, waitFor = (state: Promise<object>) => state): Promise<object> {
     return (
       waitFor(
         new Promise((resolve) => {
@@ -16,7 +28,7 @@ export default class Contact implements m.ClassComponent {
     );
   }
 
-  view(vnode) {
+  view(vnode: m.CVnode<Attrs>): m.Children {
     return (
       <div>
         {vnode.state.content

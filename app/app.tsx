@@ -14,9 +14,7 @@ interface Attrs {
 }
 
 interface State {
-  data: {
-    title: string;
-  };
+  title: string;
 }
 
 const sharedState = window.preloadedState || {};
@@ -31,12 +29,12 @@ Object.keys(routes).forEach((route: string) => {
 
     onmatch: () => routes[route].module().then((resp: m.Component) => resp),
 
-    render: (vnode: m.Vnode<Attrs>) => {
+    render: (vnode) => {
       Object.assign(vnode.attrs, attrs);
       document.title = (vnode.tag as m.Comp<object, State>).title;
       return m(Layout, { module: { tag: vnode.tag, stateman: vnode.attrs.stateman } });
     },
-  };
+  } as m.RouteResolver<Attrs, State>;
 });
 
-m.route(document.getElementById('mainContent') as HTMLElement, '/', clientRoutes);
+m.route(document.querySelector('#mainContent') as HTMLElement, '/', clientRoutes);
