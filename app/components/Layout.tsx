@@ -2,10 +2,24 @@ import m from 'mithril';
 import Header from './Header';
 import Footer from './Footer';
 
-class Script implements m.ClassComponent {
-  view(vnode: m.CVnode) {
+declare global {
+  interface Window {
+    preloadedState: object;
+  }
+}
+
+interface Attrs {
+  stateman: {
+    getString: () => object;
+  };
+}
+
+class Script implements m.ClassComponent<Attrs> {
+  view({ attrs: { stateman } }: m.Vnode<Attrs>): m.Children {
     return (
-      m('script', `window.preloadedState = ${vnode.attrs.stateman.getString()}`)
+      <script>
+        {window.preloadedState = stateman.getString()}
+      </script>
     );
   }
 }

@@ -3,11 +3,6 @@ import Layout from './components/Layout';
 import routes from './common/routes';
 import stateManager from './common/stateman';
 
-declare global {
-  interface Window {
-    preloadedState: () => void;
-  }
-}
 
 interface Attrs {
   stateman: object;
