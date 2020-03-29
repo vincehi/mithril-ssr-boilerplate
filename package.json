@@ -26,6 +26,7 @@
     "@types/koa": "^2.11.2",
     "@types/koa-route": "^3.2.4",
     "@types/koa-static": "^4.0.1",
+    "@types/lodash": "^4.14.149",
     "@types/mithril": "^2.0.2",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",

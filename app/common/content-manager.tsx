@@ -1,18 +1,28 @@
-import { get } from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import m from 'mithril';
 
 // const port = process.env.PORT || 5000;
 // const localUrl = 'http://' + (process.browser ? window.location.host : '127.0.0.1:' + port);
 // const localData = localUrl + '/docs';
 
-export default function (url, stateman, resolve) {
+interface Response {
+
+}
+
+interface Stateman {
+  get: (url: string) => object;
+  set: (key: string, value: object) => void;
+}
+
+export default function (url: string, stateman: Stateman, resolve: (state: any) => void) {
   const statemanContent = stateman.get('contact.content');
 
   if (!statemanContent) {
-    get(url)
+    axios.get(url)
       .then((resp) => {
+        console.log('setState')
         stateman.set('contact.content', resp.data);
-        resolve(this.content = resp.data.results[0]);
+        resolve(this.state.content = resp.data.results[0]);
         if (process.env.BROWSER_ENV) {
           m.redraw();
         }
@@ -24,6 +34,6 @@ export default function (url, stateman, resolve) {
         // always executed
       });
   } else {
-    resolve(this.content = statemanContent.results[0]);
+    resolve(this.state.content = statemanContent.results[0]);
   }
 }

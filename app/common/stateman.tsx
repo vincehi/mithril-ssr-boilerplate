@@ -1,15 +1,14 @@
-import safeGet from 'lodash/get';
-import safeSet from 'lodash/set';
+import _ from 'lodash';
 
 const stateman = {
   state: {},
-  init: (initialState) => {
+  init: (initialState: object) => {
     stateman.state = JSON.parse(JSON.stringify(initialState)) || {};
   },
 
-  get: (field) => safeGet(stateman.state, field, null),
+  get: (field: string) => _.get(stateman.state, field, null),
 
-  set: (field, value) => safeSet(stateman.state, field, value),
+  set: (field: string, value: object) => _.set(stateman.state, field, value),
 
   getString: () => JSON.stringify(stateman.state),
 };

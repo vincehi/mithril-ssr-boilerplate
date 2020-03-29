@@ -1,13 +1,18 @@
 import m from 'mithril';
-import contentManager from '../common/contentManager';
+import contentManager from '../common/content-manager';
+
+interface Stateman {
+  get: (url: string) => object;
+  set: (url: string) => void;
+}
 
 interface Attrs {
-  stateman: object;
+  stateman: Stateman;
 }
 
 interface State {
   content: {
-    name: {
+    name?: {
       first: string;
     };
   };
@@ -16,25 +21,32 @@ interface State {
 export default class Contact implements m.ClassComponent<Attrs> {
   static title = 'contact title';
 
-  oninit(vnode: m.CVnode<Attrs>, waitFor = (state: Promise<object>) => state): Promise<object> {
-    return (
-      waitFor(
-        new Promise((resolve) => {
-          const { attrs: { stateman } } = vnode;
-          // Result in vnode.state.content
-          contentManager.bind(vnode.state)('https://randomuser.me/api/', stateman, resolve);
-        }),
-      )
+  private state: State;
+
+  constructor() {
+    this.state = {
+      content: {},
+    };
+  }
+
+  oninit(
+    { attrs: { stateman } }: m.CVnode<Attrs>,
+    waitFor = (state: Promise<object>) => state,
+  ): void {
+    waitFor(
+      new Promise((resolve) => {
+        contentManager.bind(this)('https://randomuser.me/api/', stateman, resolve);
+      }),
     );
   }
 
-  view(vnode: m.CVnode<Attrs>): m.Children {
+  view(): m.Children {
     return (
       <div>
-        {vnode.state.content
+        {this.state.content.name
           ? [
             <div>
-              {vnode.state.content.name.first}
+              {this.state.content.name.first}
             </div>,
           ] : 'loading'}
         Contenu de la page Contact !

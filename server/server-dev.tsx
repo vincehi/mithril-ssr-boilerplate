@@ -25,7 +25,6 @@ Object.keys(routes).forEach((route) => {
 
     const stateman = Object.create(stateManager);
     stateman.init({});
-    console.log({ tag: module, stateman })
 
     ctx.body = await toHTML<Options>(Layout, { module: { tag: module, stateman } });
   }));
