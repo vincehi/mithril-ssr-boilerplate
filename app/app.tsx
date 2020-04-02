@@ -23,11 +23,12 @@ Object.keys(routes).forEach((route: string) => {
     onmatch: () => routes[route].module().then((resp: m.Component) => resp),
 
     render: (vnode) => {
+      // console.log(vnode)
       Object.assign(vnode.attrs, attrs);
       // document.title = (vnode.tag as m.Comp<object, {title: string}>).title;
       document.title = vnode.tag.title;
       console.log(vnode);
-      return m(Layout, { module: { tag: vnode.tag as object, stateman: vnode.attrs.stateman } });
+      return m(Layout, { stateman: vnode.attrs.stateman }, vnode);
     },
   } as m.RouteResolver<Attrs>;
 });

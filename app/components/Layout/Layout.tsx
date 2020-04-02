@@ -31,8 +31,7 @@ function mainContent(vnode: m.CVnode<Test>): any {
   return (
     <>
       <Header />
-      {/*{console.log('la', vnode.attrs.module.tag)}*/}
-      <vnode.attrs.module.tag stateman={vnode.attrs.module.stateman} />
+      {vnode.children}
       <Footer />
     </>
   );
@@ -53,13 +52,13 @@ export default class Layout implements m.ClassComponent<Test> {
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
             <meta httpEquiv="x-ua-compatible" content="ie=edge" />
             <meta name="description" content="description ici" />
-            <title>{vnode.attrs.module.tag.title}</title>
+            {/*<title>{vnode.attrs.module.tag.title}</title>*/}
           </head>
           <body>
             <div id="mainContent">
               {mainContent(vnode)}
             </div>
-            <Script stateman={vnode.attrs.module.stateman} />
+            <Script stateman={vnode.attrs.stateman} />
             <script src="/js/app.js" />
           </body>
         </html>

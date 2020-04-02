@@ -3,7 +3,7 @@ declare module 'mithril-node-render' {
 
   function render<COMPONENT = {}, OPTIONS = {}>(
     component: COMPONENT,
-    options: OPTIONS,
+    options?: OPTIONS,
   ): Promise<m.Component>;
 
   export = render;

@@ -4,6 +4,7 @@ import statics from 'koa-static';
 import router from 'koa-route';
 
 import toHTML from 'mithril-node-render';
+import m from 'mithril';
 
 import routes from '../app/common/routes';
 import Layout from '../app/components/Layout/Layout';
@@ -19,9 +20,10 @@ Object.keys(routes).forEach((route) => {
     const stateman = Object.create(stateManager);
     stateman.init({});
 
-    console.log(module);
+    // ctx.body = await toHTML(Layout, m(module,{ stateman } ));
 
-    ctx.body = await toHTML(Layout, { module: { tag: module, stateman } });
+    ctx.body = await toHTML(m(Layout, {stateman}, m(module,{ stateman } )));
+    // ctx.body = m(test);
   }));
 });
 
