@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import m from 'mithril';
 
 // const port = process.env.PORT || 5000;
@@ -20,7 +20,7 @@ export default function (url: string, stateman: Stateman, resolve: (state: any) 
   if (!statemanContent) {
     axios.get(url)
       .then((resp) => {
-        console.log('setState')
+        console.log('setState');
         stateman.set('contact.content', resp.data);
         resolve(this.state.content = resp.data.results[0]);
         if (process.env.BROWSER_ENV) {

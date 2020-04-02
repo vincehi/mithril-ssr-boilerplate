@@ -1,13 +1,15 @@
 import m from 'mithril';
 
+const RouteLink = m.route.Link as any;
+
 export default class Header implements m.ClassComponent {
-  view() {
+  view(): m.Children {
     return (
       <header>
         <div>The Header</div>
         <nav>
-          <m.route.Link href="/contact">Contact</m.route.Link>
-          <m.route.Link href="/">Home</m.route.Link>
+          <RouteLink href="/contact">Contact</RouteLink>
+          <RouteLink href="/">Home</RouteLink>
         </nav>
       </header>
     );

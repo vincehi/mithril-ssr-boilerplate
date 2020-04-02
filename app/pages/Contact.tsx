@@ -31,7 +31,7 @@ export default class Contact implements m.ClassComponent<Attrs> {
 
   oninit(
     { attrs: { stateman } }: m.CVnode<Attrs>,
-    waitFor = (state: Promise<object>) => state,
+    waitFor = (state: Promise<object>): object => state,
   ): void {
     waitFor(
       new Promise((resolve) => {

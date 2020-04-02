@@ -1,6 +1,7 @@
-import m from 'mithril';
+import m, {ClassComponent, ComponentTypes} from 'mithril';
 import Header from './Header';
 import Footer from './Footer';
+import Script from './Script';
 
 declare global {
   interface Window {
@@ -8,42 +9,42 @@ declare global {
   }
 }
 
-interface Attrs {
-  stateman: {
-    getString: () => object;
+// interface Ici {
+//   (test: string): JSX.Element;
+// }
+
+interface One {
+  module: any;
+}
+
+export interface Test {
+  module: {
+    stateman: object;
+    // tag: Ici;
+    tag: (() => m.Vnode) & {
+      title?: string;
+    };
   };
 }
 
-class Script implements m.ClassComponent<Attrs> {
-  view({ attrs: { stateman } }: m.Vnode<Attrs>): m.Children {
-    return (
-      <script>
-        {window.preloadedState = stateman.getString()}
-      </script>
-    );
-  }
+function mainContent(vnode: m.CVnode<Test>): any {
+  return (
+    <>
+      <Header />
+      {/*{console.log('la', vnode.attrs.module.tag)}*/}
+      <vnode.attrs.module.tag stateman={vnode.attrs.module.stateman} />
+      <Footer />
+    </>
+  );
 }
 
-
-const mainContent = (vnode) => (
-  <div>
-    <Header />
-    <vnode.attrs.module.tag stateman={vnode.attrs.module.stateman} />
-    <Footer />
-  </div>
-);
-
-class LayoutClient implements m.ClassComponent {
-  view(vnode) {
-    return (
+export default class Layout implements m.ClassComponent<Test> {
+  view(vnode: m.CVnode<Test>): any {
+    return process.env.BROWSER_ENV ? (
+      // Layout Client
       mainContent(vnode)
-    );
-  }
-}
-
-class LayoutServer implements m.ClassComponent {
-  view(vnode) {
-    return (
+    ) : (
+      // Layout Server
       <>
         {m('!doctype[html]')}
         <html lang="fr">
@@ -66,5 +67,3 @@ class LayoutServer implements m.ClassComponent {
     );
   }
 }
-
-export default process.env.BROWSER_ENV ? LayoutClient : LayoutServer;

@@ -3,7 +3,7 @@ import m from 'mithril';
 export default class Home implements m.ClassComponent {
   static title = 'home title';
 
-  view() {
+  view(): m.Children {
     return (
       <div>
         Contenu de la page Homepage !

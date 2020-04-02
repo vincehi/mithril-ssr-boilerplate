@@ -6,18 +6,11 @@ import router from 'koa-route';
 import toHTML from 'mithril-node-render';
 
 import routes from '../app/common/routes';
-import Layout from '../app/components/Layout';
+import Layout from '../app/components/Layout/Layout';
 import stateManager from '../app/common/stateman';
 
 const app = new Koa();
 const PORT = process.env.PORT || 5030;
-
-interface Options {
-  module: {
-    tag: object;
-    stateman: object;
-  };
-}
 
 Object.keys(routes).forEach((route) => {
   app.use(router.get(route, async (ctx) => {
@@ -26,7 +19,9 @@ Object.keys(routes).forEach((route) => {
     const stateman = Object.create(stateManager);
     stateman.init({});
 
-    ctx.body = await toHTML<Options>(Layout, { module: { tag: module, stateman } });
+    console.log(module);
+
+    ctx.body = await toHTML(Layout, { module: { tag: module, stateman } });
   }));
 });
 
