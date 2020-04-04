@@ -16,14 +16,20 @@ const PORT = process.env.PORT || 5030;
 Object.keys(routes).forEach((route) => {
   app.use(router.get(route, async (ctx) => {
     const module = await routes[route].module();
-
     const stateman = Object.create(stateManager);
     stateman.init({});
 
-    // ctx.body = await toHTML(Layout, m(module,{ stateman } ));
-
-    ctx.body = await toHTML(m(Layout, {stateman}, m(module,{ stateman } )));
-    // ctx.body = m(test);
+    const attrs = Object.assign({}, {stateman});
+    ctx.body = await toHTML(
+      m(
+        Layout,
+        {stateman: attrs.stateman},
+        await toHTML(
+          m(module,{ stateman } ),
+        ),
+      ),
+      {escapeText: (vnode) => vnode} // fix escape vnode
+    );
   }));
 });
 

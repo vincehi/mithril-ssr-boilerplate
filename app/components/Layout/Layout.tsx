@@ -1,4 +1,4 @@
-import m, {ClassComponent, ComponentTypes} from 'mithril';
+import m from 'mithril';
 import Header from './Header';
 import Footer from './Footer';
 import Script from './Script';
@@ -28,6 +28,7 @@ export interface Test {
 }
 
 function mainContent(vnode: m.CVnode<Test>): any {
+  console.log('layout : ', vnode.attrs.stateman?.state.contact ? ' Le state EST chargé ' : ' Le state PAS chargé ')
   return (
     <>
       <Header />
@@ -59,7 +60,7 @@ export default class Layout implements m.ClassComponent<Test> {
               {mainContent(vnode)}
             </div>
             <Script stateman={vnode.attrs.stateman} />
-            <script src="/js/app.js" />
+            <script src="/js/apps.js" />
           </body>
         </html>
       </>

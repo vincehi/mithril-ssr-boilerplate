@@ -1,8 +1,7 @@
-import m, {ComponentTypes} from 'mithril';
+import m from 'mithril';
 import Layout from './components/Layout/Layout';
 import routes from './common/routes';
 import stateManager from './common/stateman';
-import toHTML from "mithril-node-render";
 
 
 interface Attrs {
@@ -23,8 +22,8 @@ Object.keys(routes).forEach((route: string) => {
     onmatch: () => routes[route].module().then((resp: m.Component) => resp),
 
     render: (vnode) => {
-      // console.log(vnode)
-      Object.assign(vnode.attrs, attrs);
+      console.log(vnode)
+      // Object.assign(vnode.attrs, attrs);
       // document.title = (vnode.tag as m.Comp<object, {title: string}>).title;
       document.title = vnode.tag.title;
       console.log(vnode);
