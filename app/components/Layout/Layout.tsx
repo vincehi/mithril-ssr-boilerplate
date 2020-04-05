@@ -14,7 +14,7 @@ export interface Attrs {
   };
 }
 
-function mainContent(vnode: m.CVnode<Attrs>): m.Vnode {
+function mainContent(vnode: m.CVnode<Attrs>): any {
   // console.log('layout :', vnode.attrs.stateman?.state.contact ? ' Le state EST chargé ' : ' Le state PAS chargé ');
   return (
     <>
@@ -26,7 +26,7 @@ function mainContent(vnode: m.CVnode<Attrs>): m.Vnode {
 }
 
 export default class Layout implements m.ClassComponent<Attrs> {
-  view(vnode: m.CVnode<Attrs>): m.Children {
+  view(vnode: m.CVnode<Attrs>): any {
     return process.env.BROWSER_ENV ? (
       // Layout Client
       mainContent(vnode)

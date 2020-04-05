@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5030;
 
 Object.keys(routes).forEach((route) => {
   app.use(router.get(route, async (ctx) => {
-    const module = await routes[route].module();
+    const module = await routes[route].module;
     const stateman = Object.create(stateManager);
     stateman.init({});
 
