@@ -19,16 +19,15 @@ Object.keys(routes).forEach((route) => {
     const stateman = Object.create(stateManager);
     stateman.init({});
 
-    const attrs = Object.assign({}, {stateman});
     ctx.body = await toHTML(
       m(
         Layout,
-        {stateman: attrs.stateman},
+        { stateman },
         await toHTML(
-          m(module,{ stateman } ),
+          m(module, { stateman }),
         ),
       ),
-      {escapeText: (vnode) => vnode} // fix escape vnode
+      { escapeText: (vnode) => vnode }, // fix escape vnode
     );
   }));
 });

@@ -1,9 +1,13 @@
 declare module 'mithril-node-render' {
   import m from 'mithril';
 
-  function render<COMPONENT = {}, OPTIONS = {}>(
+  function render<COMPONENT = {}>(
     component: COMPONENT,
-    options?: OPTIONS,
+    options?: {
+      escapeAttribute?: (vnode: string) => string;
+      escapeText?: (vnode: string) => string;
+      xml?: boolean;
+    },
   ): Promise<m.Component>;
 
   export = render;

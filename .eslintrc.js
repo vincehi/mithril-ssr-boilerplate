@@ -1,35 +1,36 @@
 // https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md
 // https://github.com/iamturns/create-exposed-app/blob/master/.eslintrc.js
-{
-  "parser": "@typescript-eslint/parser",
-  "env": {
-    "es6": true,
-    "browser": true,
-    "node": true,
-    "commonjs": false
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  env: {
+    es6: true,
+    browser: true,
+    node: true,
+    commonjs: false
   },
-  "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true
     },
-    "project": "./tsconfig.json"
+    tsconfigRootDir: __dirname,
+    project: "./tsconfig.json"
   },
-  "settings": {
-    "react": {
-      "pragma": "m"
+  settings: {
+    react: {
+      pragma: "m"
     },
-    "linkComponents": [
+    linkComponents: [
       // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
       "Hyperlink",
       {
-        "name": "m.route.Link",
-        "linkAttribute": "href"
+        name: "m.route.Link",
+        linkAttribute: "href"
       }
     ]
   },
-  "extends": [
+  extends: [
     "airbnb-typescript",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
@@ -37,13 +38,13 @@
     "plugin:unicorn/recommended",
     "plugin:promise/recommended"
   ],
-  "plugins": [
+  plugins: [
     "react",
     "@typescript-eslint",
     "unicorn",
     "promise"
   ],
-  "rules": {
+  rules: {
     "react/jsx-uses-react": [
       "error"
     ],
@@ -53,8 +54,8 @@
     "no-param-reassign": [
       "error",
       {
-        "props": true,
-        "ignorePropertyModificationsFor": [
+        props: true,
+        ignorePropertyModificationsFor: [
           "vnode"
         ]
       }
@@ -65,7 +66,7 @@
     "unicorn/filename-case": [
       "error",
       {
-        "case": "kebabCase"
+        case: "kebabCase"
       }
     ],
     // Common abbreviations are known and readable
@@ -73,7 +74,7 @@
     "class-methods-use-this": [
       "error",
       {
-        "exceptMethods": [
+        exceptMethods: [
           "oninit",
           "oncreate",
           "onbeforeremove",
@@ -85,17 +86,17 @@
       }
     ]
   },
-  "overrides": [
+  overrides: [
     {
-      "files": [
+      files: [
         "server/**"
       ],
-      "rules": {
+      rules: {
         "no-param-reassign": [
           "error",
           {
-            "props": true,
-            "ignorePropertyModificationsFor": [
+            props: true,
+            ignorePropertyModificationsFor: [
               "ctx"
             ]
           }
@@ -106,15 +107,15 @@
       }
     },
     {
-      "files": [
+      files: [
         "app/components/**",
         "app/pages/**"
       ],
-      "rules": {
+      rules: {
         "unicorn/filename-case": [
           "error",
           {
-            "case": "pascalCase"
+            case: "pascalCase"
           }
         ]
       }

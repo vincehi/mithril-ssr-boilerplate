@@ -1,7 +1,6 @@
 import m from 'mithril';
 import Header from './Header';
 import Footer from './Footer';
-import Script from './Script';
 
 declare global {
   interface Window {
@@ -9,26 +8,14 @@ declare global {
   }
 }
 
-// interface Ici {
-//   (test: string): JSX.Element;
-// }
-
-interface One {
-  module: any;
-}
-
-export interface Test {
-  module: {
-    stateman: object;
-    // tag: Ici;
-    tag: (() => m.Vnode) & {
-      title?: string;
-    };
+export interface Attrs {
+  stateman: {
+    getString: () => void;
   };
 }
 
-function mainContent(vnode: m.CVnode<Test>): any {
-  console.log('layout : ', vnode.attrs.stateman?.state.contact ? ' Le state EST chargé ' : ' Le state PAS chargé ')
+function mainContent(vnode: m.CVnode<Attrs>): m.Vnode {
+  // console.log('layout :', vnode.attrs.stateman?.state.contact ? ' Le state EST chargé ' : ' Le state PAS chargé ');
   return (
     <>
       <Header />
@@ -38,8 +25,8 @@ function mainContent(vnode: m.CVnode<Test>): any {
   );
 }
 
-export default class Layout implements m.ClassComponent<Test> {
-  view(vnode: m.CVnode<Test>): any {
+export default class Layout implements m.ClassComponent<Attrs> {
+  view(vnode: m.CVnode<Attrs>): m.Children {
     return process.env.BROWSER_ENV ? (
       // Layout Client
       mainContent(vnode)
@@ -53,14 +40,16 @@ export default class Layout implements m.ClassComponent<Test> {
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
             <meta httpEquiv="x-ua-compatible" content="ie=edge" />
             <meta name="description" content="description ici" />
-            {/*<title>{vnode.attrs.module.tag.title}</title>*/}
+            {/* <title>{vnode.attrs.module.tag.title}</title> */}
           </head>
           <body>
             <div id="mainContent">
               {mainContent(vnode)}
             </div>
-            <Script stateman={vnode.attrs.stateman} />
-            <script src="/js/apps.js" />
+            <script>
+              {`window.preloadedState = ${vnode.attrs.stateman.getString()}`}
+            </script>
+            <script src="/js/app.js" />
           </body>
         </html>
       </>
