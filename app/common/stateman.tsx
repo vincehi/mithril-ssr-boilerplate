@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import safeSet from 'lodash/set';
+import safeGet from 'lodash/get';
 
 const stateman = {
   state: {},
@@ -6,9 +7,9 @@ const stateman = {
     stateman.state = JSON.parse(JSON.stringify(initialState)) || {};
   },
 
-  get: (field: string): void => _.get(stateman.state, field, null),
+  get: (field: string): void => safeGet(stateman.state, field, null),
 
-  set: (field: string, value: object) => _.set(stateman.state, field, value),
+  set: (field: string, value: object) => safeSet(stateman.state, field, value),
 
   getString: () => JSON.stringify(stateman.state),
 };

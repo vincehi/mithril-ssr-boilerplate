@@ -10,18 +10,16 @@ export interface Attrs {
   stateman: Stateman;
 }
 
-interface State {
-  content: {
-    name?: {
-      first: string;
-    };
-  };
-}
-
 export default class Contact implements m.ClassComponent<Attrs> {
   static title = 'contact title';
 
-  private state: State;
+  private state: {
+    content: {
+      name?: {
+        first: string;
+      };
+    };
+  };
 
   constructor() {
     this.state = {
