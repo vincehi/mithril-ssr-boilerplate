@@ -6,7 +6,7 @@ interface Stateman {
   set: (url: string) => void;
 }
 
-interface Attrs {
+export interface Attrs {
   stateman: Stateman;
 }
 

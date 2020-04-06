@@ -7,6 +7,12 @@ interface Attrs {
   stateman: object;
 }
 
+declare global {
+  interface Window {
+    preloadedState: object;
+  }
+}
+
 const sharedState = window.preloadedState || {};
 const stateman = Object.create(stateManager);
 stateman.init(sharedState);
@@ -15,7 +21,7 @@ const clientRoutes: m.RouteDefs = {};
 Object.keys(routes).forEach((route: string) => {
   clientRoutes[route] = {
 
-    onmatch: () => routes[route].module.then((resp: m.Component) => resp),
+    onmatch: () => routes[route].module.then((resp) => resp),
 
     render: (vnode) => {
       Object.assign(vnode.attrs, { stateman });

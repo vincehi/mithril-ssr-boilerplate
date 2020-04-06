@@ -2,19 +2,13 @@ import m from 'mithril';
 import Header from './Header';
 import Footer from './Footer';
 
-declare global {
-  interface Window {
-    preloadedState: object;
-  }
-}
-
 export interface Attrs {
   stateman: {
     getString: () => void;
   };
 }
 
-function mainContent(vnode: m.CVnode<Attrs>): any {
+function mainContent(vnode: m.CVnode<Attrs>): m.Children {
   // console.log('layout :', vnode.attrs.stateman?.state.contact ? ' Le state EST chargé ' : ' Le state PAS chargé ');
   return (
     <>
@@ -26,7 +20,7 @@ function mainContent(vnode: m.CVnode<Attrs>): any {
 }
 
 export default class Layout implements m.ClassComponent<Attrs> {
-  view(vnode: m.CVnode<Attrs>): any {
+  view(vnode: m.CVnode<Attrs>): m.Children {
     return process.env.BROWSER_ENV ? (
       // Layout Client
       mainContent(vnode)
