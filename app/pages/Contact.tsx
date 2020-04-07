@@ -13,23 +13,30 @@ export interface Attrs {
 export default class Contact implements m.ClassComponent<Attrs> {
   static title = 'contact title';
 
-  private content!: {
-    name?: {
+  private content: {
+    name: {
       first: string;
     };
   };
 
-  constructor() {
-    this.content = {};
+  private readonly stateman: Stateman;
+
+  constructor({ attrs: { stateman } }: m.CVnode<Attrs>) {
+    this.content = {
+      name: {
+        first: '',
+      },
+    };
+    this.stateman = stateman;
   }
 
   oninit(
-    { attrs: { stateman } }: m.CVnode<Attrs>,
+    vnode: m.CVnode<Attrs>,
     waitFor = (state: Promise<object>): object => state,
   ): void {
     waitFor(
       new Promise((resolve) => {
-        contentManager.bind(this)('https://randomuser.me/api/', stateman, resolve);
+        contentManager.bind(this)('https://randomuser.me/api/', this.stateman, resolve);
       }),
     );
   }
@@ -37,7 +44,7 @@ export default class Contact implements m.ClassComponent<Attrs> {
   view(): m.Children {
     return (
       <div>
-        {this.content.name
+        {this.content.name.first
           ? [
             <div>
               {this.content.name.first}

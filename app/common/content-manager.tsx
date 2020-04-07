@@ -5,7 +5,7 @@ import m from 'mithril';
 // const localUrl = 'http://' + (process.browser ? window.location.host : '127.0.0.1:' + port);
 // const localData = localUrl + '/docs';
 
-interface Stateman {
+export interface Stateman {
   get: (url: string) => object;
   set: (key: string, value: object) => void;
 }
