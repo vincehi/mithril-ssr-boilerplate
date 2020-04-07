@@ -12,12 +12,11 @@ interface Routes {
 const routes: Routes = {
   '/': {
     name: 'Accueil',
-    module: new Promise((resolve) => {
+    module: new Promise((resolve, reject) => {
       import(/* webpackChunkName: "Home" */ '../pages/Home')
-        .then(({ default: module }) => {
-          resolve(module);
-          throw new Error('error');
-        })
+        .then(
+          ({ default: module }) => resolve(module),
+        )
         .catch((error) => {
           console.log(error);
         });
@@ -27,10 +26,9 @@ const routes: Routes = {
     name: 'Contact',
     module: new Promise((resolve) => {
       import(/* webpackChunkName: "Contact" */ '../pages/Contact')
-        .then(({ default: module }) => {
-          resolve(module);
-          throw new Error('error');
-        })
+        .then(
+          ({ default: module }) => resolve(module)
+        )
         .catch((error) => {
           console.log(error);
         });

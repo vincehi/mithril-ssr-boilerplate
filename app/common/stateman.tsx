@@ -1,17 +1,20 @@
-import safeSet from 'lodash/set';
-import safeGet from 'lodash/get';
+export default class Stateman {
+  private _state: object;
 
-const stateman = {
-  state: {},
-  init: (initialState: object): void => {
-    stateman.state = JSON.parse(JSON.stringify(initialState)) || {};
-  },
+  constructor(initialState: object) {
+    this._state = {};
+    this.init(initialState);
+  }
 
-  get: (field: string): void => safeGet(stateman.state, field, null),
+  init(initialState: object = {}) {
+    this._state = { ...initialState };
+  }
 
-  set: (field: string, value: object) => safeSet(stateman.state, field, value),
+  get state() {
+    return this._state;
+  }
 
-  getString: () => JSON.stringify(stateman.state),
-};
-
-export default stateman;
+  set state(value) {
+    this._state = value;
+  }
+}

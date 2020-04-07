@@ -1,7 +1,7 @@
 import m from 'mithril';
 import Layout from './components/Layout/Layout';
 import routes from './common/routes';
-import stateManager from './common/stateman';
+import StateManager from './common/stateman';
 
 interface Attrs {
   stateman: object;
@@ -13,9 +13,7 @@ declare global {
   }
 }
 
-const sharedState = window.preloadedState || {};
-const stateman = Object.create(stateManager);
-stateman.init(sharedState);
+const stateman = new StateManager(window.preloadedState || {});
 
 const clientRoutes: m.RouteDefs = {};
 Object.keys(routes).forEach((route: string) => {

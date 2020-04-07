@@ -2,8 +2,9 @@ import m from 'mithril';
 import contentManager from '../common/content-manager';
 
 interface Stateman {
-  get: (url: string) => object;
-  set: (url: string) => void;
+  state: {
+    [content: string]: object;
+  };
 }
 
 export interface Attrs {
@@ -36,7 +37,7 @@ export default class Contact implements m.ClassComponent<Attrs> {
   ): void {
     waitFor(
       new Promise((resolve) => {
-        contentManager.bind(this)('https://randomuser.me/api/', this.stateman, resolve);
+        contentManager(this, 'https://randomuser.me/api/', 'contact', resolve);
       }),
     );
   }

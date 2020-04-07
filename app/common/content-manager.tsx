@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import m from 'mithril';
 
 // const port = process.env.PORT || 5000;
@@ -6,30 +6,40 @@ import m from 'mithril';
 // const localData = localUrl + '/docs';
 
 export interface Stateman {
-  get: (url: string) => object;
-  set: (key: string, value: object) => void;
+  state: {
+    [content: string]: object;
+  };
 }
 
-export default function (url: string, stateman: Stateman, resolve: (state: any) => void) {
-  const statemanContent = stateman.get('contact.content');
+export default function (
+  that: object,
+  url: string,
+  objectKey: string,
+  resolve: (state: object) => void,
+): void {
+  const statemanContent = that.stateman.state[objectKey];
+
+  console.log(that)
 
   if (!statemanContent) {
     axios.get(url)
       .then((resp) => {
-        console.log('setState');
-        stateman.set('contact.content', resp.data);
-        resolve(this.content = resp.data.results[0]);
+        that.stateman.state[objectKey] = resp.data;
         if (process.env.BROWSER_ENV) {
           m.redraw();
         }
+        that.content = resp.data.results[0];
+        return resolve(that.content);
       })
       .catch((error) => {
         console.log(error);
+        return;
       })
       .then(() => {
         // always executed
       });
   } else {
-    resolve(this.content = statemanContent.results[0]);
+    that.content = statemanContent.results[0];
+    resolve(that.content);
   }
 }

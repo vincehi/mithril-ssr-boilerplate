@@ -8,7 +8,7 @@ import m from 'mithril';
 
 import routes from '../app/common/routes';
 import Layout from '../app/components/Layout/Layout';
-import stateManager from '../app/common/stateman';
+import StateManager from '../app/common/stateman';
 
 const app = new Koa();
 const PORT = process.env.PORT || 5030;
@@ -16,8 +16,7 @@ const PORT = process.env.PORT || 5030;
 Object.keys(routes).forEach((route) => {
   app.use(router.get(route, async (ctx) => {
     const module = await routes[route].module;
-    const stateman = Object.create(stateManager);
-    stateman.init({});
+    const stateman = new StateManager({});
 
     ctx.body = await toHTML(
       m(

@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 export interface Attrs {
   stateman: {
-    getString: () => void;
+    state: object;
   };
 }
 
@@ -41,7 +41,7 @@ export default class Layout implements m.ClassComponent<Attrs> {
               {mainContent(vnode)}
             </div>
             <script>
-              {`window.preloadedState = ${vnode.attrs.stateman.getString()}`}
+              {`window.preloadedState = ${JSON.stringify(vnode.attrs.stateman.state)}`}
             </script>
             <script src="/js/app.js" />
           </body>

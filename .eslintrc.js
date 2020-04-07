@@ -56,7 +56,8 @@ module.exports = {
       {
         props: true,
         ignorePropertyModificationsFor: [
-          "vnode"
+          "vnode",
+          "stateman"
         ]
       }
     ],
