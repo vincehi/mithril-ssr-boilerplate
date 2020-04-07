@@ -13,18 +13,14 @@ export interface Attrs {
 export default class Contact implements m.ClassComponent<Attrs> {
   static title = 'contact title';
 
-  private state: {
-    content: {
-      name?: {
-        first: string;
-      };
+  private content!: {
+    name?: {
+      first: string;
     };
   };
 
   constructor() {
-    this.state = {
-      content: {},
-    };
+    this.content = {};
   }
 
   oninit(
@@ -41,10 +37,10 @@ export default class Contact implements m.ClassComponent<Attrs> {
   view(): m.Children {
     return (
       <div>
-        {this.state.content.name
+        {this.content.name
           ? [
             <div>
-              {this.state.content.name.first}
+              {this.content.name.first}
             </div>,
           ] : 'loading'}
         Contenu de la page Contact !

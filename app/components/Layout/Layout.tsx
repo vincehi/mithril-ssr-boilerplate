@@ -12,7 +12,7 @@ function mainContent(vnode: m.CVnode<Attrs>): m.Children {
   // console.log('layout :', vnode.attrs.stateman?.state.contact ? ' Le state EST chargé ' : ' Le state PAS chargé ');
   return (
     <>
-      <Header />
+      <Header test={{ ste: 'hdgsd' }} />
       {vnode.children}
       <Footer />
     </>

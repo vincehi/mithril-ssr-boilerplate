@@ -2,7 +2,11 @@ import m from 'mithril';
 
 const RouteLink = m.route.Link as any;
 
-export default class Header implements m.ClassComponent {
+interface Attrs {
+  test: string;
+};
+
+export default class Header implements m.ClassComponent<Attrs> {
   view(): m.Children {
     return (
       <header>

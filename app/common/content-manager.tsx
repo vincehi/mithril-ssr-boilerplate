@@ -18,7 +18,7 @@ export default function (url: string, stateman: Stateman, resolve: (state: any) 
       .then((resp) => {
         console.log('setState');
         stateman.set('contact.content', resp.data);
-        resolve(this.state.content = resp.data.results[0]);
+        resolve(this.content = resp.data.results[0]);
         if (process.env.BROWSER_ENV) {
           m.redraw();
         }
@@ -30,6 +30,6 @@ export default function (url: string, stateman: Stateman, resolve: (state: any) 
         // always executed
       });
   } else {
-    resolve(this.state.content = statemanContent.results[0]);
+    resolve(this.content = statemanContent.results[0]);
   }
 }
