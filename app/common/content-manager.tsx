@@ -17,14 +17,12 @@ export default function (
   objectKey: string,
   resolve: (state: object) => void,
 ): void {
-  const statemanContent = that.stateman.state[objectKey];
+  const statemanContent = that.stateman();
 
-  console.log(that)
-
-  if (!statemanContent) {
+  if (!statemanContent.contact) {
     axios.get(url)
       .then((resp) => {
-        that.stateman.state[objectKey] = resp.data;
+        that.stateman({contact: resp.data});
         if (process.env.BROWSER_ENV) {
           m.redraw();
         }
@@ -39,7 +37,7 @@ export default function (
         // always executed
       });
   } else {
-    that.content = statemanContent.results[0];
+    that.content = statemanContent.contact.results[0];
     resolve(that.content);
   }
 }

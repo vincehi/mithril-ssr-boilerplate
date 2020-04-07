@@ -5,10 +5,10 @@ import router from 'koa-route';
 
 import toHTML from 'mithril-node-render';
 import m from 'mithril';
+import stream from 'mithril/stream';
 
 import routes from '../app/common/routes';
 import Layout from '../app/components/Layout/Layout';
-import StateManager from '../app/common/stateman';
 
 const app = new Koa();
 const PORT = process.env.PORT || 5030;
@@ -16,7 +16,8 @@ const PORT = process.env.PORT || 5030;
 Object.keys(routes).forEach((route) => {
   app.use(router.get(route, async (ctx) => {
     const module = await routes[route].module;
-    const stateman = new StateManager({});
+
+    const stateman = stream({});
 
     ctx.body = await toHTML(
       m(

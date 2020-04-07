@@ -1,7 +1,7 @@
 import m from 'mithril';
+import stream from 'mithril/stream';
 import Layout from './components/Layout/Layout';
 import routes from './common/routes';
-import StateManager from './common/stateman';
 
 interface Attrs {
   stateman: object;
@@ -12,8 +12,8 @@ declare global {
     preloadedState: object;
   }
 }
-
-const stateman = new StateManager(window.preloadedState || {});
+const preloadState = JSON.parse(JSON.stringify(window.preloadedState || {}));
+const stateman = stream(preloadState || {});
 
 const clientRoutes: m.RouteDefs = {};
 Object.keys(routes).forEach((route: string) => {

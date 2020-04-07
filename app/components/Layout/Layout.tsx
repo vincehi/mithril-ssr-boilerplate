@@ -41,7 +41,7 @@ export default class Layout implements m.ClassComponent<Attrs> {
               {mainContent(vnode)}
             </div>
             <script>
-              {`window.preloadedState = ${JSON.stringify(vnode.attrs.stateman.state)}`}
+              {`window.preloadedState = ${JSON.stringify(vnode.attrs.stateman())}`}
             </script>
             <script src="/js/app.js" />
           </body>
