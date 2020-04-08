@@ -18,6 +18,7 @@ function mainContent(vnode: m.CVnode<Attrs>): m.Children {
     </>
   );
 }
+// (process.env.DEBUG) && import('meiosis-tracer').then((resp) => {}
 
 export default class Layout implements m.ClassComponent<Attrs> {
   view(vnode: m.CVnode<Attrs>): m.Children {
@@ -40,6 +41,9 @@ export default class Layout implements m.ClassComponent<Attrs> {
             <div id="mainContent">
               {mainContent(vnode)}
             </div>
+            {process.env.DEBUG && (
+              <div id="tracer" style="position: fixed; top: 0px; right: 0px;"></div>
+            )}
             <script>
               {`window.preloadedState = ${JSON.stringify(vnode.attrs.stateman())}`}
             </script>

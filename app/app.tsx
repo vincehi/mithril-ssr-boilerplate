@@ -15,6 +15,12 @@ declare global {
 const preloadState = JSON.parse(JSON.stringify(window.preloadedState || {}));
 const stateman = stream(preloadState || {});
 
+if (process.env.DEBUG) {
+  import('meiosis-tracer').then(({ default: meiosisTracere }) => {
+    return meiosisTracere({ selector: '#tracer', streams: [stateman] });
+  });
+}
+
 const clientRoutes: m.RouteDefs = {};
 Object.keys(routes).forEach((route: string) => {
   clientRoutes[route] = {
@@ -24,7 +30,7 @@ Object.keys(routes).forEach((route: string) => {
     render: (vnode) => {
       Object.assign(vnode.attrs, { stateman });
       document.title = (vnode.tag as m.Comp<object, {title: string}>).title;
-      return m(Layout, { stateman }, vnode);
+      return m(Layout, vnode);
     },
   } as m.RouteResolver<Attrs>;
 });
