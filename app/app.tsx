@@ -12,13 +12,13 @@ declare global {
     preloadedState: object;
   }
 }
-const preloadState = JSON.parse(JSON.stringify(window.preloadedState || {}));
-const stateman = stream(preloadState || {});
+
+const stateman = stream(window.preloadedState || {});
 
 if (process.env.DEBUG) {
-  import('meiosis-tracer').then(({ default: meiosisTracere }) => {
-    return meiosisTracere({ selector: '#tracer', streams: [stateman] });
-  });
+  import('meiosis-tracer').then(({ default: meiosisTracer }) => meiosisTracer(
+    { selector: '#tracer', streams: [stateman] },
+  ));
 }
 
 const clientRoutes: m.RouteDefs = {};
