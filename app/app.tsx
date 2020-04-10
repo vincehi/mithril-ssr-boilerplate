@@ -21,18 +21,18 @@ if (process.env.DEBUG) {
   ));
 }
 
-const clientRoutes: m.RouteDefs = {};
-Object.keys(routes).forEach((route: string) => {
-  clientRoutes[route] = {
-
-    onmatch: () => routes[route].module.then((resp) => resp),
-
-    render: (vnode) => {
-      Object.assign(vnode.attrs, { stateman });
-      document.title = (vnode.tag as m.Comp<object, {title: string}>).title;
-      return m(Layout, vnode);
-    },
-  } as m.RouteResolver<Attrs>;
-});
+const clientRoutes: m.RouteDefs = Object.fromEntries(
+  Object.entries(routes).map(([route, val]) => [
+    route,
+    {
+      onmatch: () => val.module.then((resp) => resp),
+      render: (vnode) => {
+        Object.assign(vnode.attrs, { stateman });
+        document.title = (vnode.tag as m.Comp<object, {title: string}>).title;
+        return m(Layout, vnode);
+      },
+    } as m.RouteResolver<Attrs>,
+  ]),
+);
 
 m.route(document.querySelector('#mainContent') as HTMLElement, '/', clientRoutes);
