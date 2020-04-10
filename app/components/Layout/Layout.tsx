@@ -18,7 +18,6 @@ function mainContent(vnode: m.CVnode<Attrs>): m.Children {
     </>
   );
 }
-// (process.env.DEBUG) && import('meiosis-tracer').then((resp) => {}
 
 export default class Layout implements m.ClassComponent<Attrs> {
   view(vnode: m.CVnode<Attrs>): m.Children {

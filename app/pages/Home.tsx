@@ -1,11 +1,6 @@
 import m from 'mithril';
 
-export default class Home implements m.ClassComponent {
-  static title = 'home title';
-
-  oninit(vnode: m.CVnode) {
-  }
-
+export default class Home implements m.Component {
   view(): m.Children {
     return (
       <div>

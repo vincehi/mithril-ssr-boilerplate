@@ -12,22 +12,19 @@ export interface Stateman {
 }
 
 export default function (
-  that: object,
+  stateman: object,
   url: string,
   objectKey: string,
   resolve: (state: object) => void,
 ): void {
-  const statemanContent = that.stateman();
 
-  if (!statemanContent.contact) {
+  if (!stateman().contact) {
     axios.get(url)
       .then((resp) => {
-        that.stateman({contact: resp.data});
         if (process.env.BROWSER_ENV) {
           m.redraw();
         }
-        that.content = resp.data.results[0];
-        return resolve(that.content);
+        return resolve(stateman({contact: resp.data}));
       })
       .catch((error) => {
         console.log(error);
@@ -36,8 +33,5 @@ export default function (
       .then(() => {
         // always executed
       });
-  } else {
-    that.content = statemanContent.contact.results[0];
-    resolve(that.content);
   }
 }
