@@ -32,3 +32,4 @@ I do not want to load a superfluous library and maximize the library power I hav
 - [Meiosis](http://meiosis.js.org)
 - [A lire](https://flems.io/#0=N4IgZglgNgpgziAXAbVAOwIYFsZJAOgAsAXLKEAGhAGMB7NYmBvEAXwvW10QICsEqdBk2J4hcYgAIA5jFJxpkgLyTgAHTSTJANwgwA7oh3KAfJI1atWABRqQENAAcArsTsVVFy1u0YozmCNtfAxiYgAnOHwsBQovb3oHF2IjGFMdELDI-GpCDDRZaxh8Ygxw2WJ8X38YAEp4yVZ6tFYNDXEpDEdHZUlrWvT1TUlYKRjFFQByCTLiSbbh8LlncM0h710DI3705Aarawrxj3XvS2P9y1z82SC-AMHx3uqA1uHvJrj38+tJwgBGSYecbNbwAXS8bzeGiw0VozgY1gAJrRqM4cAx8AAjWhIgCeHi6jlqlBAcBgsGoxAg9AQPAALIgAMz0tgcECYHB4HJwAQ0eiMZg8NhgqhQBwAazpqA5XDwWAgxEI4WgpJW5B4JGIjjgiAA9HqEY4JdIcrQsHqFUqVVAAAL-fAOgBslsVyug+H4pOIeMc3DJ1BVjlErDBrCAA)
 - [Aussi](https://github.com/paldepind/flyd)
+- [10++ TypeScript Pro tips/patterns](https://medium.com/@martin_hotell/10-typescript-pro-tips-patterns-with-or-without-react-5799488d6680)
