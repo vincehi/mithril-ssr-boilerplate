@@ -5,10 +5,11 @@ import router from 'koa-route';
 
 import toHTML from 'mithril-node-render';
 import m from 'mithril';
-import stream from 'mithril/stream';
 
-import routes from '../app/common/routes';
-import Layout from '../app/components/Layout/Layout';
+import routes from '../common/routes';
+import Layout from '../components/Layout/Layout';
+
+import { ssr, client } from '../common/urql';
 
 const app = new Koa();
 const PORT = process.env.PORT || 5030;
@@ -17,14 +18,12 @@ Object.keys(routes).forEach((route) => {
   app.use(router.get(route, async (ctx) => {
     const module = await routes[route].module;
 
-    const stateman = stream({});
-
     ctx.body = await toHTML(
       m(
         Layout,
-        { stateman },
+        { ssr },
         await toHTML(
-          m(module, { stateman }),
+          m(module, { ssr, client: client }),
         ),
       ),
       { escapeText: (vnode) => vnode }, // fix escape vnode

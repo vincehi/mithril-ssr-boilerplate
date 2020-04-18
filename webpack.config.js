@@ -1,6 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const WebpackShellPlugin = require('webpack-shell-plugin-alt');
+const NodemonPlugin = require('nodemon-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const webpack = require('webpack');
 
@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
       // Server Config
       // name: 'server',
       entry: {
-        server: './server/server-dev.tsx',
+        server: './src/server/server-dev.tsx',
       },
       output: {
         path: path.join(__dirname, 'build'),
@@ -43,14 +43,18 @@ module.exports = (env, argv) => {
         ],
       },
       resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.mjs', '.tsx', '.ts', '.js'],
         alias: {
           mithril$: path.resolve(__dirname, 'lib/m.js'),
         },
       },
       plugins: [
-        new WebpackShellPlugin({
-          onBuildEnd: ['npm run start'],
+        new NodemonPlugin({
+          watch: path.resolve('./build'),
+          ignore: [path.resolve('build/assets/*')],
+          verbose: true,
+          script: './build/server.js',
+          ext: 'js',
         }),
         new CircularDependencyPlugin({
           // exclude detection of files based on a RegExp
@@ -72,7 +76,7 @@ module.exports = (env, argv) => {
     {
       // Client Config
       // name: 'client',
-      entry: './app/app.tsx',
+      entry: './src/client/app.tsx',
       output: {
         path: path.resolve(__dirname, './build/assets'),
         filename: 'js/app.js',
@@ -91,7 +95,7 @@ module.exports = (env, argv) => {
         ],
       },
       resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.mjs', '.tsx', '.ts', '.js'],
         alias: {
           mithril$: path.resolve(__dirname, 'lib/m.js'),
         },

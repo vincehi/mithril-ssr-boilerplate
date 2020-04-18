@@ -90,7 +90,7 @@ module.exports = {
   overrides: [
     {
       files: [
-        "server/**"
+        "src/server/**"
       ],
       rules: {
         "no-param-reassign": [
@@ -109,8 +109,8 @@ module.exports = {
     },
     {
       files: [
-        "app/components/**",
-        "app/pages/**"
+        "src/components/**",
+        "src/pages/**"
       ],
       rules: {
         "unicorn/filename-case": [

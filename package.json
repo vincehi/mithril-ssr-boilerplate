@@ -10,9 +10,8 @@
     "build:prod": "rm -rf build && webpack --mode production --config webpack.config.js",
     "build:dev": "rm -rf build && webpack --mode development --config webpack.config.js",
     "watch": "rm -rf build && webpack --watch --mode development --config webpack.config.js",
-    "start": "nodemon build/server.js",
-    "lint": "eslint 'app/**' 'server/**'",
-    "lint:fix": "eslint 'app/**' 'server/**' --fix"
+    "lint": "eslint 'src/**'",
+    "lint:fix": "eslint 'src/**' --fix"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +27,7 @@
     "@types/koa-static": "^4.0.1",
     "@types/lodash": "^4.14.149",
     "@types/mithril": "^2.0.2",
+    "@types/node-fetch": "^2.5.6",
     "@typescript-eslint/eslint-plugin": "^2.25.0",
     "@typescript-eslint/parser": "^2.25.0",
     "babel-eslint": "^10.0.3",
@@ -46,7 +46,9 @@
     "install": "^0.13.0",
     "meiosis-tracer": "^3.0.0",
     "nodemon": "^2.0.2",
+    "nodemon-webpack-plugin": "^4.3.1",
     "npm": "^6.14.4",
+    "npm-run-all": "^4.1.5",
     "typescript": "^3.8.3",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
@@ -54,23 +56,17 @@
     "webpack-shell-plugin-alt": "^1.4.0"
   },
   "dependencies": {
+    "@urql/core": "^1.10.9",
     "axios": "^0.19.2",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
     "koa": "^2.11.0",
     "koa-route": "^3.2.0",
     "koa-static": "^5.0.0",
     "lodash": "^4.17.15",
     "mithril": "^2.0.4",
-    "mithril-node-render": "^3.0.0"
-  },
-  "nodemonConfig": {
-    "inspect": true,
-    "watch": [
-      "build"
-    ],
-    "ignore": [
-      "build/assets/*"
-    ],
-    "delay": "0"
+    "mithril-node-render": "^3.0.0",
+    "node-fetch": "^2.6.0"
   },
   "sideEffects": false
 }
