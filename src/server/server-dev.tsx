@@ -34,6 +34,6 @@ Object.keys(routes).forEach((route) => {
 app.use(statics(path.join(__dirname, '..', 'build/assets')));
 
 app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
+  console.log(`🌍 http://localhost:${PORT}`);
   console.log('Press Ctrl + C to quit.');
 });

@@ -1,6 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const NodemonPlugin = require('nodemon-webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin-alt');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const webpack = require('webpack');
 
@@ -49,12 +49,8 @@ module.exports = (env, argv) => {
         },
       },
       plugins: [
-        new NodemonPlugin({
-          watch: path.resolve('./build'),
-          ignore: [path.resolve('build/assets/*')],
-          verbose: true,
-          script: './build/server.js',
-          ext: 'js',
+        new WebpackShellPlugin({
+          onBuildEnd: ['npm run start'],
         }),
         new CircularDependencyPlugin({
           // exclude detection of files based on a RegExp

@@ -25,7 +25,6 @@ export default class Home implements m.Component {
   ) {
     waitFor(
       new Promise((resolve) => {
-        console.log(client)
         client
           .query(request, {
             /* vars */
@@ -33,7 +32,9 @@ export default class Home implements m.Component {
           .toPromise()
           .then(result => {
             resolve(this.query = result);
-            m.redraw();
+            if (process.env.BROWSER_ENV) {
+              m.redraw();
+            }
           });
       }),
     );
