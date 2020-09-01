@@ -15,15 +15,13 @@ declare global {
   }
 }
 
-// const stateman = stream(window.preloadedState || {});
 ssr.restoreData(window.__URQL_DATA__);
-// console.log(ssr)
 
-// if (process.env.DEBUG) {
-//   import('meiosis-tracer').then(({ default: meiosisTracer }) => meiosisTracer(
-//     { selector: '#tracer', streams: [ssr] },
-//   ));
-// }
+if (process.env.DEBUG) {
+  import('meiosis-tracer').then(({ default: meiosisTracer }) => meiosisTracer(
+    { selector: '#tracer', streams: [] },
+  ));
+}
 
 const clientRoutes: m.RouteDefs = Object.fromEntries(
   Object.entries(routes).map(([route, val]) => [

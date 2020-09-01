@@ -1,19 +1,17 @@
 import m from 'mithril';
+import { pipe, subscribe } from 'wonka';
 
 const request = `
     {
-        pokemon(name: "Pikachu") {
-            id
-            number
-            name
-            attacks {
-                special {
-                    name
-                    type
-                    damage
-                }
-            }
+        getCityByName(name: "Gothenburg") {
+        id
+        name
+        country
+        coord {
+          lon
+          lat
         }
+      }
     }
 `;
 
@@ -25,6 +23,7 @@ export default class Home implements m.Component {
   ) {
     waitFor(
       new Promise((resolve) => {
+
         client
           .query(request, {
             /* vars */
@@ -36,6 +35,7 @@ export default class Home implements m.Component {
               m.redraw();
             }
           });
+
       }),
     );
   }
@@ -44,8 +44,9 @@ export default class Home implements m.Component {
       <div>
         <div>
           {this.query
-            ? this.query.data.pokemon.name
+            ? this.query.data.getCityByName.name
             : 'Loading'}
+          {console.log(this.query)}
         </div>
         Contenu de la page Homepage !
       </div>

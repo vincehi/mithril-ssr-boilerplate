@@ -5,6 +5,8 @@ import {
   fetchExchange,
   ssrExchange
 } from "@urql/core";
+
+import { devtoolsExchange } from "@urql/devtools";
 import nodeFetch from 'node-fetch';
 
 export const ssr = ssrExchange({
@@ -13,7 +15,7 @@ export const ssr = ssrExchange({
 });
 
 export const client = createClient({
-  url: 'https://graphql-pokemon.now.sh/',
+  url: 'https://graphql-weather-api.herokuapp.com/',
   fetch: process.browser ? fetch : nodeFetch,
   exchanges: [
     dedupExchange,

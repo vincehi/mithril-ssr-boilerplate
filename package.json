@@ -64,7 +64,8 @@
     "mithril": "^2.0.4",
     "mithril-node-render": "^3.0.0",
     "node-fetch": "^2.6.0",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "wonka": "^4.0.9"
   },
   "nodemonConfig": {
     "inspect": true,
