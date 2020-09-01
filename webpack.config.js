@@ -27,7 +27,7 @@ module.exports = (env, argv) => {
       },
       externals: [
         nodeExternals({
-          whitelist: ['mithril'], // For resolve alias in target node
+          allowlist: ['mithril'], // For resolve alias in target node
         }),
       ], // Need this to avoid error when working with Express
       module: {
