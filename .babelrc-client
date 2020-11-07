@@ -25,6 +25,8 @@
         "pragma": "m",
         "pragmaFrag": "'['",
         "runtime": "classic"
+//        "runtime": "automatic",
+//        "importSource": "m"
       }
     ],
     "@babel/plugin-syntax-dynamic-import"

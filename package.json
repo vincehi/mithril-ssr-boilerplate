@@ -12,7 +12,8 @@
     "watch": "rm -rf build && webpack --watch --mode development --config webpack.config.js",
     "start": "nodemon build/server.js",
     "lint": "eslint 'src/**'",
-    "lint:fix": "eslint 'src/**' --fix"
+    "lint:fix": "eslint 'src/**' --fix",
+    "webpack": "webpack --mode development --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -47,14 +48,14 @@
     "meiosis-tracer": "^3.0.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "typescript": "^3.8.3",
-    "webpack": "^4.44.1",
+    "webpack": "^5.4.0",
     "webpack-bundle-analyzer": "^4.1.0",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.0",
     "webpack-shell-plugin-alt": "^1.4.0"
   },
   "dependencies": {
-    "@urql/core": "^1.12.3",
+    "@urql/core": "^1.15.0",
     "graphql": "^15.2.0",
     "graphql-tag": "^2.11.0",
     "koa": "^2.13.0",
