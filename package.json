@@ -17,10 +17,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.11.5",
+    "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-react-jsx": "^7.10.4",
+    "@babel/plugin-transform-react-jsx": "^7.12.5",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-typescript": "^7.10.4",
     "@types/koa": "^2.11.4",
@@ -48,6 +48,7 @@
     "nodemon-webpack-plugin": "^4.3.2",
     "typescript": "^3.8.3",
     "webpack": "^4.44.1",
+    "webpack-bundle-analyzer": "^4.1.0",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.0",
     "webpack-shell-plugin-alt": "^1.4.0"
@@ -63,7 +64,7 @@
     "mithril": "^2.0.4",
     "mithril-node-render": "^3.0.0",
     "node-fetch": "^2.6.0",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.6",
     "wonka": "^4.0.14"
   },
   "nodemonConfig": {

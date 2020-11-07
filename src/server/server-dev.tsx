@@ -23,7 +23,7 @@ Object.keys(routes).forEach((route) => {
         Layout,
         { ssr },
         await toHTML(
-          m(module, { ssr, client: client }),
+          m(module, { ssr, client }),
         ),
       ),
       { escapeText: (vnode) => vnode }, // fix escape vnode

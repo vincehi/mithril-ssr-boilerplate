@@ -3,6 +3,8 @@ const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin-alt');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 module.exports = (env, argv) => {
   return [
@@ -52,6 +54,7 @@ module.exports = (env, argv) => {
         new WebpackShellPlugin({
           onBuildEnd: ['npm run start'],
         }),
+        new BundleAnalyzerPlugin({generateStatsFile: true, analyzerMode: false}),
         new CircularDependencyPlugin({
           // exclude detection of files based on a RegExp
           exclude: /a\.js|node_modules/,
@@ -101,6 +104,7 @@ module.exports = (env, argv) => {
           BROWSER_ENV: true,
           DEBUG: argv.mode === 'development',
         }),
+        new BundleAnalyzerPlugin({generateStatsFile: true, analyzerMode: false}),
       ],
     },
   ]
