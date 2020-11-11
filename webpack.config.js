@@ -20,6 +20,9 @@ module.exports = (env, argv) => {
         chunkFilename: '[name]-bundle.js',
       },
       mode: argv.mode,
+      optimization: {
+         usedExports: true,
+      },
       target: 'node',
       node: {
         // Need this when working with express, otherwise the build fails

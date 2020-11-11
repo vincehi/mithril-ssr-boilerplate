@@ -25,6 +25,7 @@ export default class Contact {
   static title = 'contact title';
 
   view() {
+    console.log('ici')
     return (
       <div>
         Contenu de la page Contact !!!

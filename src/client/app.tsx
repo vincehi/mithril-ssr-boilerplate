@@ -28,9 +28,11 @@ const clientRoutes: m.RouteDefs = Object.fromEntries(
     route,
     {
       // onmatch: () => val.module.then((resp) => resp),
-      onmatch: () => val.module,
+      onmatch: () => {
+        return val.module()
+      },
       render: (vnode) => {
-        Object.assign(vnode.attrs, { ssr, client });
+        // Object.assign(vnode.attrs, { ssr, client });
         // document.title = (vnode.tag as m.Comp<object, {title: string}>).title;
         return m(Layout, vnode);
       },

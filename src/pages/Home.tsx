@@ -43,10 +43,10 @@ export default class Home implements m.Component {
     return (
       <div>
         <div>
-          {this.query
-            ? this.query.data.getCityByName.name
-            : 'Loading'}
-          {console.log(this.query)}
+          {/*{this.query*/}
+          {/*  ? this.query.data.getCityByName.name*/}
+          {/*  : 'Loading'}*/}
+          {/*{console.log(this.query)}*/}
         </div>
         Contenu de la page Homepage !
       </div>

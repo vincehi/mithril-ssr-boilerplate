@@ -4,6 +4,7 @@
   "description": "ssr",
   "main": "index.js",
   "repository": "https://github.com/souricevincent/mithril-ssr-boilerplate.git",
+  "sideEffects": false,
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
@@ -22,6 +23,7 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-react-jsx": "^7.12.5",
+    "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-typescript": "^7.10.4",
     "@types/koa": "^2.11.4",

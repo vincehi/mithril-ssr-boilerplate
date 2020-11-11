@@ -43,9 +43,9 @@ export default class Layout implements m.ClassComponent<Attrs> {
             {/*{process.env.DEBUG && (*/}
             {/*  <div id="tracer" style="position: fixed; top: 0px; right: 0px;"></div>*/}
             {/*)}*/}
-            <script>
-              {`window.__URQL_DATA__ = JSON.parse('${JSON.stringify(vnode.attrs.ssr.extractData())}')`}
-            </script>
+            {/*<script>*/}
+            {/*  {`window.__URQL_DATA__ = JSON.parse('${JSON.stringify(vnode.attrs.ssr.extractData())}')`}*/}
+            {/*</script>*/}
             <script src="/js/app.js" />
           </body>
         </html>
