@@ -27,7 +27,8 @@ const clientRoutes: m.RouteDefs = Object.fromEntries(
   Object.entries(routes).map(([route, val]) => [
     route,
     {
-      onmatch: () => val.module.then((resp) => resp),
+      // onmatch: () => val.module.then((resp) => resp),
+      onmatch: () => val.module,
       render: (vnode) => {
         Object.assign(vnode.attrs, { ssr, client });
         // document.title = (vnode.tag as m.Comp<object, {title: string}>).title;

@@ -21,6 +21,7 @@ const routes: Routes = {
           console.log(error);
         });
     }),
+    // module: () => import(/* webpackChunkName: "Home" */ '../pages/Home'),
   },
   '/contact': {
     name: 'Contact',

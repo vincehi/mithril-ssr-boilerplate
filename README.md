@@ -16,8 +16,7 @@ The goal here is to create a site server side rendering very small size while ke
 I do not want to load a superfluous library and maximize the library power I have at my disposal.
 
 # To be continued
-- Later, I would develop a way to query on an external API.
-- For resource management, I integrate Strapi which is a Headless CMS.
+- Tester [https://github.com/krakenjs/jsx-pragmatic](jsx-pragmatic)
 
 # Resources
 - [creating a node express webpack app with dev and prod builds](https://medium.com/@binyamin/creating-a-node-express-webpack-app-with-dev-and-prod-builds-a4962ce51334)
