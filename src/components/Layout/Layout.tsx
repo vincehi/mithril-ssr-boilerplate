@@ -1,3 +1,4 @@
+/** @jsx m */
 import m from 'mithril';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,6 +13,7 @@ function mainContent(vnode: m.CVnode<Attrs>): m.Children {
   // console.log('layout :', vnode.attrs.stateman?.state.contact ? ' Le state EST chargé ' : ' Le state PAS chargé ');
   return (
     <>
+
       <Header test={{ ste: 'hdgsd' }} />
       {vnode.children}
       <Footer />

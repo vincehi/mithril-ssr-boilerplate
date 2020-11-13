@@ -39,15 +39,15 @@ module.exports = (env, argv) => {
           {
             test: /\.tsx?$/,
             exclude: path.resolve(__dirname, 'node_modules'),
-            loader: 'babel-loader',
+            loader: 'ts-loader',
             options: {
-              configFile: './.babelrc-server',
+              // configFile: './.tsconfig-server.json',
             },
           },
         ],
       },
       resolve: {
-        extensions: ['.mjs', '.tsx', '.ts', '.js'],
+        extensions: ['.mjs', '.tsx', '.ts', '.js', '.jsx'],
         alias: {
           mithril$: path.resolve(__dirname, 'lib/m.js'),
         },
@@ -88,15 +88,15 @@ module.exports = (env, argv) => {
           {
             test: /\.tsx$/,
             exclude: path.resolve(__dirname, 'node_modules'),
-            loader: 'babel-loader',
+            loader: 'ts-loader',
             options: {
-              configFile: './.babelrc-client',
+              // configFile: './.babelrc-client',
             },
           },
         ],
       },
       resolve: {
-        extensions: ['.mjs', '.tsx', '.ts', '.js'],
+        extensions: ['.mjs', '.tsx', '.ts', '.js', '.jsx'],
         alias: {
           mithril$: path.resolve(__dirname, 'lib/m.js'),
         },

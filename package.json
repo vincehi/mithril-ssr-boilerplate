@@ -2,7 +2,6 @@
   "name": "mithril-ssr",
   "version": "2.1.0",
   "description": "ssr",
-  "main": "index.js",
   "repository": "https://github.com/souricevincent/mithril-ssr-boilerplate.git",
   "sideEffects": false,
   "scripts": {
@@ -49,12 +48,13 @@
     "eslint-plugin-unicorn": "^21.0.0",
     "meiosis-tracer": "^3.0.0",
     "nodemon-webpack-plugin": "^4.3.2",
-    "typescript": "^3.8.3",
+    "typescript": "^4.0.5",
     "webpack": "^5.4.0",
     "webpack-bundle-analyzer": "^4.1.0",
     "webpack-cli": "^4.2.0",
     "webpack-node-externals": "^2.5.0",
-    "webpack-shell-plugin-alt": "^1.4.0"
+    "webpack-shell-plugin-alt": "^1.4.0",
+    "ts-loader": "^8.0.11"
   },
   "dependencies": {
     "@urql/core": "^1.15.0",
@@ -79,6 +79,5 @@
       "build/assets/*"
     ],
     "delay": "0"
-  },
-  "sideEffects": false
+  }
 }
