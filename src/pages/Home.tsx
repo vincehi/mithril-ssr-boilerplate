@@ -1,6 +1,6 @@
 import m from 'mithril';
 import { OperationResult } from '@urql/core/dist/types/types';
-import {SSRExchange} from "@urql/core/dist/types/exchanges/ssr";
+import { SSRExchange } from '@urql/core/dist/types/exchanges/ssr';
 import { Client } from '@urql/core';
 
 const request = `
@@ -19,13 +19,17 @@ const request = `
 
 interface Attrs {
   client: Client;
+  ssr: SSRExchange;
 }
 
 export default class Home implements m.ClassComponent<Attrs> {
   query: OperationResult | null;
+
   constructor(
     { attrs: { client } }: m.CVnode<Attrs>,
-    waitFor: (state: Promise<object>) => OperationResult = (state: Promise<object>): any => state
+    waitFor: (state: Promise<Record<string, unknown>>) => OperationResult = (
+      state: Promise<Record<string, unknown>>,
+    ): any => state,
   ) {
     this.query = client.readQuery(request);
     waitFor(
@@ -37,14 +41,11 @@ export default class Home implements m.ClassComponent<Attrs> {
       }),
     );
   }
+
   view(): m.Children {
     return (
       <div>
-        <div>
-          {this.query
-            ? this.query.data.getCityByName.name
-            : 'Loading'}
-        </div>
+        <div>{this.query ? this.query.data.getCityByName.name : 'Loading'}</div>
         Contenu de la page Homepage !
       </div>
     );

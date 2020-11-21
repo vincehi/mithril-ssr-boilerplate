@@ -14,8 +14,6 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     },
-    jsxPragma: 'm',
-    jsxFragmentName: '[',
     tsconfigRootDir: __dirname,
     project: "tsconfig.json"
   },
@@ -38,7 +36,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:unicorn/recommended",
-    "plugin:promise/recommended",
+    "plugin:promise/recommended"
   ],
   plugins: [
     "react",
@@ -88,39 +86,39 @@ module.exports = {
       }
     ]
   },
-  overrides: [
-    {
-      files: [
-        "src/server/**"
-      ],
-      rules: {
-        "no-param-reassign": [
-          "error",
-          {
-            props: true,
-            ignorePropertyModificationsFor: [
-              "ctx"
-            ]
-          }
-        ],
-        "no-console": [
-          0
-        ]
-      }
-    },
-    {
-      files: [
-        "src/components/**",
-        "src/pages/**"
-      ],
-      rules: {
-        "unicorn/filename-case": [
-          "error",
-          {
-            case: "pascalCase"
-          }
-        ]
-      }
-    }
-  ]
+  // overrides: [
+  //   {
+  //     files: [
+  //       "src/server/**"
+  //     ],
+  //     rules: {
+  //       "no-param-reassign": [
+  //         "error",
+  //         {
+  //           props: true,
+  //           ignorePropertyModificationsFor: [
+  //             "ctx"
+  //           ]
+  //         }
+  //       ],
+  //       "no-console": [
+  //         0
+  //       ]
+  //     }
+  //   },
+  //   {
+  //     files: [
+  //       "src/components/**",
+  //       "src/pages/**"
+  //     ],
+  //     rules: {
+  //       "unicorn/filename-case": [
+  //         "error",
+  //         {
+  //           case: "pascalCase"
+  //         }
+  //       ]
+  //     }
+  //   }
+  // ]
 }

@@ -1,13 +1,11 @@
 import m from 'mithril';
+import { SSRExchange } from '@urql/core/dist/types/exchanges/ssr';
 import Header from './Header';
 import Footer from './Footer';
-import {SSRExchange} from "@urql/core/dist/types/exchanges/ssr";
-
 
 function mainContent(vnode: m.CVnode<Attrs>): m.Children {
   return (
     <>
-
       <Header test={{ ste: 'hdgsd' }} />
       {vnode.children}
       <Footer />
@@ -37,15 +35,11 @@ export default class Layout implements m.ClassComponent<Attrs> {
             {/* <title>{vnode.attrs.module.tag.title}</title> */}
           </head>
           <body>
-            <div id="mainContent">
-              {mainContent(vnode)}
-            </div>
-            {/*{process.env.DEBUG && (*/}
-            {/*  <div id="tracer" style="position: fixed; top: 0px; right: 0px;"></div>*/}
-            {/*)}*/}
-            <script>
-              {`window.__URQL_DATA__ = ${JSON.stringify(vnode.attrs.ssr.extractData())}`}
-            </script>
+            <div id="mainContent">{mainContent(vnode)}</div>
+            {/* {process.env.DEBUG && ( */}
+            {/*  <div id="tracer" style="position: fixed; top: 0px; right: 0px;"></div> */}
+            {/* )} */}
+            <script>{`window.urqlData = ${JSON.stringify(vnode.attrs.ssr.extractData())}`}</script>
             <script src="/js/app.js" />
           </body>
         </html>

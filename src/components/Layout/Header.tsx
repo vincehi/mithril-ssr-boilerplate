@@ -4,7 +4,7 @@ const RouteLink = m.route.Link as any;
 
 interface Attrs {
   test: string;
-};
+}
 
 export default class Header implements m.ClassComponent<Attrs> {
   view(): m.Children {

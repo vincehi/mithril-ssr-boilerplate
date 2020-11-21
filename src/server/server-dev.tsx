@@ -15,22 +15,17 @@ const app = new Koa();
 const PORT = process.env.PORT || 5030;
 
 Object.keys(routes).forEach((route) => {
-  app.use(router.get(route, async (ctx) => {
-    const module = await routes[route].module();
-
-    ctx.body = await toHTML(
-      m(
-        Layout,
-        { ssr },
-        await toHTML(
-          m(module, { ssr, client }),
-        ),
-      ),
-      { escapeText: (vnode) => {
-          return vnode
-        } }, // fix escape vnode
-    );
-  }));
+  app.use(
+    router.get(route, async (ctx) => {
+      const module = await routes[route].module();
+      ctx.body = await toHTML(
+        m(Layout, { ssr }, await toHTML(m(module, { ssr, client }))),
+        {
+          escapeText: (vnode) => vnode,
+        }, // fix escape vnode
+      );
+    }),
+  );
 });
 
 app.use(statics(path.join(__dirname, '..', 'build/assets')));
