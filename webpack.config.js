@@ -40,9 +40,9 @@ module.exports = (env, argv) => {
             test: /\.tsx?$/,
             exclude: path.resolve(__dirname, 'node_modules'),
             loader: 'ts-loader',
-            options: {
-              // configFile: './.tsconfig-server.json',
-            },
+            // options: {
+            //   configFile: 'tsconfig-server.json',
+            // },
           },
         ],
       },
@@ -89,9 +89,9 @@ module.exports = (env, argv) => {
             test: /\.tsx$/,
             exclude: path.resolve(__dirname, 'node_modules'),
             loader: 'ts-loader',
-            options: {
-              // configFile: './.babelrc-client',
-            },
+            // options: {
+            //   configFile: 'tsconfig-client.json',
+            // },
           },
         ],
       },

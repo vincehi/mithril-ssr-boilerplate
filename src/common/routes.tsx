@@ -1,11 +1,11 @@
 import m from 'mithril';
-import { Attrs as ContactAttrsType } from '../pages/Contact';
+import Home from '../pages/Home'
 
 // Put Attrs of component in m.ComponentTypes<Attrs | ...>
 interface Routes {
   [route: string]: {
-    name: string;
-    module: Promise<m.ComponentTypes<ContactAttrsType | any>>;
+    readonly name: string;
+    module(): Promise<m.ComponentTypes<any>>;
   };
 }
 
@@ -14,9 +14,8 @@ const routes: Routes = {
     name: 'Accueil',
     module: async () => {
       const {default: module} = await import(/* webpackChunkName: "Home" */ '../pages/Home');
-      return module
+      return module;
     },
-    // module: () => import(/* webpackChunkName: "Home" */ '../pages/Home'),
   },
   '/contact': {
     name: 'Contact',
@@ -25,18 +24,6 @@ const routes: Routes = {
       return module;
     },
   },
-  // '/contact': {
-  //   name: 'Contact',
-  //   module: new Promise((resolve) => {
-  //     import(/* webpackChunkName: "Contact" */ '../pages/Contact')
-  //       .then(
-  //         ({ default: module }) => resolve(module)
-  //       )
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }),
-  // },
 };
 
 export default routes;

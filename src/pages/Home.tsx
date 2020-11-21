@@ -1,5 +1,7 @@
 import m from 'mithril';
-import { pipe, subscribe } from 'wonka';
+import { OperationResult } from '@urql/core/dist/types/types';
+import {SSRExchange} from "@urql/core/dist/types/exchanges/ssr";
+import { Client } from '@urql/core';
 
 const request = `
     {
@@ -15,27 +17,23 @@ const request = `
     }
 `;
 
-export default class Home implements m.Component {
-  query: () => any;
-  oninit(
-    { attrs: { client } },
-    waitFor = (state: Promise<object>): object => state,
+interface Attrs {
+  client: Client;
+}
+
+export default class Home implements m.ClassComponent<Attrs> {
+  query: OperationResult | null;
+  constructor(
+    { attrs: { client } }: m.CVnode<Attrs>,
+    waitFor: (state: Promise<object>) => OperationResult = (state: Promise<object>): any => state
   ) {
+    this.query = client.readQuery(request);
     waitFor(
-      new Promise((resolve) => {
-
-        client
-          .query(request, {
-            /* vars */
-          })
-          .toPromise()
-          .then(result => {
-            resolve(this.query = result);
-            if (process.env.BROWSER_ENV) {
-              m.redraw();
-            }
-          });
-
+      new Promise(async (resolve) => {
+        console.log(this.query);
+        this.query = await client.query(request, {}).toPromise();
+        resolve();
+        if (process.env.BROWSER_ENV) m.redraw();
       }),
     );
   }
@@ -43,10 +41,9 @@ export default class Home implements m.Component {
     return (
       <div>
         <div>
-          {/*{this.query*/}
-          {/*  ? this.query.data.getCityByName.name*/}
-          {/*  : 'Loading'}*/}
-          {/*{console.log(this.query)}*/}
+          {this.query
+            ? this.query.data.getCityByName.name
+            : 'Loading'}
         </div>
         Contenu de la page Homepage !
       </div>

@@ -17,7 +17,6 @@ const PORT = process.env.PORT || 5030;
 Object.keys(routes).forEach((route) => {
   app.use(router.get(route, async (ctx) => {
     const module = await routes[route].module();
-    console.log(module)
 
     ctx.body = await toHTML(
       m(
@@ -27,7 +26,9 @@ Object.keys(routes).forEach((route) => {
           m(module, { ssr, client }),
         ),
       ),
-      { escapeText: (vnode) => vnode }, // fix escape vnode
+      { escapeText: (vnode) => {
+          return vnode
+        } }, // fix escape vnode
     );
   }));
 });

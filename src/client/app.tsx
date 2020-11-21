@@ -4,6 +4,7 @@ import Layout from '../components/Layout/Layout';
 import routes from '../common/routes';
 
 import { ssr, client } from '../common/urql';
+import {SSRData} from "@urql/core/dist/types/exchanges/ssr";
 
 interface Attrs {
   stateman: object;
@@ -12,27 +13,19 @@ interface Attrs {
 declare global {
   interface Window {
     preloadedState: object;
+    __URQL_DATA__: SSRData
   }
 }
 
 ssr.restoreData(window.__URQL_DATA__);
 
-if (process.env.DEBUG) {
-  import('meiosis-tracer').then(({ default: meiosisTracer }) => meiosisTracer(
-    { selector: '#tracer', streams: [] },
-  ));
-}
-
 const clientRoutes: m.RouteDefs = Object.fromEntries(
   Object.entries(routes).map(([route, val]) => [
     route,
     {
-      // onmatch: () => val.module.then((resp) => resp),
-      onmatch: () => {
-        return val.module()
-      },
+      onmatch: async () => val.module(),
       render: (vnode) => {
-        // Object.assign(vnode.attrs, { ssr, client });
+        Object.assign(vnode.attrs, { ssr, client });
         // document.title = (vnode.tag as m.Comp<object, {title: string}>).title;
         return m(Layout, vnode);
       },

@@ -7,16 +7,19 @@ import {
 } from "@urql/core";
 
 // import { devtoolsExchange } from "@urql/devtools";
-import nodeFetch from 'node-fetch';
+import fetch from 'isomorphic-unfetch'
 
+const isServerSide = typeof window === 'undefined';
+
+console.log(typeof process.env.BROWSER_ENV)
 export const ssr = ssrExchange({
-  isClient: process.env.BROWSER_ENV,
-  initialState: process.env.BROWSER_ENV ? window.__URQL_DATA__ : undefined,
+  isClient: !isServerSide,
+  initialState: !isServerSide ? window.__URQL_DATA__ : undefined,
 });
 
 export const client = createClient({
   url: 'https://graphql-weather-api.herokuapp.com/',
-  fetch: process.env.BROWSER_ENV ? fetch : nodeFetch,
+  fetch: fetch,
   exchanges: [
     dedupExchange,
     cacheExchange,

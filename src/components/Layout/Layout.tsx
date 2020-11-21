@@ -1,16 +1,10 @@
-/** @jsx m */
 import m from 'mithril';
 import Header from './Header';
 import Footer from './Footer';
+import {SSRExchange} from "@urql/core/dist/types/exchanges/ssr";
 
-export interface Attrs {
-  stateman: {
-    state: object;
-  };
-}
 
 function mainContent(vnode: m.CVnode<Attrs>): m.Children {
-  // console.log('layout :', vnode.attrs.stateman?.state.contact ? ' Le state EST chargé ' : ' Le state PAS chargé ');
   return (
     <>
 
@@ -19,6 +13,10 @@ function mainContent(vnode: m.CVnode<Attrs>): m.Children {
       <Footer />
     </>
   );
+}
+
+interface Attrs {
+  ssr: SSRExchange;
 }
 
 export default class Layout implements m.ClassComponent<Attrs> {
@@ -45,9 +43,9 @@ export default class Layout implements m.ClassComponent<Attrs> {
             {/*{process.env.DEBUG && (*/}
             {/*  <div id="tracer" style="position: fixed; top: 0px; right: 0px;"></div>*/}
             {/*)}*/}
-            {/*<script>*/}
-            {/*  {`window.__URQL_DATA__ = JSON.parse('${JSON.stringify(vnode.attrs.ssr.extractData())}')`}*/}
-            {/*</script>*/}
+            <script>
+              {`window.__URQL_DATA__ = ${JSON.stringify(vnode.attrs.ssr.extractData())}`}
+            </script>
             <script src="/js/app.js" />
           </body>
         </html>
