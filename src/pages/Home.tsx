@@ -1,7 +1,7 @@
-import m from 'mithril';
-import { OperationResult } from '@urql/core/dist/types/types';
-import { SSRExchange } from '@urql/core/dist/types/exchanges/ssr';
-import { Client } from '@urql/core';
+import m from "mithril";
+import { OperationResult } from "@urql/core/dist/types/types";
+import { SSRExchange } from "@urql/core/dist/types/exchanges/ssr";
+import { Client } from "@urql/core";
 
 const request = `
     {
@@ -22,30 +22,35 @@ interface Attrs {
   ssr: SSRExchange;
 }
 
+interface RequestData {
+  getCityByName: {
+    name: string;
+  };
+}
+
 export default class Home implements m.ClassComponent<Attrs> {
-  query: OperationResult | null;
+  query: OperationResult<RequestData> | null;
 
   constructor(
     { attrs: { client } }: m.CVnode<Attrs>,
-    waitFor: (state: Promise<Record<string, unknown>>) => OperationResult = (
-      state: Promise<Record<string, unknown>>,
-    ): any => state,
+    waitFor: (state: Promise<void>) => void = () => {}
   ) {
     this.query = client.readQuery(request);
+
     waitFor(
-      new Promise(async (resolve) => {
-        console.log(this.query);
-        this.query = await client.query(request, {}).toPromise();
-        resolve();
+      (async () => {
+        this.query = await new Promise((resolve) => {
+          resolve(client.query(request, {}).toPromise());
+        });
         if (process.env.BROWSER_ENV) m.redraw();
-      }),
+      })()
     );
   }
 
   view(): m.Children {
     return (
       <div>
-        <div>{this.query ? this.query.data.getCityByName.name : 'Loading'}</div>
+        <div>{this.query?.data?.getCityByName.name || "Loading"}</div>
         Contenu de la page Homepage !
       </div>
     );

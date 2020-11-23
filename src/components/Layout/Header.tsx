@@ -1,5 +1,6 @@
-import m from 'mithril';
+import m from "mithril";
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
 const RouteLink = m.route.Link as any;
 
 interface Attrs {

@@ -1,10 +1,9 @@
-import m from 'mithril';
-// import stream from 'mithril/stream';
-import { SSRData } from '@urql/core/dist/types/exchanges/ssr';
-import Layout from '../components/Layout/Layout';
-import routes from '../common/routes';
+import m from "mithril";
+import { SSRData } from "@urql/core/dist/types/exchanges/ssr";
+import Layout from "../components/Layout/Layout";
+import routes from "../common/routes";
 
-import { ssr, client } from '../common/urql';
+import { ssr, client } from "../common/urql";
 
 declare global {
   interface Window {
@@ -25,7 +24,7 @@ const clientRoutes: m.RouteDefs = Object.fromEntries(
         return m(Layout, vnode);
       },
     } as m.RouteResolver,
-  ]),
+  ])
 );
 
-m.route(document.querySelector('#mainContent') as HTMLElement, '/', clientRoutes);
+m.route(document.querySelector("#mainContent") as HTMLElement, "/", clientRoutes);

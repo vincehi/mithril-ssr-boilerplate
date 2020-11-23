@@ -1,8 +1,8 @@
-const path = require('path');
-const nodeExternals = require('webpack-node-externals');
-const WebpackShellPlugin = require('webpack-shell-plugin-alt');
-const CircularDependencyPlugin = require('circular-dependency-plugin');
-const webpack = require('webpack');
+const path = require("path");
+const nodeExternals = require("webpack-node-externals");
+const WebpackShellPlugin = require("webpack-shell-plugin-alt");
+const CircularDependencyPlugin = require("circular-dependency-plugin");
+const webpack = require("webpack");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = (env, argv) => {
@@ -11,19 +11,19 @@ module.exports = (env, argv) => {
       // Server Config
       // name: 'server',
       entry: {
-        server: './src/server/server-dev.tsx',
+        server: "./src/server/server-dev.tsx",
       },
       output: {
-        path: path.join(__dirname, 'build'),
-        publicPath: '/',
-        filename: '[name].js',
-        chunkFilename: '[name]-bundle.js',
+        path: path.join(__dirname, "build"),
+        publicPath: "/",
+        filename: "[name].js",
+        chunkFilename: "[name]-bundle.js",
       },
       mode: argv.mode,
       optimization: {
-         usedExports: true,
+        usedExports: true,
       },
-      target: 'node',
+      target: "node",
       node: {
         // Need this when working with express, otherwise the build fails
         __dirname: false, // if you don't put this is, __dirname
@@ -31,15 +31,15 @@ module.exports = (env, argv) => {
       },
       externals: [
         nodeExternals({
-          allowlist: ['mithril'], // For resolve alias in target node
+          allowlist: ["mithril"], // For resolve alias in target node
         }),
       ], // Need this to avoid error when working with Express
       module: {
         rules: [
           {
             test: /\.tsx?$/,
-            exclude: path.resolve(__dirname, 'node_modules'),
-            loader: 'ts-loader',
+            exclude: path.resolve(__dirname, "node_modules"),
+            loader: "ts-loader",
             // options: {
             //   configFile: 'tsconfig-server.json',
             // },
@@ -47,14 +47,14 @@ module.exports = (env, argv) => {
         ],
       },
       resolve: {
-        extensions: ['.mjs', '.tsx', '.ts', '.js', '.jsx'],
+        extensions: [".mjs", ".tsx", ".ts", ".js", ".jsx"],
         alias: {
-          mithril$: path.resolve(__dirname, 'lib/m.js'),
+          mithril$: path.resolve(__dirname, "lib/m.js"),
         },
       },
       plugins: [
         new WebpackShellPlugin({
-          onBuildEnd: ['npm run start'],
+          onBuildEnd: ["npm run start"],
         }),
         // new BundleAnalyzerPlugin({generateStatsFile: true, analyzerMode: false}),
         new CircularDependencyPlugin({
@@ -70,25 +70,25 @@ module.exports = (env, argv) => {
         }),
         new webpack.EnvironmentPlugin({
           BROWSER_ENV: false,
-          DEBUG: argv.mode === 'development',
+          DEBUG: argv.mode === "development",
         }),
       ],
     },
     {
       // Client Config
       // name: 'client',
-      entry: './src/client/app.tsx',
+      entry: "./src/client/app.tsx",
       output: {
-        path: path.resolve(__dirname, './build/assets'),
-        filename: 'js/app.js',
-        chunkFilename: 'js/[name]-bundle.js',
+        path: path.resolve(__dirname, "./build/assets"),
+        filename: "js/app.js",
+        chunkFilename: "js/[name]-bundle.js",
       },
       module: {
         rules: [
           {
             test: /\.tsx$/,
-            exclude: path.resolve(__dirname, 'node_modules'),
-            loader: 'ts-loader',
+            exclude: path.resolve(__dirname, "node_modules"),
+            loader: "ts-loader",
             // options: {
             //   configFile: 'tsconfig-client.json',
             // },
@@ -96,18 +96,18 @@ module.exports = (env, argv) => {
         ],
       },
       resolve: {
-        extensions: ['.mjs', '.tsx', '.ts', '.js', '.jsx'],
+        extensions: [".mjs", ".tsx", ".ts", ".js", ".jsx"],
         alias: {
-          mithril$: path.resolve(__dirname, 'lib/m.js'),
+          mithril$: path.resolve(__dirname, "lib/m.js"),
         },
       },
       plugins: [
         new webpack.EnvironmentPlugin({
           BROWSER_ENV: true,
-          DEBUG: argv.mode === 'development',
+          DEBUG: argv.mode === "development",
         }),
         // new BundleAnalyzerPlugin({generateStatsFile: true, analyzerMode: false}),
       ],
     },
-  ]
+  ];
 };

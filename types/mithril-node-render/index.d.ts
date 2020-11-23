@@ -1,5 +1,5 @@
-declare module 'mithril-node-render' {
-  import m from 'mithril';
+declare module "mithril-node-render" {
+  import m from "mithril";
 
   function render(
     component: m.Children,
@@ -7,7 +7,7 @@ declare module 'mithril-node-render' {
       escapeAttribute?: (vnode: string) => string;
       escapeText?: (vnode: string) => string;
       xml?: boolean;
-    },
+    }
   ): Promise<m.Children>;
 
   export = render;

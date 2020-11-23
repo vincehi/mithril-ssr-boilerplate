@@ -1,12 +1,12 @@
-import m from 'mithril';
-import { SSRExchange } from '@urql/core/dist/types/exchanges/ssr';
-import Header from './Header';
-import Footer from './Footer';
+import m from "mithril";
+import { SSRExchange } from "@urql/core/dist/types/exchanges/ssr";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function mainContent(vnode: m.CVnode<Attrs>): m.Children {
   return (
     <>
-      <Header test={{ ste: 'hdgsd' }} />
+      <Header test={{ ste: "hdgsd" }} />
       {vnode.children}
       <Footer />
     </>
@@ -25,7 +25,7 @@ export default class Layout implements m.ClassComponent<Attrs> {
     ) : (
       // Layout Server
       <>
-        {m('!doctype[html]')}
+        {m("!doctype[html]")}
         <html lang="fr">
           <head>
             <meta charSet="utf-8" />

@@ -1,15 +1,15 @@
-import path from 'path';
-import Koa from 'koa';
-import statics from 'koa-static';
-import router from 'koa-route';
+import path from "path";
+import Koa from "koa";
+import statics from "koa-static";
+import router from "koa-route";
 
-import toHTML from 'mithril-node-render';
-import m from 'mithril';
+import toHTML from "mithril-node-render";
+import m from "mithril";
 
-import routes from '../common/routes';
-import Layout from '../components/Layout/Layout';
+import routes from "../common/routes";
+import Layout from "../components/Layout/Layout";
 
-import { ssr, client } from '../common/urql';
+import { ssr, client } from "../common/urql";
 
 const app = new Koa();
 const PORT = process.env.PORT || 5030;
@@ -22,15 +22,15 @@ Object.keys(routes).forEach((route) => {
         m(Layout, { ssr }, await toHTML(m(module, { ssr, client }))),
         {
           escapeText: (vnode) => vnode,
-        }, // fix escape vnode
+        } // fix escape vnode
       );
-    }),
+    })
   );
 });
 
-app.use(statics(path.join(__dirname, '..', 'build/assets')));
+app.use(statics(path.join(__dirname, "..", "build/assets")));
 
 app.listen(PORT, () => {
   console.log(`🌍 http://localhost:${PORT}`);
-  console.log('Press Ctrl + C to quit.');
+  console.log("Press Ctrl + C to quit.");
 });
