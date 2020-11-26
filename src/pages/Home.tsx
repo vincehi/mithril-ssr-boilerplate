@@ -2,6 +2,7 @@ import m from "mithril";
 import { OperationResult } from "@urql/core/dist/types/types";
 import { SSRExchange } from "@urql/core/dist/types/exchanges/ssr";
 import { Client } from "@urql/core";
+import { client } from "../common/urql";
 
 const request = `
     {
@@ -31,10 +32,7 @@ interface RequestData {
 export default class Home implements m.ClassComponent<Attrs> {
   query: OperationResult<RequestData> | null;
 
-  constructor(
-    { attrs: { client } }: m.CVnode<Attrs>,
-    waitFor: (state: Promise<void>) => void = () => {}
-  ) {
+  constructor(vnode: m.CVnode, waitFor: (state: Promise<void>) => void = () => {}) {
     this.query = client.readQuery(request);
 
     waitFor(

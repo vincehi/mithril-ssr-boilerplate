@@ -3,6 +3,8 @@ import { SSRExchange } from "@urql/core/dist/types/exchanges/ssr";
 import Header from "./Header";
 import Footer from "./Footer";
 
+import { ssr } from "../../common/urql";
+
 function mainContent(vnode: m.CVnode<Attrs>): m.Children {
   return (
     <>
@@ -39,7 +41,7 @@ export default class Layout implements m.ClassComponent<Attrs> {
             {/* {process.env.DEBUG && ( */}
             {/*  <div id="tracer" style="position: fixed; top: 0px; right: 0px;"></div> */}
             {/* )} */}
-            <script>{`window.urqlData = ${JSON.stringify(vnode.attrs.ssr.extractData())}`}</script>
+            <script>{`window.urqlData = ${JSON.stringify(ssr.extractData())}`}</script>
             <script src="/js/app.js" />
           </body>
         </html>
