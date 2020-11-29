@@ -32,9 +32,11 @@ interface RequestData {
 export default class Home implements m.ClassComponent<Attrs> {
   query: OperationResult<RequestData> | null;
 
-  constructor(vnode: m.CVnode, waitFor: (state: Promise<void>) => void = () => {}) {
+  constructor() {
     this.query = client.readQuery(request);
+  }
 
+  oninit(vnode: m.CVnode<Attrs>, waitFor: (state: Promise<void>) => void = () => {}): void {
     waitFor(
       (async () => {
         this.query = await new Promise((resolve) => {

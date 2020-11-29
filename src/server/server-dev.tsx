@@ -17,7 +17,7 @@ Object.keys(routes).forEach((route) => {
     router.get(route, async (ctx) => {
       const module = await routes[route].module();
       ctx.body = await toHTML(
-        m(Layout, m(module))
+        m(Layout, await toHTML(module))
         // {
         //   escapeText: (vnode) => vnode,
         // } // fix escape vnode
