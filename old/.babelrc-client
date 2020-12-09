@@ -1,0 +1,35 @@
+{
+  "presets": [
+    [
+      "@babel/preset-typescript",
+      {
+        "isTSX": true,
+        "allExtensions": true,
+        "jsxPragma": "m"
+      }
+    ],
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-class-properties"
+    ],
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "pragma": "m",
+        "pragmaFrag": "'['",
+        "runtime": "classic"
+//        "runtime": "automatic",
+//        "importSource": "m"
+      }
+    ],
+//    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-runtime"
+  ]
+}

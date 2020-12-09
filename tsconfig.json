@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "esnext",
+    "lib": [
+      "es2019",
+      "dom"
+    ],
+    "jsx": "react",
+    "jsxFactory": "m",
+    "jsxFragmentFactory": "m.fragment",
+    "sourceMap": true,
+    "outDir": "./dist/",
+    "isolatedModules": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "typeRoots": ["./types"],
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  }
+}
