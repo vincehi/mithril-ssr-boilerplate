@@ -60,7 +60,7 @@
     "koa": "^2.13.0",
     "koa-route": "^3.2.0",
     "koa-static": "^5.0.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "mithril": "^2.0.4",
     "mithril-node-render": "^3.0.0",
     "nodemon": "^2.0.6",
